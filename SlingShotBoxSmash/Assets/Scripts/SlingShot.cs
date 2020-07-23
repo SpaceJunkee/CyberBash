@@ -66,6 +66,7 @@ public class SlingShot : MonoBehaviour
 
     private void OnMouseUp()
     {
+        CameraShake.Instance.ShakeCamera(5f, 0.1f);
         isHeldDown = false;
         rigidBody.isKinematic = false;
         rigidBody.constraints = RigidbodyConstraints2D.None;
