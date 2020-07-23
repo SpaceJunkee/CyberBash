@@ -15,6 +15,7 @@ public class Obstacle : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
+            CameraShake.Instance.ShakeCamera(11f, 0.15f);
             Vector3 vel = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
             var force = transform.position - collision.transform.position;
             force.Normalize();
