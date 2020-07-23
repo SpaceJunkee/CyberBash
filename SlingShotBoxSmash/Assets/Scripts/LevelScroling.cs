@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Android;
 using UnityEngine;
 
 public class LevelScroling : MonoBehaviour
@@ -37,7 +38,7 @@ public class LevelScroling : MonoBehaviour
         }
 
         Destroy(clone);
-        Destroy(obj.GetComponent<SpriteRenderer>());
+        
     }
 
     private void LateUpdate()
@@ -63,7 +64,7 @@ public class LevelScroling : MonoBehaviour
             {
                 firstChild.transform.SetAsLastSibling();
                 firstChild.transform.position = new Vector3(lastChild.transform.position.x + halfObjWidth * 2, lastChild.transform.position.y, lastChild.transform.position.z);
-
+                
             }
             else if (transform.position.x - screenBounds.x < firstChild.transform.position.x - halfObjWidth)
             {

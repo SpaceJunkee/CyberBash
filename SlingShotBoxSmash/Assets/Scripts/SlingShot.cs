@@ -42,7 +42,8 @@ public class SlingShot : MonoBehaviour
     {
         isHeldDown = true;
         rigidBody.isKinematic = true;
-        rigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
+        rigidBody.constraints = RigidbodyConstraints2D.FreezePositionX;
+        rigidBody.constraints = RigidbodyConstraints2D.FreezePositionY;
 
         timeManager.StartSlowMotion();
         trail.emitting = false;
