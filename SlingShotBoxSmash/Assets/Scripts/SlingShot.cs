@@ -8,6 +8,7 @@ public class SlingShot : MonoBehaviour
     private bool isHeldDown = false;
     public Rigidbody2D rigidBody;
     public Rigidbody2D anchorRb;
+    public TrailRenderer trail;
     public float releaseTime = 0.15f;
     public float maxDragDistance = 2f;
 
@@ -41,6 +42,8 @@ public class SlingShot : MonoBehaviour
         rigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
 
         timeManager.StartSlowMotion();
+        trail.emitting = false;
+
 
         anchorRb.position = rigidBody.position;
         GetComponent<SpringJoint2D>().enabled = true;
@@ -51,6 +54,8 @@ public class SlingShot : MonoBehaviour
         isHeldDown = false;
         rigidBody.isKinematic = false;
         rigidBody.constraints = RigidbodyConstraints2D.None;
+
+        trail.emitting = true;
 
         timeManager.StopSlowMotion();
 
