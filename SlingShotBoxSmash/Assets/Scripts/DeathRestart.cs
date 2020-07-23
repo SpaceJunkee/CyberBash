@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class DeathRestart : MonoBehaviour
 {
@@ -15,6 +16,13 @@ public class DeathRestart : MonoBehaviour
 
     private void RestartGame()
     {
+        ResetScores();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    private void ResetScores()
+    {
+        ScoreDisplay.score = 0;
+        ScoreDisplay.scoreMultiplier = 1;
     }
 }
