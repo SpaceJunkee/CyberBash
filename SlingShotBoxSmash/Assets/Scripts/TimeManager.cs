@@ -12,9 +12,9 @@ public class TimeManager : MonoBehaviour
 
     public VolumeProfile myProfile;
 
-    public void StartSlowMotion()
+    public void StartSlowMotion(float timeFactor)
     {
-        Time.timeScale = slowDownFactor;
+        Time.timeScale = timeFactor;
         Time.fixedDeltaTime = Time.timeScale * .02f;
         if (myProfile)
         {

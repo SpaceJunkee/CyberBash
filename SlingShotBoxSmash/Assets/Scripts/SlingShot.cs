@@ -45,7 +45,7 @@ public class SlingShot : MonoBehaviour
         rigidBody.constraints = RigidbodyConstraints2D.FreezePositionX;
         rigidBody.constraints = RigidbodyConstraints2D.FreezePositionY;
 
-        timeManager.StartSlowMotion();
+        timeManager.StartSlowMotion(0.5f);
         trail.emitting = false;
         lineRenderer.enabled = true;
 
@@ -66,7 +66,7 @@ public class SlingShot : MonoBehaviour
 
     private void OnMouseUp()
     {
-        CameraShake.Instance.ShakeCamera(5f, 0.1f);
+       // CameraShake.Instance.ShakeCamera(12f, 0.5f);
         isHeldDown = false;
         rigidBody.isKinematic = false;
         rigidBody.constraints = RigidbodyConstraints2D.None;
