@@ -46,6 +46,7 @@ public class SlingShot : MonoBehaviour
 
         timeManager.StartSlowMotion();
         trail.emitting = false;
+        lineRenderer.enabled = true;
 
 
         anchorRb.position = rigidBody.position;
@@ -70,6 +71,8 @@ public class SlingShot : MonoBehaviour
         rigidBody.constraints = RigidbodyConstraints2D.None;
 
         trail.emitting = true;
+
+        lineRenderer.enabled = false;
 
         timeManager.StopSlowMotion();
 
