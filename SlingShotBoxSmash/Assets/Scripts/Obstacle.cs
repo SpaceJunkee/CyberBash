@@ -40,7 +40,7 @@ public class Obstacle : MonoBehaviour
 
     private void SpawnRandomObstacles()
     {
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < 2; i++)
         {
             float spawnY = Random.Range
                 (Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).y, Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height - 200)).y);
