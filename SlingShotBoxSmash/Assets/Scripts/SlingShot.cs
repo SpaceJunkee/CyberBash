@@ -12,13 +12,16 @@ public class SlingShot : MonoBehaviour
     public float releaseTime = 0.15f;
     public float maxDragDistance = 2f;
 
+    public LineRenderer lineRenderer;
+
     public TimeManager timeManager;
 
     private void Update()
     {
-        if(isHeldDown == true)
-        {
 
+        if (isHeldDown == true)
+        {
+            SetLinePos();
             Vector2 mousPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             
 
@@ -47,6 +50,17 @@ public class SlingShot : MonoBehaviour
 
         anchorRb.position = rigidBody.position;
         GetComponent<SpringJoint2D>().enabled = true;
+
+        
+    }
+
+    private void SetLinePos()
+    {
+        Vector3[] positions = new Vector3[2];
+        positions[0] = rigidBody.position;
+        positions[1] = anchorRb.position;
+
+        lineRenderer.SetPositions(positions); 
     }
 
     private void OnMouseUp()
