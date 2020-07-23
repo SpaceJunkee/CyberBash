@@ -19,6 +19,7 @@ public class LevelScroling : MonoBehaviour
         {
             LoadChildObjects(obj);
         }
+
     }
 
     private void LoadChildObjects(GameObject obj)
