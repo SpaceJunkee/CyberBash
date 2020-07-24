@@ -36,8 +36,8 @@ public class Obstacle : MonoBehaviour
             Vector3 vel = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
             var force = transform.position - collision.transform.position;
             force.Normalize();
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * (upwardForce));         
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce((-force * vel.magnitude * 100));
+                  
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce((-force * vel.magnitude * 125));
             Die();
         }
     }
@@ -82,7 +82,7 @@ public class Obstacle : MonoBehaviour
         for (int i = 0; i < spawnRate; i++)
         {
             float spawnY = Random.Range
-                (Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).y, Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height - 200)).y);
+                (Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).y, Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height)).y);
             float spawnX = Random.Range
                 (Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).x, Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x);
 
