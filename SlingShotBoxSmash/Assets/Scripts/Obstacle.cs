@@ -1,11 +1,6 @@
-﻿using Cinemachine;
-
-using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
-using UnityEngine.UI;
+
 
 public class Obstacle : MonoBehaviour
 {
@@ -24,12 +19,12 @@ public class Obstacle : MonoBehaviour
 
             ScoreDisplay.score += 5 * ScoreDisplay.scoreMultiplier;
 
-            scoreTextPop.scoreText.fontSize = 70;
+            scoreTextPop.scoreText.fontSize = 100;
 
             if (ScoreDisplay.score % 50 == 0)
             {
                 ScoreDisplay.scoreMultiplier++;
-                scoreTextPop.scoreMultiplierText.fontSize = 50;
+                scoreTextPop.scoreMultiplierText.fontSize = 70;
             }
 
             CameraShake.Instance.ShakeCamera(13f, 0.2f);

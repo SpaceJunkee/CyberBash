@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +10,6 @@ public class ScoreDisplay : MonoBehaviour
     public Text scoreMultiplierText;
     public static int score = 0;
     public static int scoreMultiplier = 1;
-    private bool isMultiplied = false;
 
 
     private void Update()
@@ -21,21 +17,21 @@ public class ScoreDisplay : MonoBehaviour
         scoreText.text = $"{score}";
         scoreMultiplierText.text = $"x{scoreMultiplier}";
 
-        if(scoreText.fontSize != 50)
+        if(scoreText.fontSize != 80)
         {
             scoreText.fontSize--;
         }
-        else if (scoreText.fontSize == 50)
+        else if (scoreText.fontSize == 80)
         {
-            scoreText.fontSize = 50;
+            scoreText.fontSize = 80;
         }
 
-        if(scoreMultiplierText.fontSize != 33)
+        if(scoreMultiplierText.fontSize != 55)
         {
             scoreMultiplierText.fontSize--;
-        }else if(scoreMultiplierText.fontSize == 33)
+        }else if(scoreMultiplierText.fontSize == 55)
         {
-            scoreMultiplierText.fontSize = 33;
+            scoreMultiplierText.fontSize = 55;
         }
         
        
