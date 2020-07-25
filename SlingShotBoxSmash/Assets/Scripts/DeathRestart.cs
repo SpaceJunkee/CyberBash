@@ -1,22 +1,33 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
+
 using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms.Impl;
+
 
 public class DeathRestart : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    public GameObject deathEffect;
+    public TimeManager timeManager;
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag.Equals("Player"))
+            
+        if (collision.gameObject.tag.Equals("Player") && SlingShot.isHeldDown == false)
         {
-            RestartGame();
+            Destroy(collision.gameObject);
+            CameraShake.Instance.ShakeCamera(25f, 0.75f);
+            timeManager.StartSlowMotion(0.3f);
+            Instantiate(deathEffect, collision.gameObject.transform.position, Quaternion.identity);
+            Invoke("RestartGame", 0.5f);
         }
     }
 
     private void RestartGame()
     {
         ResetScores();
+        timeManager.StopSlowMotion();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

@@ -5,7 +5,7 @@ using UnityEngine.Rendering;
 
 public class SlingShot : MonoBehaviour
 {
-    private bool isHeldDown = false;
+    public static bool isHeldDown = false;
     public Rigidbody2D rigidBody;
     public Rigidbody2D anchorRb;
     public TrailRenderer trail;

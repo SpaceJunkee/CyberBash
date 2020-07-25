@@ -1,11 +1,6 @@
-﻿using Cinemachine;
-
-using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
-using UnityEngine.UI;
+
 
 public class Obstacle : MonoBehaviour
 {
@@ -24,20 +19,20 @@ public class Obstacle : MonoBehaviour
 
             ScoreDisplay.score += 5 * ScoreDisplay.scoreMultiplier;
 
-            scoreTextPop.scoreText.fontSize = 70;
+            scoreTextPop.scoreText.fontSize = 100;
 
             if (ScoreDisplay.score % 50 == 0)
             {
                 ScoreDisplay.scoreMultiplier++;
-                scoreTextPop.scoreMultiplierText.fontSize = 50;
+                scoreTextPop.scoreMultiplierText.fontSize = 70;
             }
 
             CameraShake.Instance.ShakeCamera(13f, 0.2f);
             Vector3 vel = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
             var force = transform.position - collision.transform.position;
             force.Normalize();
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * (upwardForce));         
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce((-force * vel.magnitude * 100));
+                  
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce((-force * vel.magnitude * 125));
             Die();
         }
     }
@@ -82,7 +77,7 @@ public class Obstacle : MonoBehaviour
         for (int i = 0; i < spawnRate; i++)
         {
             float spawnY = Random.Range
-                (Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).y, Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height - 200)).y);
+                (Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).y, Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height)).y);
             float spawnX = Random.Range
                 (Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).x, Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x);
 
