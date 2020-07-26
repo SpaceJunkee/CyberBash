@@ -40,11 +40,11 @@ public class Obstacle : MonoBehaviour
             }
 
             CameraShake.Instance.ShakeCamera(13f, 0.2f);
-            Vector3 vel = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
+            Vector3 vel = collision.gameObject.GetComponentInParent<Rigidbody2D>().velocity;
             var force = transform.position - collision.transform.position;
             force.Normalize();
                   
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce((-force * vel.magnitude * 125));
+            collision.gameObject.GetComponentInParent<Rigidbody2D>().AddForce((-force * vel.magnitude * 125));
             Die();
         }
     }
@@ -56,10 +56,6 @@ public class Obstacle : MonoBehaviour
             Die();
         }
 
-        if (collision.gameObject.tag.Equals("Player"))
-        {
-            
-        }
     }
 
     private void Die()

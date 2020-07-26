@@ -9,7 +9,7 @@ public class DeathRestart : MonoBehaviour
 
     public GameObject deathEffect;
     public TimeManager timeManager;
-
+    public GameObject playerBig;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -17,6 +17,7 @@ public class DeathRestart : MonoBehaviour
         if (collision.gameObject.tag.Equals("Player") && SlingShot.isHeldDown == false)
         {
             Destroy(collision.gameObject);
+            Destroy(playerBig);
             CameraShake.Instance.ShakeCamera(25f, 0.75f);
             timeManager.StartSlowMotion(0.3f);
             Instantiate(deathEffect, collision.gameObject.transform.position, Quaternion.identity);
