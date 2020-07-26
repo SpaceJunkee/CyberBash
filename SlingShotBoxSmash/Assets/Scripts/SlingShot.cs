@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class SlingShot : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class SlingShot : MonoBehaviour
     public TrailRenderer trail;
     public float releaseTime = 0.15f;
     public float maxDragDistance = 2f;
+    public Text tutorialText;
 
     public LineRenderer lineRenderer;
 
@@ -41,6 +43,7 @@ public class SlingShot : MonoBehaviour
     private void OnMouseDown()
     {
         isHeldDown = true;
+        tutorialText.text = "Now let go!";
         rigidBody.isKinematic = true;
         rigidBody.constraints = RigidbodyConstraints2D.FreezePositionX;
         rigidBody.constraints = RigidbodyConstraints2D.FreezePositionY;
@@ -66,7 +69,8 @@ public class SlingShot : MonoBehaviour
 
     private void OnMouseUp()
     {
-       // CameraShake.Instance.ShakeCamera(12f, 0.5f);
+        // CameraShake.Instance.ShakeCamera(12f, 0.5f);
+        Destroy(tutorialText);
         isHeldDown = false;
         rigidBody.isKinematic = false;
         rigidBody.constraints = RigidbodyConstraints2D.None;

@@ -1,6 +1,6 @@
 ﻿
 using UnityEngine;
-
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Obstacle : MonoBehaviour
 {
@@ -9,16 +9,28 @@ public class Obstacle : MonoBehaviour
     public bool hasBeenHit = false;
     public TimeManager timeManager;
     public ScoreDisplay scoreTextPop;
-
- 
+    public GameObject floatingTextPrefab;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
+            if (gameObject.tag.Equals("DoublePointObstacle"))
+            {
+                //Trigger floating text if prefab is not null
+                if(floatingTextPrefab)
+                {
+                    ShowFloatingText(10 * ScoreDisplay.scoreMultiplier, new Color32(19,15,4,255));
+                }
 
-            ScoreDisplay.score += 5 * ScoreDisplay.scoreMultiplier;
-
+                ScoreDisplay.score += (5 * 2) * ScoreDisplay.scoreMultiplier;
+            }
+            else
+            {
+                ScoreDisplay.score += 5 * ScoreDisplay.scoreMultiplier;
+                ShowFloatingText(5 * ScoreDisplay.scoreMultiplier, new Color32(4, 19, 19, 255));
+            }
+            
             scoreTextPop.scoreText.fontSize = 100;
 
             if (ScoreDisplay.score % 50 == 0)
@@ -28,11 +40,11 @@ public class Obstacle : MonoBehaviour
             }
 
             CameraShake.Instance.ShakeCamera(13f, 0.2f);
-            Vector3 vel = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
+            Vector3 vel = collision.gameObject.GetComponentInParent<Rigidbody2D>().velocity;
             var force = transform.position - collision.transform.position;
             force.Normalize();
                   
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce((-force * vel.magnitude * 125));
+            collision.gameObject.GetComponentInParent<Rigidbody2D>().AddForce((-force * vel.magnitude * 125));
             Die();
         }
     }
@@ -44,10 +56,6 @@ public class Obstacle : MonoBehaviour
             Die();
         }
 
-        if (collision.gameObject.tag.Equals("Player"))
-        {
-            
-        }
     }
 
     private void Die()
@@ -84,6 +92,13 @@ public class Obstacle : MonoBehaviour
             Vector2 spawnPosition = new Vector2(spawnX, spawnY);
             Instantiate(this.gameObject, spawnPosition, Quaternion.identity);
         }
+    }
+
+    private void ShowFloatingText(int hitScore, Color32 color)
+    {
+        var go = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity);
+        go.GetComponent<TextMesh>().text = hitScore.ToString();
+        go.GetComponent<TextMesh>().color = color;
     }
        
     
