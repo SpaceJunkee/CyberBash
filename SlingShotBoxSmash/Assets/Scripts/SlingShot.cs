@@ -13,6 +13,7 @@ public class SlingShot : MonoBehaviour
     public float releaseTime = 0.15f;
     public float maxDragDistance = 2f;
     public Text tutorialText;
+    private bool cooldown = false;
 
     public LineRenderer lineRenderer;
 
@@ -42,20 +43,30 @@ public class SlingShot : MonoBehaviour
 
     private void OnMouseDown()
     {
-        isHeldDown = true;
-        tutorialText.text = "Now let go!";
-        rigidBody.isKinematic = true;
-        rigidBody.constraints = RigidbodyConstraints2D.FreezePositionX;
-        rigidBody.constraints = RigidbodyConstraints2D.FreezePositionY;
+        if ( cooldown == false)
+        {
+            isHeldDown = true;
+            tutorialText.text = "Now let go!";
+            rigidBody.isKinematic = true;
+            rigidBody.constraints = RigidbodyConstraints2D.FreezePositionX;
+            rigidBody.constraints = RigidbodyConstraints2D.FreezePositionY;
 
-        timeManager.StartSlowMotion(0.5f);
-        trail.emitting = false;
-        lineRenderer.enabled = true;
+            timeManager.StartSlowMotion(0.5f);
+            trail.emitting = false;
+            lineRenderer.enabled = true;
 
-        anchorRb.position = rigidBody.position;
-        GetComponent<SpringJoint2D>().enabled = true;
+            anchorRb.position = rigidBody.position;
+            GetComponent<SpringJoint2D>().enabled = true;
 
-        
+            Invoke("ResetCooldown", 0.5f);
+            cooldown = true;
+        }
+               
+    }
+
+    void ResetCooldown()
+    {
+        cooldown = false;
     }
 
     private void SetLinePos()
