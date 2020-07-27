@@ -20,7 +20,7 @@ public class Obstacle : MonoBehaviour
                 //Trigger floating text if prefab is not null
                 if(floatingTextPrefab)
                 {
-                    ShowFloatingText(10 * ScoreDisplay.scoreMultiplier, new Color32(99,90,3,255));
+                    ShowFloatingText(10 * ScoreDisplay.scoreMultiplier, new Color32(89,74,0,255));
                 }
 
                 ScoreDisplay.score += (5 * 2) * ScoreDisplay.scoreMultiplier;
@@ -28,7 +28,7 @@ public class Obstacle : MonoBehaviour
             else
             {
                 ScoreDisplay.score += 5 * ScoreDisplay.scoreMultiplier;
-                ShowFloatingText(5 * ScoreDisplay.scoreMultiplier, new Color32(8, 41, 39, 255));
+                ShowFloatingText(5 * ScoreDisplay.scoreMultiplier, new Color32(0, 29, 26, 255));
             }
             
             scoreTextPop.scoreText.fontSize = 100;
