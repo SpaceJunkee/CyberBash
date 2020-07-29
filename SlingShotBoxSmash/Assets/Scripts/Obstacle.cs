@@ -69,7 +69,7 @@ public class Obstacle : MonoBehaviour
     private void SpawnRandomObstacles()
     {
 
-        if (ScoreDisplay.score % 25 == 0)
+        if (ScoreDisplay.score % 50 == 0)
         {
             HandleSpawn(2);
         }
