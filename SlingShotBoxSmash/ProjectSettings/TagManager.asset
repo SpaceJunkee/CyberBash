@@ -9,6 +9,8 @@ TagManager:
   - GameMusic
   - DeathBox
   - Lava
+  - TimeManager
+  - Confiner
   layers:
   - Default
   - TransparentFX

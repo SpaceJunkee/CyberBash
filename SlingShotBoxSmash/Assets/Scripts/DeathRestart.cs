@@ -19,8 +19,7 @@ public class DeathRestart : MonoBehaviour
         if (collision.gameObject.tag.Equals("Player") && SlingShot.isHeldDown == false)
         {
             Destroy(collision.gameObject);
-            DestroyPlayer();
-            Instantiate(deathEffect, collision.gameObject.transform.position, Quaternion.identity);
+            DestroyPlayer();    
             
         }
     }
@@ -33,6 +32,7 @@ public class DeathRestart : MonoBehaviour
     public void DestroyPlayer()
     { 
         Destroy(playerBig);
+        Instantiate(deathEffect, playerBig.gameObject.transform.position, Quaternion.identity);
         CameraShake.Instance.ShakeCamera(25f, 0.75f);
         timeManager.StartSlowMotion(0.3f);
         Invoke("RestartGame", 0.5f);

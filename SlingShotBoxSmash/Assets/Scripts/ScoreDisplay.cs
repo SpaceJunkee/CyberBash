@@ -11,7 +11,6 @@ public class ScoreDisplay : MonoBehaviour
     public static int score = 0;
     public static int scoreMultiplier = 1;
 
-
     private void Update()
     {
         scoreText.text = $"{score}";
