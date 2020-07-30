@@ -7,12 +7,14 @@ public class Obstacle : MonoBehaviour
 {
     public float upwardForce;
     public GameObject deathEffect;
+    public GameObject playerDeathEffect;
     public bool hasBeenHit = false;
     public TimeManager timeManager;
     public ScoreDisplay scoreTextPop;
     public GameObject floatingTextPrefab;
     public int spawnMultiplier = 1;
-   
+    public DeathRestart deathRestart;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
@@ -32,6 +34,11 @@ public class Obstacle : MonoBehaviour
                 }
 
                 ScoreDisplay.score += (5 * 2) * ScoreDisplay.scoreMultiplier;
+            }
+            else if (gameObject.tag.Equals("DeathBox"))
+            {
+                deathRestart.DestroyPlayer();
+                Instantiate(playerDeathEffect, collision.gameObject.transform.position, Quaternion.identity);
             }
             else
             {
