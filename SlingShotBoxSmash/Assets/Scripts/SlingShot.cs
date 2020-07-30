@@ -103,9 +103,4 @@ public class SlingShot : MonoBehaviour
 
     }
 
-    private bool HasObjectBeenHit()
-    {
-        //if object is hit return true and set SpringJoint2d to enabled.
-        return false;
-    }
 }

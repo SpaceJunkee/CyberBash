@@ -25,6 +25,11 @@ public class DeathRestart : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay(Collider collision)
+    {
+        
+    }
+
     public void DestroyPlayer()
     { 
         Destroy(playerBig);

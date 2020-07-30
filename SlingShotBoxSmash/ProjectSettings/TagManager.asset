@@ -8,6 +8,7 @@ TagManager:
   - PlayerBig
   - GameMusic
   - DeathBox
+  - Lava
   layers:
   - Default
   - TransparentFX

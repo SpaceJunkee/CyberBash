@@ -14,31 +14,32 @@ public class Obstacle : MonoBehaviour
     public GameObject floatingTextPrefab;
     public int spawnMultiplier = 1;
     public DeathRestart deathRestart;
+    public AudioSource boxBreakAudio;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.gameObject.tag.Equals("Lava"))
-        {
-            Die();
-        }
-
         if (collision.gameObject.tag.Equals("Player"))
         {
+            boxBreakAudio.Play();
             if (gameObject.tag.Equals("DoublePointObstacle"))
             {
                 //Trigger floating text if prefab is not null
-                if(floatingTextPrefab)
+                if (floatingTextPrefab)
                 {
-                    ShowFloatingText(10 * ScoreDisplay.scoreMultiplier, new Color32(89,74,0,255));
+                    ShowFloatingText(10 * ScoreDisplay.scoreMultiplier, new Color32(89, 74, 0, 255));
                 }
 
                 ScoreDisplay.score += (5 * 2) * ScoreDisplay.scoreMultiplier;
             }
-            else if (gameObject.tag.Equals("DeathBox"))
+            else if (gameObject.tag.Equals("DeathBox") && SlingShot.isHeldDown == false)
             {
                 deathRestart.DestroyPlayer();
                 Instantiate(playerDeathEffect, collision.gameObject.transform.position, Quaternion.identity);
+            }
+            else if(gameObject.tag.Equals("DeathBox") && SlingShot.isHeldDown == true)
+            {
+
             }
             else
             {
@@ -64,18 +65,8 @@ public class Obstacle : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag.Equals("Lava"))
-        {
-            Die();
-        }
-
-    }
-
     private void Die()
-    {
-        
+    {  
         SpawnRandomObstacles();
         Destroy(gameObject);
         Instantiate(deathEffect, transform.position, Quaternion.identity);
@@ -91,8 +82,8 @@ public class Obstacle : MonoBehaviour
 
         for (int i = 0; i < spawnRate; i++)
         {
-            float spawnY = Random.Range(Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).y, Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height)).y);
-            float spawnX = Random.Range(Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).x, Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x);
+            float spawnY = Random.Range(Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).y, Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height-177)).y);
+            float spawnX = Random.Range(Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).x, Camera.main.ScreenToWorldPoint(new Vector2(Screen.width-177, 0)).x);
             
             Vector2 spawnPosition = new Vector2(spawnX, spawnY);
 
