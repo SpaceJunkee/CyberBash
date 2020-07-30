@@ -1,5 +1,6 @@
 ﻿
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SocialPlatforms.Impl;
 
 public class Obstacle : MonoBehaviour
@@ -10,9 +11,16 @@ public class Obstacle : MonoBehaviour
     public TimeManager timeManager;
     public ScoreDisplay scoreTextPop;
     public GameObject floatingTextPrefab;
-
+    public int spawnMultiplier = 1;
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
+        if (collision.gameObject.tag.Equals("Lava"))
+        {
+            Die();
+        }
+
         if (collision.gameObject.tag.Equals("Player"))
         {
             if (gameObject.tag.Equals("DoublePointObstacle"))
@@ -68,28 +76,19 @@ public class Obstacle : MonoBehaviour
 
     private void SpawnRandomObstacles()
     {
-
-        if (ScoreDisplay.score % 50 == 0)
-        {
-            HandleSpawn(2);
-        }
-        else
-        {
-            HandleSpawn(1);
-        }
-        
+        HandleSpawn(1);   
     }
 
     private void HandleSpawn(int spawnRate)
     {
+
         for (int i = 0; i < spawnRate; i++)
         {
-            float spawnY = Random.Range
-                (Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).y, Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height)).y);
-            float spawnX = Random.Range
-                (Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).x, Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x);
-
+            float spawnY = Random.Range(Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).y, Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height)).y);
+            float spawnX = Random.Range(Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).x, Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x);
+            
             Vector2 spawnPosition = new Vector2(spawnX, spawnY);
+
             Instantiate(this.gameObject, spawnPosition, Quaternion.identity);
         }
     }

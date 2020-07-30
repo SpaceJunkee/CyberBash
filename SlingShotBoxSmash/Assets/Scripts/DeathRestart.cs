@@ -10,6 +10,8 @@ public class DeathRestart : MonoBehaviour
     public GameObject deathEffect;
     public TimeManager timeManager;
     public GameObject playerBig;
+    GameObject[] musicObject;
+    public AudioSource audio;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -25,8 +27,31 @@ public class DeathRestart : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        musicObject = GameObject.FindGameObjectsWithTag("GameMusic");
+        if (musicObject.Length == 1)
+        {
+            audio.Play();
+        }
+        else
+        {
+            for (int i = 1; i < musicObject.Length; i++)
+            {
+                Destroy(musicObject[i]);
+            }
+
+        }
+    }
+
+    void Awake()
+    {
+        DontDestroyOnLoad(audio);
+    }
+
     private void RestartGame()
     {
+        
         ResetScores();
         timeManager.StopSlowMotion();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

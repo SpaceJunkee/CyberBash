@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DoublePointObstacle
   - PlayerBig
+  - GameMusic
   layers:
   - Default
   - TransparentFX
