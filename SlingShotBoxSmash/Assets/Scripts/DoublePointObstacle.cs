@@ -19,6 +19,7 @@ public class DoublePointObstacle : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+    
 
         if (ScoreDisplay.score >= ScoreDisplay.multiplierGoal)
         {
@@ -29,15 +30,23 @@ public class DoublePointObstacle : MonoBehaviour
 
         if (collision.gameObject.tag.Equals("Player"))
         {
+            if (!SlingShot.isHeldDown)
+            {
+                ComboHandler.hitCount++;
+            }else if (SlingShot.isHeldDown)
+            {
+                ComboHandler.hitCount = 1;
+            }
+
             doublePointBoxBreakAudio.Play();
 
             //Trigger floating text if prefab is not null
 
-            ScoreDisplay.score += (5 * 2) * ScoreDisplay.scoreMultiplier;
+            ScoreDisplay.score += ComboHandler.doubleScoreValue * ScoreDisplay.scoreMultiplier * ComboHandler.hitCount;
 
             if (floatingTextPrefab)
             {
-                ShowFloatingText(10 * ScoreDisplay.scoreMultiplier, new Color32(89, 74, 0, 255));
+                ShowFloatingText(ComboHandler.doubleScoreValue * ScoreDisplay.scoreMultiplier * ComboHandler.hitCount, new Color32(89, 74, 0, 255));
             }
 
             scoreTextPop.scoreText.fontSize = 100;

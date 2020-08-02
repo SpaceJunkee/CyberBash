@@ -28,6 +28,7 @@ public class DeathBoxObstacle : MonoBehaviour
                 deathBoxAudio.Play();
 
                 CameraShake.Instance.ShakeCamera(13f, 0.2f);
+                Destroy(collision.gameObject);
                 Die();
             }
             else if (SlingShot.isHeldDown)
@@ -46,6 +47,7 @@ public class DeathBoxObstacle : MonoBehaviour
             collision.gameObject.GetComponent<SpriteRenderer>().color = new Color32(0,255,226,255);
         }
     }
+
 
     private void Die()
     {

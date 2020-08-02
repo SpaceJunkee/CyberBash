@@ -20,7 +20,7 @@ public class NormalObstacle : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
+         
         if (ScoreDisplay.score >= ScoreDisplay.multiplierGoal)
         {
             ScoreDisplay.scoreMultiplier++;
@@ -30,9 +30,21 @@ public class NormalObstacle : MonoBehaviour
 
         if (collision.gameObject.tag.Equals("Player"))
         {
+            if (!SlingShot.isHeldDown)
+            {
+                ComboHandler.hitCount++;
+            }
+            else
+            {
+                if (SlingShot.isHeldDown)
+                {
+                    ComboHandler.hitCount = 1;
+                }
+            }
+            
             boxBreakAudio.Play();
-            ScoreDisplay.score += 5 * ScoreDisplay.scoreMultiplier;
-            ShowFloatingText(5 * ScoreDisplay.scoreMultiplier, new Color32(0, 29, 26, 255));
+            ScoreDisplay.score += ComboHandler.normalScoreValue * ScoreDisplay.scoreMultiplier * ComboHandler.hitCount;
+            ShowFloatingText(ComboHandler.normalScoreValue * ScoreDisplay.scoreMultiplier * ComboHandler.hitCount, new Color32(0, 29, 26, 255));
 
             scoreTextPop.scoreText.fontSize = 100;
 

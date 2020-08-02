@@ -43,6 +43,8 @@ public class SlingShot : MonoBehaviour
 
     private void OnMouseDown()
     {
+        ComboHandler.ResetValues();
+
         if ( cooldown == false)
         {
             isHeldDown = true;
