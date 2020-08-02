@@ -11,6 +11,7 @@ public class NormalObstacle : MonoBehaviour
     public AudioSource boxBreakAudio;
     public AudioClip normalBoxBreakClip;
     public GameObject spawnConfiner;
+    
 
     private void Start()
     {
@@ -20,6 +21,13 @@ public class NormalObstacle : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
+        if (ScoreDisplay.score >= ScoreDisplay.multiplierGoal)
+        {
+            ScoreDisplay.scoreMultiplier++;
+            scoreTextPop.scoreMultiplierText.fontSize = 70;
+            ScoreDisplay.multiplierGoal *= 3;
+        }
+
         if (collision.gameObject.tag.Equals("Player"))
         {
             boxBreakAudio.Play();
@@ -27,12 +35,6 @@ public class NormalObstacle : MonoBehaviour
             ShowFloatingText(5 * ScoreDisplay.scoreMultiplier, new Color32(0, 29, 26, 255));
 
             scoreTextPop.scoreText.fontSize = 100;
-
-            if (ScoreDisplay.score % 50 == 0)
-            {
-                ScoreDisplay.scoreMultiplier++;
-                scoreTextPop.scoreMultiplierText.fontSize = 70;
-            }
 
             CameraShake.Instance.ShakeCamera(13f, 0.2f);
             Vector3 vel = collision.gameObject.GetComponentInParent<Rigidbody2D>().velocity;

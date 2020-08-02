@@ -22,15 +22,28 @@ public class DeathBoxObstacle : MonoBehaviour
 
         if (collision.gameObject.tag.Equals("Player"))
         {
-            deathBoxAudio.Play();
+           
+            if (SlingShot.isHeldDown == false)
+            { 
+                deathBoxAudio.Play();
 
-            CameraShake.Instance.ShakeCamera(13f, 0.2f);
-            Vector3 vel = collision.gameObject.GetComponentInParent<Rigidbody2D>().velocity;
-            var force = transform.position - collision.transform.position;
-            force.Normalize();
+                CameraShake.Instance.ShakeCamera(13f, 0.2f);
+                Die();
+            }
+            else if (SlingShot.isHeldDown)
+            {
+                CameraShake.Instance.ShakeCamera(13f, 0.2f);
+                collision.gameObject.GetComponent<SpriteRenderer>().color = new Color32(255, 30, 0, 255);
+            }
+            
+        }
+    }
 
-            collision.gameObject.GetComponentInParent<Rigidbody2D>().AddForce((-force * vel.magnitude * 125));
-            Die();
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Player"))
+        {
+            collision.gameObject.GetComponent<SpriteRenderer>().color = new Color32(0,255,226,255);
         }
     }
 

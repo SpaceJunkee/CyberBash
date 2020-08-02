@@ -20,6 +20,13 @@ public class DoublePointObstacle : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
+        if (ScoreDisplay.score >= ScoreDisplay.multiplierGoal)
+        {
+            ScoreDisplay.scoreMultiplier++;
+            scoreTextPop.scoreMultiplierText.fontSize = 70;
+            ScoreDisplay.multiplierGoal *= 3;
+        }
+
         if (collision.gameObject.tag.Equals("Player"))
         {
             doublePointBoxBreakAudio.Play();
@@ -34,12 +41,6 @@ public class DoublePointObstacle : MonoBehaviour
             }
 
             scoreTextPop.scoreText.fontSize = 100;
-
-            if (ScoreDisplay.score % 50 == 0)
-            {
-                ScoreDisplay.scoreMultiplier++;
-                scoreTextPop.scoreMultiplierText.fontSize = 70;
-            }
 
             CameraShake.Instance.ShakeCamera(13f, 0.2f);
             Vector3 vel = collision.gameObject.GetComponentInParent<Rigidbody2D>().velocity;

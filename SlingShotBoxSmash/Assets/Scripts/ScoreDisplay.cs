@@ -10,6 +10,7 @@ public class ScoreDisplay : MonoBehaviour
     public Text scoreMultiplierText;
     public static int score = 0;
     public static int scoreMultiplier = 1;
+    public static int multiplierGoal = 50;
 
     private void Update()
     {
@@ -32,8 +33,7 @@ public class ScoreDisplay : MonoBehaviour
         {
             scoreMultiplierText.fontSize = 55;
         }
-        
-       
+ 
     }
 
    
