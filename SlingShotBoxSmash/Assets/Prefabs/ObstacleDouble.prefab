@@ -4856,6 +4856,9 @@ MonoBehaviour:
   doublePointBoxBreakAudio: {fileID: -8868692418014212385}
   doublePointBoxClip: {fileID: 8300000, guid: 8e4cc65522757e548b6aed16cf34375a, type: 3}
   spawnConfiner: {fileID: 0}
+  timeManager: {fileID: 4800997520552027495, guid: e1231ab3c50cd5440a3561ef97c5af9b,
+    type: 3}
+  comboSlowMo: 1
 --- !u!114 &-1803027880677415521
 MonoBehaviour:
   m_ObjectHideFlags: 0

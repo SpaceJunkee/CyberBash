@@ -123,7 +123,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c6ca2cc8b4ee68b47930bd82eeb2ee7b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5b81cded4b81b0748b0002b20f0899b8, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -236,7 +236,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85b8938092185084ababbf254f47b133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upwardForce: 0
   normalObjectDeathEffect: {fileID: 2856534893607203738, guid: 3b3f7460db8041e4f9927c4555702929,
     type: 3}
   scoreTextPop: {fileID: 3780936658383914706}
@@ -245,6 +244,8 @@ MonoBehaviour:
   boxBreakAudio: {fileID: 3780936658383914701}
   normalBoxBreakClip: {fileID: 8300000, guid: c6ca2cc8b4ee68b47930bd82eeb2ee7b, type: 3}
   spawnConfiner: {fileID: 0}
+  timeManager: {fileID: 4800997520552027495, guid: e1231ab3c50cd5440a3561ef97c5af9b,
+    type: 3}
 --- !u!114 &3780936658383914706
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -105,34 +105,5 @@ public class SlingShot : MonoBehaviour
 
     }
 
-    private void ComboIndicator()
-    {
-        if (ComboHandler.hitCount < 2)
-        {
-            SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>();
-            foreach (SpriteRenderer sr in renderers)
-            {
-                sr.color = new Color32(0, 255, 226, 255);
-            }
-        }
-        else if (ComboHandler.hitCount == 2)
-        {
-            SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>();
-            foreach (SpriteRenderer sr in renderers)
-            {
-                sr.color = new Color32(0, 255, 188, 255);
-            }
-
-        }
-        else if (ComboHandler.hitCount > 2)
-        {
-            SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>();
-            foreach (SpriteRenderer sr in renderers)
-            {
-                sr.color = new Color32(255, 221, 0, 255);
-            }
-        }
-
-    }
-
+    
 }
