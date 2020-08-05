@@ -21,7 +21,14 @@ public class SlingShot : MonoBehaviour
 
     private void Update()
     {
-        
+
+        if (ComboHandler.hitCount < 3)
+        {
+            NormalObstacle.comboSlowMo = 1f;
+            DoublePointObstacle.comboSlowMo = 1f;
+            
+        }
+
         if (isHeldDown == true)
         {
             SetLinePos();

@@ -20,6 +20,12 @@ public class DeathBoxObstacle : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
+        if (collision.gameObject.tag.Equals("Bomb"))
+        {
+            Destroy(gameObject);
+            ScoreDisplay.score += 25;
+        }
+
         if (collision.gameObject.tag.Equals("Player"))
         {
            
@@ -27,13 +33,12 @@ public class DeathBoxObstacle : MonoBehaviour
             { 
                 deathBoxAudio.Play();
 
-                CameraShake.Instance.ShakeCamera(13f, 0.2f);
                 Destroy(collision.gameObject);
                 Die();
             }
             else if (SlingShot.isHeldDown)
             {
-                CameraShake.Instance.ShakeCamera(13f, 0.2f);
+                
                 collision.gameObject.GetComponent<SpriteRenderer>().color = new Color32(255, 30, 0, 255);
             }
             
@@ -54,8 +59,9 @@ public class DeathBoxObstacle : MonoBehaviour
         DisableObject();
         spawnConfiner.GetComponent<SpawnObjects>().SpawnNormalObstacles(1);
         playerDeath.GetComponent<DeathRestart>().DestroyPlayer();
+        GameObject newDeathEffect = (GameObject)Instantiate(deathObstacleDeathEffect, transform.position, Quaternion.identity);
+        Destroy(newDeathEffect, 2);
         Destroy(gameObject, deathBoxAudioClip.length);
-        Instantiate(deathObstacleDeathEffect, transform.position, Quaternion.identity);
     }
 
     private void DisableObject()

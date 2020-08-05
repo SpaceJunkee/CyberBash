@@ -4858,7 +4858,6 @@ MonoBehaviour:
   spawnConfiner: {fileID: 0}
   timeManager: {fileID: 4800997520552027495, guid: e1231ab3c50cd5440a3561ef97c5af9b,
     type: 3}
-  comboSlowMo: 1
 --- !u!114 &-1803027880677415521
 MonoBehaviour:
   m_ObjectHideFlags: 0

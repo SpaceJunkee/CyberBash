@@ -12,7 +12,7 @@ public class NormalObstacle : MonoBehaviour
     public AudioClip normalBoxBreakClip;
     public GameObject spawnConfiner;
     public TimeManager timeManager;
-    public float comboSlowMo = 1;
+    public static float comboSlowMo = 1;
 
 
     private void Start()
@@ -28,6 +28,12 @@ public class NormalObstacle : MonoBehaviour
             ScoreDisplay.scoreMultiplier++;
             scoreTextPop.scoreMultiplierText.fontSize = 70;
             ScoreDisplay.multiplierGoal *= 3;
+        }
+
+        if (collision.gameObject.tag.Equals("Bomb"))
+        {
+            Destroy(gameObject);
+            ScoreDisplay.score += 10;
         }
 
         if (collision.gameObject.tag.Equals("Player"))
@@ -60,13 +66,14 @@ public class NormalObstacle : MonoBehaviour
         }
     }
 
-    private void Die()
+    public void Die()
     {
         timeManager.Invoke("StopSlowMotion", 0.05f);
         DisableObject();
         spawnConfiner.GetComponent<SpawnObjects>().SpawnNormalObstacles(1);
+        GameObject newDeathEffect = (GameObject)Instantiate(normalObjectDeathEffect, transform.position, Quaternion.identity);
+        Destroy(newDeathEffect, 2);
         Destroy(gameObject, normalBoxBreakClip.length);
-        Instantiate(normalObjectDeathEffect, transform.position, Quaternion.identity);
     }
 
     private void ShowFloatingText(int hitScore, Color32 color)
@@ -97,25 +104,25 @@ public class NormalObstacle : MonoBehaviour
         }
         else if (ComboHandler.hitCount == 3)
         {
-            comboSlowMo = 1.25f;
+            comboSlowMo = 2.25f;
             timeManager.StartSlowMotion(0.2f);
             floatingTextPrefab.GetComponent<TextMesh>().fontSize = 40;
         }
         else if (ComboHandler.hitCount == 4)
         {
-            comboSlowMo = 1.5f;
+            comboSlowMo = 3.25f;
             timeManager.StartSlowMotion(0.1f);
             floatingTextPrefab.GetComponent<TextMesh>().fontSize = 50;
         }
         else if (ComboHandler.hitCount == 5)
         {
-            comboSlowMo = 1.75f;
+            comboSlowMo = 3.75f;
             timeManager.StartSlowMotion(0.07f);
             floatingTextPrefab.GetComponent<TextMesh>().fontSize = 60;
         }
         else if (ComboHandler.hitCount > 5)
         {
-            comboSlowMo = 2f;
+            comboSlowMo = 4.5f;
             timeManager.StartSlowMotion(0.05f);
             floatingTextPrefab.GetComponent<TextMesh>().fontSize = 70;
         }
