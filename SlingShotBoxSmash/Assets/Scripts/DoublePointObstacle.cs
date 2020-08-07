@@ -33,7 +33,7 @@ public class DoublePointObstacle : MonoBehaviour
         if (collision.gameObject.tag.Equals("Bomb"))
         {
             Destroy(gameObject);
-            ScoreDisplay.score += 15;
+            ScoreDisplay.score += 10;
         }
 
         if (collision.gameObject.tag.Equals("Player"))

@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpawnObjects : MonoBehaviour
 {
@@ -12,12 +14,15 @@ public class SpawnObjects : MonoBehaviour
     public int doublePointSpawnMultiplier = 1;
     public int deathBoxSpawnMultiplier = 1;
     public int bombSpawnMultiplier = 1;
+    public float bombPointGoal = 1000;
 
     public GameObject normalObstaclePrefab;
     public GameObject doublePointPrefab;
     public GameObject deathBoxPrefab;
     public GameObject bombPrefab;
-    private static bool hasBombGoneOff = false;
+
+    public Text bombGoalText;
+    public Text incomingBombText;
 
     public void Start()
     {
@@ -27,16 +32,17 @@ public class SpawnObjects : MonoBehaviour
 
     private void Update()
     {
-        if(hasBombGoneOff)
+        bombGoalText.text = (bombPointGoal * bombSpawnMultiplier).ToString();
+
+        if(ScoreDisplay.score >= (bombPointGoal * bombSpawnMultiplier) - 150 && ScoreDisplay.score < (bombPointGoal * bombSpawnMultiplier))
         {
-            hasBombGoneOff = false;
-            Invoke("SpawnNormalObstaclesAfterBomb", 3f);
+            incomingBombText.enabled = true;
         }
 
-        if(ScoreDisplay.score >= 2751 * bombSpawnMultiplier)
+        if (ScoreDisplay.score >= bombPointGoal * bombSpawnMultiplier)
         {
-            hasBombGoneOff = true;
             bombSpawnMultiplier++;
+            bombPointGoal += 250;
             SpawnBomb(1);
         }
 
@@ -57,7 +63,6 @@ public class SpawnObjects : MonoBehaviour
     }
     public void SpawnNormalObstacles(int spawnRate)
     {
-        hasBombGoneOff = false;
         for (int i = 0; i < spawnRate; i++)
         {
             Vector2 position = center + new Vector2(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2));
@@ -78,15 +83,17 @@ public class SpawnObjects : MonoBehaviour
 
     public void SpawnBomb(int spawnRate)
     {
-
+        DisableIncomingBombText();
         CameraShake.Instance.ShakeCamera(25f, 1f);
         for (int i = 0; i < spawnRate; i++)
         {
-            Vector2 position = center + new Vector2(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2));
+            Vector2 position = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width / 2, Screen.height / 2)); ;
             Instantiate(bombPrefab, position, Quaternion.identity);
             GameObject newBomb = (GameObject)Instantiate(bombPrefab, position, Quaternion.identity); ;
-            Destroy(newBomb, 1);
+            Destroy(newBomb, 2f);
         }
+
+        Invoke("SpawnNormalObstaclesAfterBomb", 2.35f);
 
     }
 
@@ -105,6 +112,11 @@ public class SpawnObjects : MonoBehaviour
         Gizmos.DrawCube(center, size);
     }
 
+    private void DisableIncomingBombText()
+    {
+        incomingBombText.enabled = false;
+    }
+
     private void SpawnNormalObstaclesAfterBomb()
     {
         
@@ -121,5 +133,7 @@ public class SpawnObjects : MonoBehaviour
             Vector2 position = center + new Vector2(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2));
             Instantiate(doublePointPrefab, position, Quaternion.identity);
         }
+
+        
     }
 }

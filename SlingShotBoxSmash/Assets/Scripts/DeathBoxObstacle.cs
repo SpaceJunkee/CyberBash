@@ -23,7 +23,7 @@ public class DeathBoxObstacle : MonoBehaviour
         if (collision.gameObject.tag.Equals("Bomb"))
         {
             Destroy(gameObject);
-            ScoreDisplay.score += 25;
+            ScoreDisplay.score += 10;
         }
 
         if (collision.gameObject.tag.Equals("Player"))

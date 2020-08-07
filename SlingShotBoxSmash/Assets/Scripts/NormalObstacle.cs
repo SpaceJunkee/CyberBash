@@ -33,7 +33,7 @@ public class NormalObstacle : MonoBehaviour
         if (collision.gameObject.tag.Equals("Bomb"))
         {
             Destroy(gameObject);
-            ScoreDisplay.score += 10;
+            ScoreDisplay.score += 5;
         }
 
         if (collision.gameObject.tag.Equals("Player"))
