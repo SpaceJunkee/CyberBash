@@ -14,6 +14,7 @@ public class SlingShot : MonoBehaviour
     public float maxDragDistance = 2f;
     public Text tutorialText;
     private bool cooldown = false;
+    public AudioSource audio;
 
     public LineRenderer lineRenderer;
 
@@ -89,6 +90,7 @@ public class SlingShot : MonoBehaviour
 
     private void OnMouseUp()
     {
+        
         // CameraShake.Instance.ShakeCamera(12f, 0.5f);
         Destroy(tutorialText);
         isHeldDown = false;
@@ -106,10 +108,10 @@ public class SlingShot : MonoBehaviour
 
     IEnumerator Release()
     {
+        audio.Play();
         yield return new WaitForSeconds(releaseTime);
-
         GetComponent<SpringJoint2D>().enabled = false;
-
+        
     }
 
     

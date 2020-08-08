@@ -242,7 +242,7 @@ MonoBehaviour:
   floatingTextPrefab: {fileID: 2083494464573393691, guid: 16bb703cc76f3ec4db3ddc5003b02f40,
     type: 3}
   boxBreakAudio: {fileID: 3780936658383914701}
-  normalBoxBreakClip: {fileID: 8300000, guid: c6ca2cc8b4ee68b47930bd82eeb2ee7b, type: 3}
+  normalBoxBreakClip: {fileID: 8300000, guid: e0f4883a3923fce41a51ef234f63d04c, type: 3}
   spawnConfiner: {fileID: 0}
   timeManager: {fileID: 4800997520552027495, guid: e1231ab3c50cd5440a3561ef97c5af9b,
     type: 3}

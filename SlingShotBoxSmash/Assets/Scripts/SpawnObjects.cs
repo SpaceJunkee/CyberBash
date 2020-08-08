@@ -32,7 +32,7 @@ public class SpawnObjects : MonoBehaviour
 
     private void Update()
     {
-        bombGoalText.text = (bombPointGoal * bombSpawnMultiplier).ToString();
+        bombGoalText.text = $"NEXT BOMB: {bombPointGoal * bombSpawnMultiplier}";
 
         if(ScoreDisplay.score >= (bombPointGoal * bombSpawnMultiplier) - 150 && ScoreDisplay.score < (bombPointGoal * bombSpawnMultiplier))
         {
