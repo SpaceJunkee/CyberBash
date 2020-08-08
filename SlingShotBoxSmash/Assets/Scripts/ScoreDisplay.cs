@@ -10,31 +10,30 @@ public class ScoreDisplay : MonoBehaviour
     public Text scoreMultiplierText;
     public static int score = 0;
     public static int scoreMultiplier = 1;
-
+    public static int multiplierGoal = 50;
 
     private void Update()
     {
         scoreText.text = $"{score}";
         scoreMultiplierText.text = $"x{scoreMultiplier}";
 
-        if(scoreText.fontSize != 80)
+        if(scoreText.fontSize != 35)
         {
             scoreText.fontSize--;
         }
-        else if (scoreText.fontSize == 80)
+        else if (scoreText.fontSize == 35)
         {
-            scoreText.fontSize = 80;
+            scoreText.fontSize = 35;
         }
 
-        if(scoreMultiplierText.fontSize != 55)
+        if(scoreMultiplierText.fontSize != 25)
         {
             scoreMultiplierText.fontSize--;
-        }else if(scoreMultiplierText.fontSize == 55)
+        }else if(scoreMultiplierText.fontSize == 25)
         {
-            scoreMultiplierText.fontSize = 55;
+            scoreMultiplierText.fontSize = 25;
         }
-        
-       
+ 
     }
 
    

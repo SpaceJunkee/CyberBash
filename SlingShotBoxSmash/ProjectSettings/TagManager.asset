@@ -6,6 +6,12 @@ TagManager:
   tags:
   - DoublePointObstacle
   - PlayerBig
+  - GameMusic
+  - DeathBox
+  - Lava
+  - TimeManager
+  - Confiner
+  - Bomb
   layers:
   - Default
   - TransparentFX

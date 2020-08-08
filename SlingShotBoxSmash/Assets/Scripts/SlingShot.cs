@@ -13,6 +13,8 @@ public class SlingShot : MonoBehaviour
     public float releaseTime = 0.15f;
     public float maxDragDistance = 2f;
     public Text tutorialText;
+    private bool cooldown = false;
+    public AudioSource audio;
 
     public LineRenderer lineRenderer;
 
@@ -20,6 +22,13 @@ public class SlingShot : MonoBehaviour
 
     private void Update()
     {
+
+        if (ComboHandler.hitCount < 3)
+        {
+            NormalObstacle.comboSlowMo = 1f;
+            DoublePointObstacle.comboSlowMo = 1f;
+            
+        }
 
         if (isHeldDown == true)
         {
@@ -42,20 +51,32 @@ public class SlingShot : MonoBehaviour
 
     private void OnMouseDown()
     {
-        isHeldDown = true;
-        tutorialText.text = "Now let go!";
-        rigidBody.isKinematic = true;
-        rigidBody.constraints = RigidbodyConstraints2D.FreezePositionX;
-        rigidBody.constraints = RigidbodyConstraints2D.FreezePositionY;
+        ComboHandler.ResetValues();
 
-        timeManager.StartSlowMotion(0.5f);
-        trail.emitting = false;
-        lineRenderer.enabled = true;
+        if ( cooldown == false)
+        {
+            isHeldDown = true;
+            tutorialText.text = "Now let go!";
+            rigidBody.isKinematic = true;
+            rigidBody.constraints = RigidbodyConstraints2D.FreezePositionX;
+            rigidBody.constraints = RigidbodyConstraints2D.FreezePositionY;
 
-        anchorRb.position = rigidBody.position;
-        GetComponent<SpringJoint2D>().enabled = true;
+            timeManager.StartSlowMotion(0.5f);
+            trail.emitting = false;
+            lineRenderer.enabled = true;
 
-        
+            anchorRb.position = rigidBody.position;
+            GetComponent<SpringJoint2D>().enabled = true;
+
+            Invoke("ResetCooldown", 0.5f);
+            cooldown = true;
+        }
+               
+    }
+
+    void ResetCooldown()
+    {
+        cooldown = false;
     }
 
     private void SetLinePos()
@@ -69,6 +90,7 @@ public class SlingShot : MonoBehaviour
 
     private void OnMouseUp()
     {
+        
         // CameraShake.Instance.ShakeCamera(12f, 0.5f);
         Destroy(tutorialText);
         isHeldDown = false;
@@ -86,15 +108,11 @@ public class SlingShot : MonoBehaviour
 
     IEnumerator Release()
     {
+        audio.Play();
         yield return new WaitForSeconds(releaseTime);
-
         GetComponent<SpringJoint2D>().enabled = false;
-
+        
     }
 
-    private bool HasObjectBeenHit()
-    {
-        //if object is hit return true and set SpringJoint2d to enabled.
-        return false;
-    }
+    
 }
