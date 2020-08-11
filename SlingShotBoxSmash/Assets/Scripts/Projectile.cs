@@ -16,18 +16,21 @@ public class Projectile : MonoBehaviour
        
         rigidbody = GetComponent<Rigidbody2D>();
         player = GameObject.FindObjectOfType<SlingShot>();
-
-
-        movementDirection = (player.transform.position - transform.position).normalized * moveSpeed;
+        
+        if(player != null)
+        {
+            movementDirection = (player.transform.position - transform.position).normalized * moveSpeed;
+        }
+        
         rigidbody.velocity = new Vector2(movementDirection.x, movementDirection.y);
-        Destroy(gameObject, 3f);
+        Destroy(gameObject, 3.5f);
         
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.gameObject.tag.Equals("Lava"))
+        if (collision.gameObject.tag.Equals("Lava") || collision.gameObject.tag.Equals("Bomb"))
         {
             Destroy(gameObject);
         }

@@ -78,6 +78,7 @@ public class DeathRestart : MonoBehaviour
         ScoreDisplay.score = 0;
         ScoreDisplay.scoreMultiplier = 1;
         ScoreDisplay.multiplierGoal = 50;
+        Destroy(GameObject.FindGameObjectWithTag("Projectile"));
 
         ComboHandler.ResetValues();
     }

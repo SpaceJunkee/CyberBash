@@ -20,12 +20,13 @@ public class GreenGuy : MonoBehaviour
     public TimeManager timeManager;
     public static float comboSlowMo = 1;
     public bool isDead = false;
+    public GameObject[] leftOverProjectiles;
 
     private void Start()
     {
         spawnConfiner = GameObject.FindGameObjectWithTag("Confiner");
         player = GameObject.FindGameObjectWithTag("Player");
-        fireRate = 3f;
+        fireRate = 4f;
         nextFireTime = Time.time;
     }
 
@@ -40,11 +41,11 @@ public class GreenGuy : MonoBehaviour
         {
             if(player != null)
             {
-                SpawnProjectile();
+                Invoke("SpawnProjectile", 2f);
             }
             else
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                Restart();
             }
             
             nextFireTime = Time.time + fireRate;
@@ -54,6 +55,28 @@ public class GreenGuy : MonoBehaviour
     private void SpawnProjectile()
     {
         Instantiate(projectile, transform.position, Quaternion.identity);
+    }
+
+    private void Restart()
+    {
+        timeManager.StopSlowMotion();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        ScoreDisplay.score = 0;
+        ScoreDisplay.scoreMultiplier = 1;
+        ScoreDisplay.multiplierGoal = 50;
+        DestroyAllProjectiles();
+
+        ComboHandler.ResetValues();
+    }
+
+    private void DestroyAllProjectiles()
+    {
+        leftOverProjectiles = GameObject.FindGameObjectsWithTag("Projectile");
+
+        for(int i = 0; i < leftOverProjectiles.Length; i++)
+        {
+            Destroy(leftOverProjectiles[i]);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -99,13 +122,14 @@ public class GreenGuy : MonoBehaviour
             var force = transform.position - collision.transform.position;
             force.Normalize();
 
-            collision.gameObject.GetComponentInParent<Rigidbody2D>().AddForce((-force * vel.magnitude * (150 * comboSlowMo)));
+            collision.gameObject.GetComponentInParent<Rigidbody2D>().AddForce((-force * vel.magnitude * (125 * comboSlowMo)));
             Die();
         }
     }
 
     public void Die()
     {
+        CancelInvoke();
         timeManager.Invoke("StopSlowMotion", 0.05f);
         DisableObject();
         spawnConfiner.GetComponent<SpawnObjects>().SpawnNormalObstacles(1);
