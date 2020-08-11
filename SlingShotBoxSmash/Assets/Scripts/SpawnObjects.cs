@@ -14,12 +14,15 @@ public class SpawnObjects : MonoBehaviour
     public int doublePointSpawnMultiplier = 1;
     public int deathBoxSpawnMultiplier = 1;
     public int bombSpawnMultiplier = 1;
+    public float greenGuySpawnMultiplier = 1.2f;
     public float bombPointGoal = 1000;
+    public int greenGuyCount = 1;
 
     public GameObject normalObstaclePrefab;
     public GameObject doublePointPrefab;
     public GameObject deathBoxPrefab;
     public GameObject bombPrefab;
+    public GameObject greenGuyPrefab;
 
     public Text bombGoalText;
     public Text incomingBombText;
@@ -60,6 +63,17 @@ public class SpawnObjects : MonoBehaviour
             deathBoxSpawnMultiplier++;
             SpawnDeathBoxObstacles(1);
         }
+
+        if(ScoreDisplay.score >= 500 * greenGuySpawnMultiplier)
+        {
+            if(ScoreDisplay.score >= bombPointGoal * bombSpawnMultiplier * 2)
+            {
+                greenGuyCount++;
+            }
+            greenGuySpawnMultiplier++;
+            
+            SpawnGreenGuy(greenGuyCount);
+        }
     }
     public void SpawnNormalObstacles(int spawnRate)
     {
@@ -83,6 +97,7 @@ public class SpawnObjects : MonoBehaviour
 
     public void SpawnBomb(int spawnRate)
     {
+        ScoreDisplay.scoreMultiplier += 1;
         DisableIncomingBombText();
         CameraShake.Instance.ShakeCamera(25f, 1f);
         for (int i = 0; i < spawnRate; i++)
@@ -103,6 +118,15 @@ public class SpawnObjects : MonoBehaviour
         {
             Vector2 position = center + new Vector2(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2));
             Instantiate(deathBoxPrefab, position, Quaternion.identity);
+        }
+    }
+
+    public void SpawnGreenGuy(int spawnRate)
+    {
+        for (int i = 0; i < spawnRate; i++)
+        {
+            Vector2 position = center + new Vector2(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2));
+            Instantiate(greenGuyPrefab, position, Quaternion.identity);
         }
     }
 

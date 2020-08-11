@@ -1,28 +1,64 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class DoublePointObstacle : MonoBehaviour
+public class GreenGuy : MonoBehaviour
 {
-    public GameObject doublePointObjectDeathEffect;
+    public GameObject projectile;
 
+    float fireRate;
+    float nextFireTime;
+
+    public GameObject greenGuyDeathEffect;
     public ScoreDisplay scoreTextPop;
     public GameObject floatingTextPrefab;
-    public AudioSource doublePointBoxBreakAudio;
-    public AudioClip doublePointBoxClip;
+    public AudioSource boxBreakAudio;
+    public AudioClip greenGuyBoxBreakClip;
     public GameObject spawnConfiner;
+    public GameObject player;
     public TimeManager timeManager;
     public static float comboSlowMo = 1;
+    public bool isDead = false;
 
     private void Start()
     {
         spawnConfiner = GameObject.FindGameObjectWithTag("Confiner");
+        player = GameObject.FindGameObjectWithTag("Player");
+        fireRate = 3f;
+        nextFireTime = Time.time;
+    }
+
+    private void Update()
+    {
+        CheckIfTimeToFire();
+    }
+
+    private void CheckIfTimeToFire()
+    {
+        if(Time.time > nextFireTime && isDead == false)
+        {
+            if(player != null)
+            {
+                SpawnProjectile();
+            }
+            else
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+            
+            nextFireTime = Time.time + fireRate;
+        }
+    }
+
+    private void SpawnProjectile()
+    {
+        Instantiate(projectile, transform.position, Quaternion.identity);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-    
-
+        
         if (ScoreDisplay.score >= ScoreDisplay.multiplierGoal)
         {
             ScoreDisplay.scoreMultiplier++;
@@ -32,30 +68,29 @@ public class DoublePointObstacle : MonoBehaviour
 
         if (collision.gameObject.tag.Equals("Bomb"))
         {
+            isDead = true;
             Destroy(gameObject);
             ScoreDisplay.score += 10;
         }
 
         if (collision.gameObject.tag.Equals("Player"))
         {
+            isDead = true;
             if (!SlingShot.isHeldDown)
             {
                 ComboHandler.hitCount++;
-            }else if (SlingShot.isHeldDown)
+            }
+            else
             {
-                ComboHandler.hitCount = 1;
+                if (SlingShot.isHeldDown)
+                {
+                    ComboHandler.hitCount = 1;
+                }
             }
 
-            doublePointBoxBreakAudio.Play();
-
-            //Trigger floating text if prefab is not null
-
-            ScoreDisplay.score += ComboHandler.doubleScoreValue * ScoreDisplay.scoreMultiplier * ComboHandler.hitCount;
-
-            if (floatingTextPrefab)
-            {
-                ShowFloatingText(ComboHandler.doubleScoreValue * ScoreDisplay.scoreMultiplier * ComboHandler.hitCount, new Color32(89, 74, 0, 255));
-            }
+            boxBreakAudio.Play();
+            ScoreDisplay.score += ComboHandler.greenGuyScore * ScoreDisplay.scoreMultiplier * ComboHandler.hitCount;
+            ShowFloatingText(ComboHandler.greenGuyScore * ScoreDisplay.scoreMultiplier * ComboHandler.hitCount, new Color32(24, 39, 10, 255));
 
             scoreTextPop.scoreText.fontSize = 100;
 
@@ -64,18 +99,19 @@ public class DoublePointObstacle : MonoBehaviour
             var force = transform.position - collision.transform.position;
             force.Normalize();
 
-            collision.gameObject.GetComponentInParent<Rigidbody2D>().AddForce((-force * vel.magnitude * 135));
+            collision.gameObject.GetComponentInParent<Rigidbody2D>().AddForce((-force * vel.magnitude * (150 * comboSlowMo)));
             Die();
         }
     }
 
-    private void Die()
+    public void Die()
     {
         timeManager.Invoke("StopSlowMotion", 0.05f);
         DisableObject();
-        GameObject newDeathEffect = (GameObject)Instantiate(doublePointObjectDeathEffect, transform.position, Quaternion.identity);
+        spawnConfiner.GetComponent<SpawnObjects>().SpawnNormalObstacles(1);
+        GameObject newDeathEffect = (GameObject)Instantiate(greenGuyDeathEffect, transform.position, Quaternion.identity);
         Destroy(newDeathEffect, 2);
-        Destroy(gameObject, doublePointBoxClip.length);
+        Destroy(gameObject, greenGuyBoxBreakClip.length);
     }
 
     private void ShowFloatingText(int hitScore, Color32 color)
@@ -88,13 +124,15 @@ public class DoublePointObstacle : MonoBehaviour
 
     private void DisableObject()
     {
+        isDead = true;
         SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>();
         foreach (SpriteRenderer sr in renderers)
             sr.enabled = false;
 
-        this.gameObject.GetComponent<ParticleSystem>().Stop();
+        nextFireTime = 100;
         this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
         this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        this.gameObject.GetComponent<ParticleSystem>().Stop();
     }
 
     private void IncreaseComboFloatScoreSize()
@@ -131,5 +169,4 @@ public class DoublePointObstacle : MonoBehaviour
         }
 
     }
-
 }

@@ -12,6 +12,8 @@ TagManager:
   - TimeManager
   - Confiner
   - Bomb
+  - NormalObstacle
+  - GreenGuy
   layers:
   - Default
   - TransparentFX

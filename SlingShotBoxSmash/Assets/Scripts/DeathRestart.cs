@@ -15,17 +15,20 @@ public class DeathRestart : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-            
-        if (collision.gameObject.tag.Equals("Player") && SlingShot.isHeldDown == false)
+        if (gameObject.tag.Equals("Lava") && SlingShot.isHeldDown)
         {
-            Destroy(collision.gameObject);
-            DestroyPlayer();    
-            
-        }
-    }
 
-    private void OnTriggerStay(Collider collision)
-    {
+        }
+        else
+        {
+            if (collision.gameObject.tag.Equals("Player"))
+            {
+                Destroy(collision.gameObject);
+                DestroyPlayer();
+                SlingShot.isHeldDown = false;
+            }
+        }
+                        
         
     }
 
@@ -41,6 +44,7 @@ public class DeathRestart : MonoBehaviour
 
     void Start()
     {
+        playerBig = GameObject.FindGameObjectWithTag("PlayerBig");
         musicObject = GameObject.FindGameObjectsWithTag("GameMusic");
         if (musicObject.Length == 1)
         {
