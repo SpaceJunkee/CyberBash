@@ -17,6 +17,7 @@ public class SpawnObjects : MonoBehaviour
     public float greenGuySpawnMultiplier = 1.2f;
     public float bombPointGoal = 1000;
     public int greenGuyCount = 1;
+    public static bool hasBombGoneOff = false;
 
     public GameObject normalObstaclePrefab;
     public GameObject doublePointPrefab;
@@ -44,6 +45,7 @@ public class SpawnObjects : MonoBehaviour
 
         if (ScoreDisplay.score >= bombPointGoal * bombSpawnMultiplier)
         {
+            hasBombGoneOff = true;
             bombSpawnMultiplier++;
             bombPointGoal += 250;
             SpawnBomb(1);
@@ -64,12 +66,9 @@ public class SpawnObjects : MonoBehaviour
             SpawnDeathBoxObstacles(1);
         }
 
-        if(ScoreDisplay.score >= 500 * greenGuySpawnMultiplier)
+        if(ScoreDisplay.score >= 600 * greenGuySpawnMultiplier && hasBombGoneOff)
         {
-            if(ScoreDisplay.score >= bombPointGoal * bombSpawnMultiplier * 2)
-            {
-                greenGuyCount++;
-            }
+            
             greenGuySpawnMultiplier++;
             
             SpawnGreenGuy(greenGuyCount);
