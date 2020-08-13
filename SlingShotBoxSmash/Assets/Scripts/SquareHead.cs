@@ -5,6 +5,9 @@ using UnityEngine;
 public class SquareHead : MonoBehaviour
 {
     public int health = 100;
+    public GameObject squareHeadDeathEffect;
+    public GameObject hitEffect;
+    public AudioSource hitSound;
 
     private void Update()
     {
@@ -25,15 +28,22 @@ public class SquareHead : MonoBehaviour
             var force = transform.position - collision.transform.position;
             force.Normalize();
 
+            GameObject newDeathEffect = (GameObject)Instantiate(hitEffect, collision.transform.position, Quaternion.identity);
+            Destroy(newDeathEffect, 2);
+
             health -= 25;
 
             collision.gameObject.GetComponentInParent<Rigidbody2D>().AddForce((-force * vel.magnitude * (125)));
-                
+            hitSound.Play();
         }
+
+        
     }
 
     public void Die()
     {
+        GameObject newDeathEffect = (GameObject)Instantiate(squareHeadDeathEffect, transform.position, Quaternion.identity);
+        Destroy(newDeathEffect, 4);
         SpawnObjects.hasBossBeenKilled = true;
         Destroy(gameObject);
     }

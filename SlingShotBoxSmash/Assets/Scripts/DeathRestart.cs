@@ -67,7 +67,6 @@ public class DeathRestart : MonoBehaviour
 
     public void RestartGame()
     {
-        
         ResetScores();
         timeManager.StopSlowMotion();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -79,6 +78,7 @@ public class DeathRestart : MonoBehaviour
         ScoreDisplay.score = 0;
         ScoreDisplay.scoreMultiplier = 1;
         ScoreDisplay.multiplierGoal = 50;
+        Destroy(GameObject.FindGameObjectWithTag("Projectile"));
 
         ComboHandler.ResetValues();
     }

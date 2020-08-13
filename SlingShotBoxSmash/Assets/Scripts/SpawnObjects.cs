@@ -23,9 +23,10 @@ public class SpawnObjects : MonoBehaviour
     public int doublePointSpawnMultiplier = 1;
     public int deathBoxSpawnMultiplier = 1;
     public int bombSpawnMultiplier = 1;
-    public float greenGuySpawnMultiplier = 1.2f;
+    public float greenGuySpawnMultiplier = 1f;
     public float bombPointGoal = 1000;
-    public int squareHeadMultiplier = 1;
+    public float squareHeadGoal = 5000;
+    public float squareHeadMultiplier = 1f;
     public int greenGuyCount = 1;
     public static bool hasBombGoneOff = false;
 
@@ -37,7 +38,9 @@ public class SpawnObjects : MonoBehaviour
     public GameObject squareHeadPrefab;
 
     public Text bombGoalText;
+    public Text bossGoalText;
     public Text incomingBombText;
+    public Text incomingBossText;
 
     public void Start()
     {
@@ -47,23 +50,25 @@ public class SpawnObjects : MonoBehaviour
 
     private void Update()
     {
-        bombGoalText.text = $"NEXT BOMB: {bombPointGoal * bombSpawnMultiplier}";
+        Debug.Log($"SquareHead: {squareHeadGoal * squareHeadMultiplier}");
+        Debug.Log($"BOMB: {bombPointGoal * bombSpawnMultiplier}");
+        Debug.Log($"Double: {225 * doublePointSpawnMultiplier}");
+        Debug.Log($"DeathBox: {400 * deathBoxSpawnMultiplier}");
+        Debug.Log($"Greeny: {600 * greenGuySpawnMultiplier}");
 
-        if(hasBossBeenKilled == true)
+        ShowWarningText();
+
+        if (hasBossBeenKilled == true)
         {
             SpawnNormalObstaclesAfterBomb();
             hasBossBeenKilled = false;
         }
 
-        if(ScoreDisplay.score >= 10 * squareHeadMultiplier)
+        if(ScoreDisplay.score >= (squareHeadGoal * squareHeadMultiplier))
         {
-            squareHeadMultiplier += 5;
+            squareHeadMultiplier++;
+            squareHeadGoal += 5000;
             SpawnSquareHead(1);
-        }
-
-        if(ScoreDisplay.score >= (bombPointGoal * bombSpawnMultiplier) - 150 && ScoreDisplay.score < (bombPointGoal * bombSpawnMultiplier))
-        {
-            incomingBombText.enabled = true;
         }
 
         if (ScoreDisplay.score >= bombPointGoal * bombSpawnMultiplier)
@@ -159,7 +164,6 @@ public class SpawnObjects : MonoBehaviour
 
     public void SpawnBomb(int spawnRate)
     {
-        ScoreDisplay.scoreMultiplier += 1;
         DisableIncomingBombText();
         CameraShake.Instance.ShakeCamera(25f, 1f);
         for (int i = 0; i < spawnRate; i++)
@@ -217,8 +221,23 @@ public class SpawnObjects : MonoBehaviour
         {
             Vector2 position = center + new Vector2(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2));
             Instantiate(doublePointPrefab, position, Quaternion.identity);
+        }  
+    }
+
+    private void ShowWarningText()
+    {
+
+        bombGoalText.text = $"NEXT EMP: {bombPointGoal * bombSpawnMultiplier}";
+        bossGoalText.text = $"NEXT BOSS: {squareHeadGoal * squareHeadMultiplier}";
+
+        if (ScoreDisplay.score >= (bombPointGoal * bombSpawnMultiplier) - 150 && ScoreDisplay.score < (bombPointGoal * bombSpawnMultiplier))
+        {
+            incomingBombText.enabled = true;
         }
 
-        
+        if (ScoreDisplay.score >= (squareHeadGoal * squareHeadMultiplier) - 1000 && ScoreDisplay.score < (squareHeadGoal * squareHeadMultiplier))
+        {
+            incomingBossText.enabled = true;
+        }
     }
 }
