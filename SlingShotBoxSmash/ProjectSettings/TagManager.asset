@@ -15,6 +15,7 @@ TagManager:
   - NormalObstacle
   - GreenGuy
   - Projectile
+  - Boss
   layers:
   - Default
   - TransparentFX

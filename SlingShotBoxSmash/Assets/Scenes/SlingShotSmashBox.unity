@@ -961,7 +961,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 461644376}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0000019073486, y: 7.800001, z: -10}
+  m_LocalPosition: {x: -0.0000019073486, y: 7.800001, z: -26.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 265705888}
@@ -2385,11 +2385,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 969565462}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 16.9}
   m_LocalScale: {x: 0.049999997, y: 0.045454543, z: 1}
   m_Children: []
   m_Father: {fileID: 1223979138}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1052843294
 GameObject:
@@ -2590,6 +2590,7 @@ MonoBehaviour:
   bombSpawnMultiplier: 1
   greenGuySpawnMultiplier: 1.2
   bombPointGoal: 1000
+  squareHeadMultiplier: 5
   greenGuyCount: 1
   normalObstaclePrefab: {fileID: 3780936658383914705, guid: b1fe58e24ff024441a3505354b447c02,
     type: 3}
@@ -2600,6 +2601,8 @@ MonoBehaviour:
   bombPrefab: {fileID: 5472173691993794915, guid: 289484acf2de2d046b3d0484203969d0,
     type: 3}
   greenGuyPrefab: {fileID: 2257698016252864278, guid: 15c584af3e700e44db2ed5f0441fbdd1,
+    type: 3}
+  squareHeadPrefab: {fileID: 1339789937693615348, guid: 3d20d5b7ede46e14fb74e0ebc886c63b,
     type: 3}
   bombGoalText: {fileID: 835305972}
   incomingBombText: {fileID: 1996200190169663034}
@@ -2842,11 +2845,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1223979135}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 7.8, z: 0}
+  m_LocalPosition: {x: 0, y: 7.8, z: -16.9}
   m_LocalScale: {x: 100, y: 110, z: 1}
   m_Children:
-  - {fileID: 969565465}
   - {fileID: 1786075930}
+  - {fileID: 969565465}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4341,11 +4344,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1786075927}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0045454456, z: -47.985703}
+  m_LocalPosition: {x: 0, y: 0.0045454456, z: -31.085703}
   m_LocalScale: {x: 1, y: 0.9090909, z: 1}
   m_Children: []
   m_Father: {fileID: 1223979138}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1824272363
 GameObject:

@@ -68,7 +68,7 @@ public class SlingShot : MonoBehaviour
             anchorRb.position = rigidBody.position;
             GetComponent<SpringJoint2D>().enabled = true;
 
-            Invoke("ResetCooldown", 0.5f);
+            Invoke("ResetCooldown", 0.45f);
             cooldown = true;
         }
                

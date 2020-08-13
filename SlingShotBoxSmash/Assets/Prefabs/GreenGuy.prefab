@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 3110968893335716808}
   m_Layer: 0
   m_Name: GreenGuy
-  m_TagString: NormalObstacle
+  m_TagString: GreenGuy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62,8 +62,11 @@ MonoBehaviour:
   greenGuyBoxBreakClip: {fileID: 8300000, guid: e0f4883a3923fce41a51ef234f63d04c,
     type: 3}
   spawnConfiner: {fileID: 0}
+  player: {fileID: 0}
   timeManager: {fileID: 4800997520552027495, guid: e1231ab3c50cd5440a3561ef97c5af9b,
     type: 3}
+  isDead: 0
+  leftOverProjectiles: []
 --- !u!212 &1806226170713634232
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -11,11 +11,21 @@ public class SpawnObjects : MonoBehaviour
     public Vector2 center;
     public Vector2 size;
 
+    //LeftOvers
+    GameObject[] leftOverGreens;
+    GameObject[] leftOverNormals;
+    GameObject[] leftOverDoubles;
+    GameObject[] leftOverDeathBoxes;
+
+    //Boss conditions
+    public static bool hasBossBeenKilled = false;
+
     public int doublePointSpawnMultiplier = 1;
     public int deathBoxSpawnMultiplier = 1;
     public int bombSpawnMultiplier = 1;
     public float greenGuySpawnMultiplier = 1.2f;
     public float bombPointGoal = 1000;
+    public int squareHeadMultiplier = 1;
     public int greenGuyCount = 1;
     public static bool hasBombGoneOff = false;
 
@@ -24,6 +34,7 @@ public class SpawnObjects : MonoBehaviour
     public GameObject deathBoxPrefab;
     public GameObject bombPrefab;
     public GameObject greenGuyPrefab;
+    public GameObject squareHeadPrefab;
 
     public Text bombGoalText;
     public Text incomingBombText;
@@ -37,6 +48,18 @@ public class SpawnObjects : MonoBehaviour
     private void Update()
     {
         bombGoalText.text = $"NEXT BOMB: {bombPointGoal * bombSpawnMultiplier}";
+
+        if(hasBossBeenKilled == true)
+        {
+            SpawnNormalObstaclesAfterBomb();
+            hasBossBeenKilled = false;
+        }
+
+        if(ScoreDisplay.score >= 10 * squareHeadMultiplier)
+        {
+            squareHeadMultiplier += 5;
+            SpawnSquareHead(1);
+        }
 
         if(ScoreDisplay.score >= (bombPointGoal * bombSpawnMultiplier) - 150 && ScoreDisplay.score < (bombPointGoal * bombSpawnMultiplier))
         {
@@ -60,7 +83,7 @@ public class SpawnObjects : MonoBehaviour
         }
 
         
-        if(ScoreDisplay.score >= 300 * deathBoxSpawnMultiplier)
+        if(ScoreDisplay.score >= 400 * deathBoxSpawnMultiplier)
         {
             deathBoxSpawnMultiplier++;
             SpawnDeathBoxObstacles(1);
@@ -84,6 +107,17 @@ public class SpawnObjects : MonoBehaviour
         
     }
 
+    public void SpawnSquareHead(int spawnRate)
+    {
+        DestroyLeftOvers();
+
+        for (int i = 0; i < spawnRate; i++)
+        {
+            Vector2 position = center;
+            Instantiate(squareHeadPrefab, position, Quaternion.identity);
+        }
+    }
+
     public void SpawnDoublePointObstacles(int spawnRate)
     {
         for (int i = 0; i < spawnRate; i++)
@@ -92,6 +126,35 @@ public class SpawnObjects : MonoBehaviour
             Instantiate(doublePointPrefab, position, Quaternion.identity);
         }
 
+    }
+
+    private void DestroyLeftOvers()
+    {
+        leftOverGreens = GameObject.FindGameObjectsWithTag("GreenGuy");
+        leftOverNormals = GameObject.FindGameObjectsWithTag("NormalObstacle");
+        leftOverDoubles = GameObject.FindGameObjectsWithTag("DoublePointObstacle");
+        leftOverDeathBoxes = GameObject.FindGameObjectsWithTag("DeathBox");
+
+
+        for (int i = 0; i < leftOverGreens.Length; i++)
+        {
+            Destroy(leftOverGreens[i]);
+        }
+
+        for (int i = 0; i < leftOverNormals.Length; i++)
+        {
+            Destroy(leftOverNormals[i]);
+        }
+
+        for (int i = 0; i < leftOverDoubles.Length; i++)
+        {
+            Destroy(leftOverDoubles[i]);
+        }
+
+        for (int i = 0; i < leftOverDeathBoxes.Length; i++)
+        {
+            Destroy(leftOverDeathBoxes[i]);
+        }
     }
 
     public void SpawnBomb(int spawnRate)
@@ -106,9 +169,8 @@ public class SpawnObjects : MonoBehaviour
             GameObject newBomb = (GameObject)Instantiate(bombPrefab, position, Quaternion.identity); ;
             Destroy(newBomb, 2f);
         }
-
+    
         Invoke("SpawnNormalObstaclesAfterBomb", 2.35f);
-
     }
 
     public void SpawnDeathBoxObstacles(int spawnRate)
