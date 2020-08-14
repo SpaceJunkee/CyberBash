@@ -16,6 +16,7 @@ TagManager:
   - GreenGuy
   - Projectile
   - Boss
+  - HitPoint
   layers:
   - Default
   - TransparentFX

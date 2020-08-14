@@ -247,7 +247,7 @@ PrefabInstance:
     - target: {fileID: 4741886019795735468, guid: ba5ea0a97cedc1145923e10cabd1a1a6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4741886019795735468, guid: ba5ea0a97cedc1145923e10cabd1a1a6,
         type: 3}
@@ -967,7 +967,7 @@ Transform:
   m_Children:
   - {fileID: 265705888}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &461644379
 MonoBehaviour:
@@ -1276,7 +1276,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &583801539
 MonoBehaviour:
@@ -1873,7 +1873,7 @@ PrefabInstance:
     - target: {fileID: 4741886019795735468, guid: ba5ea0a97cedc1145923e10cabd1a1a6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4741886019795735468, guid: ba5ea0a97cedc1145923e10cabd1a1a6,
         type: 3}
@@ -2704,7 +2704,7 @@ MonoBehaviour:
     type: 3}
   greenGuyPrefab: {fileID: 2257698016252864278, guid: 15c584af3e700e44db2ed5f0441fbdd1,
     type: 3}
-  squareHeadPrefab: {fileID: 217370258163651739, guid: 3d20d5b7ede46e14fb74e0ebc886c63b,
+  squareHeadPrefab: {fileID: 1040596318853266017, guid: 3d20d5b7ede46e14fb74e0ebc886c63b,
     type: 3}
   bombGoalText: {fileID: 835305972}
   incomingBombText: {fileID: 1996200190169663034}
@@ -2954,7 +2954,7 @@ Transform:
   - {fileID: 1786075930}
   - {fileID: 969565465}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1223979139
 Rigidbody2D:
