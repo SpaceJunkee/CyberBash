@@ -25,7 +25,7 @@ public class SpawnObjects : MonoBehaviour
     public int bombSpawnMultiplier = 1;
     public float greenGuySpawnMultiplier = 1f;
     public float bombPointGoal = 1000;
-    public float squareHeadGoal = 5000;
+    public float squareHeadGoal = 5500;
     public float squareHeadMultiplier = 1f;
     public int greenGuyCount = 1;
     public static bool hasBombGoneOff = false;
@@ -38,7 +38,6 @@ public class SpawnObjects : MonoBehaviour
     public GameObject squareHeadPrefab;
 
     public Text bombGoalText;
-    public Text bossGoalText;
     public Text incomingBombText;
     public Text incomingBossText;
 
@@ -50,11 +49,6 @@ public class SpawnObjects : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log($"SquareHead: {squareHeadGoal * squareHeadMultiplier}");
-        Debug.Log($"BOMB: {bombPointGoal * bombSpawnMultiplier}");
-        Debug.Log($"Double: {225 * doublePointSpawnMultiplier}");
-        Debug.Log($"DeathBox: {400 * deathBoxSpawnMultiplier}");
-        Debug.Log($"Greeny: {600 * greenGuySpawnMultiplier}");
 
         ShowWarningText();
 
@@ -67,7 +61,7 @@ public class SpawnObjects : MonoBehaviour
         if(ScoreDisplay.score >= (squareHeadGoal * squareHeadMultiplier))
         {
             squareHeadMultiplier++;
-            squareHeadGoal += 5000;
+            squareHeadGoal += 5500;
             SpawnSquareHead(1);
         }
 
@@ -94,7 +88,7 @@ public class SpawnObjects : MonoBehaviour
             SpawnDeathBoxObstacles(1);
         }
 
-        if(ScoreDisplay.score >= 600 * greenGuySpawnMultiplier && hasBombGoneOff)
+        if(ScoreDisplay.score >= 475 * greenGuySpawnMultiplier && hasBombGoneOff)
         {
             
             greenGuySpawnMultiplier++;
@@ -115,6 +109,7 @@ public class SpawnObjects : MonoBehaviour
     public void SpawnSquareHead(int spawnRate)
     {
         DestroyLeftOvers();
+        DisableIncomingText(incomingBossText);
 
         for (int i = 0; i < spawnRate; i++)
         {
@@ -164,7 +159,7 @@ public class SpawnObjects : MonoBehaviour
 
     public void SpawnBomb(int spawnRate)
     {
-        DisableIncomingBombText();
+        DisableIncomingText(incomingBombText);
         CameraShake.Instance.ShakeCamera(25f, 1f);
         for (int i = 0; i < spawnRate; i++)
         {
@@ -201,9 +196,9 @@ public class SpawnObjects : MonoBehaviour
         Gizmos.DrawCube(center, size);
     }
 
-    private void DisableIncomingBombText()
+    private void DisableIncomingText(Text incomingText)
     {
-        incomingBombText.enabled = false;
+        incomingText.enabled = false;
     }
 
     private void SpawnNormalObstaclesAfterBomb()
@@ -228,7 +223,6 @@ public class SpawnObjects : MonoBehaviour
     {
 
         bombGoalText.text = $"NEXT EMP: {bombPointGoal * bombSpawnMultiplier}";
-        bossGoalText.text = $"NEXT BOSS: {squareHeadGoal * squareHeadMultiplier}";
 
         if (ScoreDisplay.score >= (bombPointGoal * bombSpawnMultiplier) - 150 && ScoreDisplay.score < (bombPointGoal * bombSpawnMultiplier))
         {

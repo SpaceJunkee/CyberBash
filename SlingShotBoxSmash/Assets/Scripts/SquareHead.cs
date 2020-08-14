@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class SquareHead : MonoBehaviour
 {
-    public int health = 100;
+    public float health = 100;
     public GameObject squareHeadDeathEffect;
     public GameObject hitEffect;
     public AudioSource hitSound;
+    public Animator anim;
+   
 
     private void Update()
     {
@@ -23,6 +25,7 @@ public class SquareHead : MonoBehaviour
         if (collision.gameObject.tag.Equals("Player") && SlingShot.isHeldDown == false)
         {
            
+            anim.speed += 0.18f;
             CameraShake.Instance.ShakeCamera(13f, 0.2f);
             Vector3 vel = collision.gameObject.GetComponentInParent<Rigidbody2D>().velocity;
             var force = transform.position - collision.transform.position;
@@ -31,13 +34,18 @@ public class SquareHead : MonoBehaviour
             GameObject newDeathEffect = (GameObject)Instantiate(hitEffect, collision.transform.position, Quaternion.identity);
             Destroy(newDeathEffect, 2);
 
-            health -= 25;
+            health -= 12.5f;
 
-            collision.gameObject.GetComponentInParent<Rigidbody2D>().AddForce((-force * vel.magnitude * (125)));
+            collision.gameObject.GetComponentInParent<Rigidbody2D>().AddForce((-force * vel.magnitude * (150)));
             hitSound.Play();
         }
 
         
+    }
+
+    private void StartAnimationAgain()
+    {
+        anim.StartPlayback();
     }
 
     public void Die()
