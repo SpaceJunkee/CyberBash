@@ -35,6 +35,7 @@ public class SpawnObjects : MonoBehaviour
     public GameObject doublePointPrefab;
     public GameObject deathBoxPrefab;
     public GameObject bombPrefab;
+    public GameObject bossBombPrefab;
     public GameObject greenGuyPrefab;
     public GameObject squareHeadPrefab;
 
@@ -55,7 +56,7 @@ public class SpawnObjects : MonoBehaviour
 
         if (hasBossBeenKilled == true)
         {
-            SpawnNormalObstaclesAfterBomb();
+            Invoke("SpawnNormalObstaclesAfterBomb", 2.5f);
             hasBossBeenKilled = false;
         }
 
@@ -110,12 +111,7 @@ public class SpawnObjects : MonoBehaviour
 
     public void SpawnSquareHead(int spawnRate)
     {
-        if (hasBombGoBoom)
-        {
-            CancelInvoke("SpawnNormalObstaclesAfterBomb");
-            hasBombGoBoom = false;
-        }
-        DestroyLeftOvers();
+        Invoke("DestroyLeftOvers", 5f);
         DisableIncomingText(incomingBossText);
 
         for (int i = 0; i < spawnRate; i++)
@@ -141,6 +137,14 @@ public class SpawnObjects : MonoBehaviour
         leftOverNormals = GameObject.FindGameObjectsWithTag("NormalObstacle");
         leftOverDoubles = GameObject.FindGameObjectsWithTag("DoublePointObstacle");
         leftOverDeathBoxes = GameObject.FindGameObjectsWithTag("DeathBox");
+        CameraShake.Instance.ShakeCamera(25f, 1.2f);
+
+        for (int i = 0; i < 1; i++)
+        {
+            Vector2 position = center;
+            GameObject newBomb = (GameObject)Instantiate(bossBombPrefab, position, Quaternion.identity); ;
+            Destroy(newBomb, 2f);
+        }
 
 
         for (int i = 0; i < leftOverGreens.Length; i++)
@@ -166,12 +170,13 @@ public class SpawnObjects : MonoBehaviour
 
     public void SpawnBomb(int spawnRate)
     {
+        timeManager.StartSlowMotion(0.05f);
+        timeManager.Invoke("StopSlowMotion", 2f);
         DisableIncomingText(incomingBombText);
         CameraShake.Instance.ShakeCamera(25f, 1f);
         for (int i = 0; i < spawnRate; i++)
         {
             Vector2 position = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width / 2, Screen.height / 2)); ;
-            Instantiate(bombPrefab, position, Quaternion.identity);
             GameObject newBomb = (GameObject)Instantiate(bombPrefab, position, Quaternion.identity); ;
             Destroy(newBomb, 2f);
         }

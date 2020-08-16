@@ -10,6 +10,8 @@ public class SquareHead : MonoBehaviour
     public AudioSource hitSound;
     public Animator anim;
     Renderer[] renderers;
+    public TimeManager timeManager;
+    public GameObject explosionCirclePrefab;
 
     private void Start()
     {
@@ -59,6 +61,10 @@ public class SquareHead : MonoBehaviour
     {
         if(health <= 0)
         {
+            GameObject explosion = (GameObject)Instantiate(explosionCirclePrefab, transform.position, Quaternion.identity); ;
+            Destroy(explosion, 3f);
+            timeManager.StartSlowMotion(0.4f);
+            timeManager.Invoke("StopSlowMotion", 0.75f);
             Die();
         }
     }
@@ -78,7 +84,7 @@ public class SquareHead : MonoBehaviour
             GameObject newDeathEffect = (GameObject)Instantiate(hitEffect, collision.transform.position, Quaternion.identity);
             Destroy(newDeathEffect, 2);
 
-            health -= 12.5f;
+            health -= 100f;
 
             collision.gameObject.GetComponentInParent<Rigidbody2D>().AddForce((-force * vel.magnitude * (150)));
             hitSound.Play();
@@ -89,6 +95,7 @@ public class SquareHead : MonoBehaviour
 
     public void Die()
     {
+        CameraShake.Instance.ShakeCamera(13f, 1.5f);          
         GameObject newDeathEffect = (GameObject)Instantiate(squareHeadDeathEffect, transform.position, Quaternion.identity);
         Destroy(newDeathEffect, 4);
         SpawnObjects.hasBossBeenKilled = true;
