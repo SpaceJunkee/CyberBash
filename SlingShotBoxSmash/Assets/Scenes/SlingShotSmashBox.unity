@@ -2419,7 +2419,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 969565462}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -2701,9 +2701,9 @@ MonoBehaviour:
     type: 3}
   deathBoxPrefab: {fileID: 1957740237892630571, guid: 788e79b7e9b356a44a85379dee097dfb,
     type: 3}
-  bombPrefab: {fileID: 5472173691993794915, guid: 289484acf2de2d046b3d0484203969d0,
+  bombPrefab: {fileID: 5031205921278520376, guid: 289484acf2de2d046b3d0484203969d0,
     type: 3}
-  bossBombPrefab: {fileID: 9053396097912560979, guid: 88162ecc71e004949b1f3128746d5d5b,
+  bossBombPrefab: {fileID: 8817364359868688742, guid: 88162ecc71e004949b1f3128746d5d5b,
     type: 3}
   greenGuyPrefab: {fileID: 5353379937944063837, guid: 15c584af3e700e44db2ed5f0441fbdd1,
     type: 3}

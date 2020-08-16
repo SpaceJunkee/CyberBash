@@ -30,7 +30,7 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.gameObject.tag.Equals("Lava") || collision.gameObject.tag.Equals("Bomb"))
+        if (collision.gameObject.tag.Equals("Bomb"))
         {
             Destroy(gameObject);
         }
