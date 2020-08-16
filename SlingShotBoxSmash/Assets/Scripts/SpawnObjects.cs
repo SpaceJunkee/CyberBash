@@ -28,7 +28,8 @@ public class SpawnObjects : MonoBehaviour
     public float squareHeadGoal = 5500;
     public float squareHeadMultiplier = 1f;
     public int greenGuyCount = 1;
-    public static bool hasBombGoneOff = false;
+    public static bool hasFirstBombGoneOff = false;
+    public static bool hasBombGoBoom = false;
 
     public GameObject normalObstaclePrefab;
     public GameObject doublePointPrefab;
@@ -67,7 +68,8 @@ public class SpawnObjects : MonoBehaviour
 
         if (ScoreDisplay.score >= bombPointGoal * bombSpawnMultiplier)
         {
-            hasBombGoneOff = true;
+            hasFirstBombGoneOff = true;
+            hasBombGoBoom = true;
             bombSpawnMultiplier++;
             bombPointGoal += 250;
             SpawnBomb(1);
@@ -88,7 +90,7 @@ public class SpawnObjects : MonoBehaviour
             SpawnDeathBoxObstacles(1);
         }
 
-        if(ScoreDisplay.score >= 475 * greenGuySpawnMultiplier && hasBombGoneOff)
+        if(ScoreDisplay.score >= 475 * greenGuySpawnMultiplier && hasFirstBombGoneOff)
         {
             
             greenGuySpawnMultiplier++;
@@ -108,6 +110,11 @@ public class SpawnObjects : MonoBehaviour
 
     public void SpawnSquareHead(int spawnRate)
     {
+        if (hasBombGoBoom)
+        {
+            CancelInvoke("SpawnNormalObstaclesAfterBomb");
+            hasBombGoBoom = false;
+        }
         DestroyLeftOvers();
         DisableIncomingText(incomingBossText);
 
@@ -203,7 +210,7 @@ public class SpawnObjects : MonoBehaviour
 
     private void SpawnNormalObstaclesAfterBomb()
     {
-        
+        hasBombGoBoom = false;
         //Normal obstacles
         for (int i = 0; i < 10; i++)
         {

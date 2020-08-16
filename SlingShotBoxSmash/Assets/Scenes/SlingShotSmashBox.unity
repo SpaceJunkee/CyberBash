@@ -2422,7 +2422,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -2704,7 +2704,7 @@ MonoBehaviour:
     type: 3}
   greenGuyPrefab: {fileID: 2257698016252864278, guid: 15c584af3e700e44db2ed5f0441fbdd1,
     type: 3}
-  squareHeadPrefab: {fileID: 1040596318853266017, guid: 3d20d5b7ede46e14fb74e0ebc886c63b,
+  squareHeadPrefab: {fileID: 5755203082807047316, guid: 3d20d5b7ede46e14fb74e0ebc886c63b,
     type: 3}
   bombGoalText: {fileID: 835305972}
   incomingBombText: {fileID: 1996200190169663034}
@@ -2884,7 +2884,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -2972,7 +2972,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 4
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 4bd22a7cda2c78245b0450ee879c53d2, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -3512,7 +3512,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1512235817}
   - component: {fileID: 1512235816}
-  - component: {fileID: 1512235818}
   m_Layer: 0
   m_Name: Music
   m_TagString: GameMusic
@@ -3530,7 +3529,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0198f59221bf67848a63026a077607e9, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 55dd95cbfbeaf254f855013078569527, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.18
   m_Pitch: 1
@@ -3630,21 +3629,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!166 &1512235818
-AudioChorusFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1512235815}
-  m_Enabled: 1
-  m_DryMix: 0.5
-  m_WetMix1: 0.5
-  m_WetMix2: 0.5
-  m_WetMix3: 0.5
-  m_Delay: 40
-  m_Rate: 0.8
-  m_Depth: 0.03
 --- !u!1 &1578539009
 GameObject:
   m_ObjectHideFlags: 0

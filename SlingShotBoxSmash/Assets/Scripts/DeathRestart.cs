@@ -74,7 +74,7 @@ public class DeathRestart : MonoBehaviour
 
     private void ResetScores()
     {
-        SpawnObjects.hasBombGoneOff = false;
+        SpawnObjects.hasFirstBombGoneOff = false;
         ScoreDisplay.score = 0;
         ScoreDisplay.scoreMultiplier = 1;
         ScoreDisplay.multiplierGoal = 50;

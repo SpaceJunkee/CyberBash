@@ -129,8 +129,13 @@ public class GreenGuy : MonoBehaviour
 
     public void Die()
     {
-        CancelInvoke();
-        timeManager.Invoke("StopSlowMotion", 0.05f);
+        CancelInvoke("SpawnProjectile");
+
+        if (SlingShot.isHeldDown == false)
+        {
+            timeManager.Invoke("StopSlowMotion", 0.05f);
+        }
+
         DisableObject();
         spawnConfiner.GetComponent<SpawnObjects>().SpawnNormalObstacles(1);
         GameObject newDeathEffect = (GameObject)Instantiate(greenGuyDeathEffect, transform.position, Quaternion.identity);

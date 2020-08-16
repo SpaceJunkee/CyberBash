@@ -69,7 +69,7 @@ public class SquareHead : MonoBehaviour
         if (collision.gameObject.tag.Equals("Player") && SlingShot.isHeldDown == false)
         {
             Flash();
-            anim.speed += 0.18f;
+            anim.speed += 0.16f;
             CameraShake.Instance.ShakeCamera(13f, 0.2f);
             Vector3 vel = collision.gameObject.GetComponentInParent<Rigidbody2D>().velocity;
             var force = transform.position - collision.transform.position;

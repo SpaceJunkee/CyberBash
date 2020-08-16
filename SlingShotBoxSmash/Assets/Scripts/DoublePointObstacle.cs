@@ -71,7 +71,11 @@ public class DoublePointObstacle : MonoBehaviour
 
     private void Die()
     {
-        timeManager.Invoke("StopSlowMotion", 0.05f);
+        if (SlingShot.isHeldDown == false)
+        {
+            timeManager.Invoke("StopSlowMotion", 0.05f);
+        }
+
         DisableObject();
         GameObject newDeathEffect = (GameObject)Instantiate(doublePointObjectDeathEffect, transform.position, Quaternion.identity);
         Destroy(newDeathEffect, 2);

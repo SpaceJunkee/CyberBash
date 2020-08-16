@@ -68,7 +68,11 @@ public class NormalObstacle : MonoBehaviour
 
     public void Die()
     {
-        timeManager.Invoke("StopSlowMotion", 0.05f);
+        if(SlingShot.isHeldDown == false)
+        {
+            timeManager.Invoke("StopSlowMotion", 0.05f);
+        }
+        
         DisableObject();
         spawnConfiner.GetComponent<SpawnObjects>().SpawnNormalObstacles(1);
         GameObject newDeathEffect = (GameObject)Instantiate(normalObjectDeathEffect, transform.position, Quaternion.identity);
