@@ -21,6 +21,7 @@ public class GreenGuy : MonoBehaviour
     public static float comboSlowMo = 1;
     public bool isDead = false;
     public GameObject[] leftOverProjectiles;
+    public Animator anim;
 
     private void Start()
     {
@@ -39,9 +40,11 @@ public class GreenGuy : MonoBehaviour
     {
         if(Time.time > nextFireTime && isDead == false)
         {
-            if(player != null)
+            anim.SetBool("Fire", false);
+            if (player != null)
             {
                 Invoke("SpawnProjectile", 2f);
+                
             }
             else
             {
@@ -54,7 +57,9 @@ public class GreenGuy : MonoBehaviour
 
     private void SpawnProjectile()
     {
+        anim.SetBool("Fire", true);
         Instantiate(projectile, transform.position, Quaternion.identity);
+        
     }
 
     private void Restart()
