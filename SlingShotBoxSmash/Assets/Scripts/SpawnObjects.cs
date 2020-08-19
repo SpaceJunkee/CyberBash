@@ -141,10 +141,14 @@ public class SpawnObjects : MonoBehaviour
 
         for (int i = 0; i < 1; i++)
         {
+            timeManager.StartSlowMotion(0.25f);
+            
             Vector2 position = center;
-            GameObject newBomb = (GameObject)Instantiate(bossBombPrefab, position, Quaternion.identity); ;
+            GameObject newBomb = (GameObject)Instantiate(bossBombPrefab, position, Quaternion.identity); ;          
             Destroy(newBomb, 2f);
         }
+
+        timeManager.Invoke("StopSlowMotion", 0.15f);
 
 
         for (int i = 0; i < leftOverGreens.Length; i++)
