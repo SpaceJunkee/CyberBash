@@ -111,7 +111,7 @@ public class SpawnObjects : MonoBehaviour
 
     public void SpawnSquareHead(int spawnRate)
     {
-        Invoke("DestroyLeftOvers", 5f);
+        Invoke("DestroyLeftOvers", 3f);
         DisableIncomingText(incomingBossText);
 
         for (int i = 0; i < spawnRate; i++)

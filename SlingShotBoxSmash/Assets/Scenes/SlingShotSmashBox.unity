@@ -2692,20 +2692,20 @@ MonoBehaviour:
   bombSpawnMultiplier: 1
   greenGuySpawnMultiplier: 1
   bombPointGoal: 1000
-  squareHeadGoal: 5500
+  squareHeadGoal: 5000
   squareHeadMultiplier: 1
   greenGuyCount: 1
-  normalObstaclePrefab: {fileID: 3780936658383914705, guid: b1fe58e24ff024441a3505354b447c02,
+  normalObstaclePrefab: {fileID: 1845430362422084132, guid: b1fe58e24ff024441a3505354b447c02,
     type: 3}
-  doublePointPrefab: {fileID: 5967060228127188978, guid: 9a9cadc9f9dbca44d81b88a9ac5969b4,
+  doublePointPrefab: {fileID: 5701224675419248475, guid: 9a9cadc9f9dbca44d81b88a9ac5969b4,
     type: 3}
-  deathBoxPrefab: {fileID: 1957740237892630571, guid: 788e79b7e9b356a44a85379dee097dfb,
+  deathBoxPrefab: {fileID: 1019522046608862644, guid: 788e79b7e9b356a44a85379dee097dfb,
     type: 3}
   bombPrefab: {fileID: 5031205921278520376, guid: 289484acf2de2d046b3d0484203969d0,
     type: 3}
   bossBombPrefab: {fileID: 8817364359868688742, guid: 88162ecc71e004949b1f3128746d5d5b,
     type: 3}
-  greenGuyPrefab: {fileID: 5353379937944063837, guid: 15c584af3e700e44db2ed5f0441fbdd1,
+  greenGuyPrefab: {fileID: 2495951086398163937, guid: 15c584af3e700e44db2ed5f0441fbdd1,
     type: 3}
   squareHeadPrefab: {fileID: 7515559436649452824, guid: 3d20d5b7ede46e14fb74e0ebc886c63b,
     type: 3}
