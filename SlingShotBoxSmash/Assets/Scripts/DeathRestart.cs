@@ -67,6 +67,13 @@ public class DeathRestart : MonoBehaviour
 
     public void RestartGame()
     {
+        GameObject music = GameObject.Find("Music");
+
+        if(music.GetComponent<AudioSource>().isPlaying == false)
+        {
+            music.GetComponent<AudioSource>().Play();
+        }
+
         ResetScores();
         timeManager.StopSlowMotion();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

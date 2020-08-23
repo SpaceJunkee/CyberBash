@@ -40,11 +40,19 @@ public class SpawnObjects : MonoBehaviour
     public GameObject squareHeadPrefab;
 
     public Text bombGoalText;
+    public Text bossGoalText;
     public Text incomingBombText;
     public Text incomingBossText;
 
+    public AudioClip bossTrack;
+    public AudioClip originalTrack;
+    GameObject audio;
+    GameObject audioBoss;
+
     public void Start()
     {
+        audio = GameObject.Find("Music");
+        audioBoss = GameObject.Find("BossMusic");
         SpawnNormalObstacles(10);
         SpawnDoublePointObstacles(3);
     }
@@ -56,6 +64,7 @@ public class SpawnObjects : MonoBehaviour
 
         if (hasBossBeenKilled == true)
         {
+            Invoke("StopBossMusic", 3f);
             Invoke("SpawnNormalObstaclesAfterBomb", 2.5f);
             hasBossBeenKilled = false;
         }
@@ -63,7 +72,6 @@ public class SpawnObjects : MonoBehaviour
         if(ScoreDisplay.score >= (squareHeadGoal * squareHeadMultiplier))
         {
             squareHeadMultiplier++;
-            squareHeadGoal += 5500;
             SpawnSquareHead(1);
         }
 
@@ -99,6 +107,13 @@ public class SpawnObjects : MonoBehaviour
             SpawnGreenGuy(greenGuyCount);
         }
     }
+
+    public void StopBossMusic()
+    {
+        audioBoss.GetComponent<AudioSource>().Stop();
+        audio.GetComponent<AudioSource>().Play();
+    }
+
     public void SpawnNormalObstacles(int spawnRate)
     {
         for (int i = 0; i < spawnRate; i++)
@@ -111,8 +126,12 @@ public class SpawnObjects : MonoBehaviour
 
     public void SpawnSquareHead(int spawnRate)
     {
-        Invoke("DestroyLeftOvers", 3f);
+        audio.GetComponent<AudioSource>().Pause();
+        audioBoss.GetComponent<AudioSource>().clip = bossTrack;
+        audioBoss.GetComponent<AudioSource>().Play();
+
         DisableIncomingText(incomingBossText);
+        Invoke("DestroyLeftOvers", 3f);
 
         for (int i = 0; i < spawnRate; i++)
         {
@@ -239,6 +258,7 @@ public class SpawnObjects : MonoBehaviour
     {
 
         bombGoalText.text = $"NEXT EMP: {bombPointGoal * bombSpawnMultiplier}";
+        bossGoalText.text = $"NEXT BOSS: {squareHeadGoal * squareHeadMultiplier}";
 
         if (ScoreDisplay.score >= (bombPointGoal * bombSpawnMultiplier) - 150 && ScoreDisplay.score < (bombPointGoal * bombSpawnMultiplier))
         {

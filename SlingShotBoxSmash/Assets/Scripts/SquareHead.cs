@@ -84,7 +84,7 @@ public class SquareHead : MonoBehaviour
             GameObject newDeathEffect = (GameObject)Instantiate(hitEffect, collision.transform.position, Quaternion.identity);
             Destroy(newDeathEffect, 2);
 
-            health -= 12.5f;
+            health -= 10f;
 
             collision.gameObject.GetComponentInParent<Rigidbody2D>().AddForce((-force * vel.magnitude * (150)));
             hitSound.Play();

@@ -17,21 +17,21 @@ public class ScoreDisplay : MonoBehaviour
         scoreText.text = $"{score}";
         scoreMultiplierText.text = $"x{scoreMultiplier}";
 
-        if(scoreText.fontSize != 25)
+        if(scoreText.fontSize != 20)
         {
             scoreText.fontSize--;
         }
-        else if (scoreText.fontSize == 25)
+        else if (scoreText.fontSize == 20)
         {
-            scoreText.fontSize = 25;
+            scoreText.fontSize = 20;
         }
 
-        if(scoreMultiplierText.fontSize != 20)
+        if(scoreMultiplierText.fontSize != 15)
         {
             scoreMultiplierText.fontSize--;
-        }else if(scoreMultiplierText.fontSize == 20)
+        }else if(scoreMultiplierText.fontSize == 15)
         {
-            scoreMultiplierText.fontSize = 20;
+            scoreMultiplierText.fontSize = 15;
         }
  
     }
