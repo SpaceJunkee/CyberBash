@@ -13,7 +13,7 @@ public class SlingShot : MonoBehaviour
     public float releaseTime = 0.15f;
     public float maxDragDistance = 2f;
     public Text tutorialText;
-    private bool cooldown = false;
+    public static bool cooldown = false;
     public AudioSource audio;
 
     public LineRenderer lineRenderer;
@@ -68,7 +68,7 @@ public class SlingShot : MonoBehaviour
             anchorRb.position = rigidBody.position;
             GetComponent<SpringJoint2D>().enabled = true;
 
-            Invoke("ResetCooldown", 0.45f);
+            Invoke("ResetCooldown", 0.5f);
             cooldown = true;
         }
                

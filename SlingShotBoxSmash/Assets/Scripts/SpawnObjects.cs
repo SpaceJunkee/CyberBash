@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class SpawnObjects : MonoBehaviour
 {
     public TimeManager timeManager;
+    public ShieldWallBounce[] shieldWalls;
 
     public Vector2 center;
     public Vector2 size;
@@ -193,6 +194,11 @@ public class SpawnObjects : MonoBehaviour
 
     public void SpawnBomb(int spawnRate)
     {
+        foreach(ShieldWallBounce shield in shieldWalls)
+        {
+            shield.ResetShields();
+        }
+
         timeManager.StartSlowMotion(0.05f);
         timeManager.Invoke("StopSlowMotion", 2f);
         DisableIncomingText(incomingBombText);

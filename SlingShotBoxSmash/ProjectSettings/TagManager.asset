@@ -17,6 +17,7 @@ TagManager:
   - Projectile
   - Boss
   - HitPoint
+  - Shield
   layers:
   - Default
   - TransparentFX

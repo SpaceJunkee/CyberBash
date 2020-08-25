@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f6ef13a2f93238d4cbc4e2662a37a1e1
+guid: 9033b8d16c1e29a49ba93a0c7ac8010d
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Naftalene
+  fontName: Fox Cavalier
   fontNames:
-  - Naftalene
+  - Fox Cavalier
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
