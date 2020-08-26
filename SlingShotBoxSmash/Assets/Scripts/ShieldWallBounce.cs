@@ -3,8 +3,13 @@ using UnityEngine;
 
 public class ShieldWallBounce : MonoBehaviour
 {
+
+    public AudioSource shieldBreakAudioSource;
+    
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (collision.gameObject.tag.Equals("Player") && SlingShot.isHeldDown)
         {
 
@@ -12,7 +17,7 @@ public class ShieldWallBounce : MonoBehaviour
         else 
         {
             if (collision.gameObject.tag.Equals("Player")){
-                Debug.Log("In box Big");
+                
                 gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 gameObject.GetComponent<BoxCollider2D>().enabled = false;
 
@@ -38,6 +43,7 @@ public class ShieldWallBounce : MonoBehaviour
                 }
 
                 CameraShake.Instance.ShakeCamera(5f, 1f);
+                shieldBreakAudioSource.Play();
             }
             
         }

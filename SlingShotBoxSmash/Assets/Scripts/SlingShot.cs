@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
@@ -15,6 +16,9 @@ public class SlingShot : MonoBehaviour
     public Text tutorialText;
     public static bool cooldown = false;
     public AudioSource audio;
+    public AudioClip playerDeathSound;
+    public AudioClip playerFlickSound;
+
     public static bool isDead = false;
 
     public LineRenderer lineRenderer;
@@ -23,7 +27,7 @@ public class SlingShot : MonoBehaviour
 
     private void Update()
     {
-
+   
         if (ComboHandler.hitCount < 3)
         {
             NormalObstacle.comboSlowMo = 1f;
@@ -51,7 +55,7 @@ public class SlingShot : MonoBehaviour
 
 
     private void OnMouseDown()
-    {
+    {    
         if (isDead)
         {
             return;
@@ -61,6 +65,7 @@ public class SlingShot : MonoBehaviour
 
         if ( cooldown == false && isDead == false)
         {
+            audio.Stop();
             isHeldDown = true;
             tutorialText.text = "Now let go!";
             rigidBody.isKinematic = true;
@@ -98,6 +103,12 @@ public class SlingShot : MonoBehaviour
     {
         if(isDead == false)
         {
+
+            if (cooldown)
+            {
+                audio.Play();
+            }
+
             // CameraShake.Instance.ShakeCamera(12f, 0.5f);
             Destroy(tutorialText);
             isHeldDown = false;
@@ -121,7 +132,7 @@ public class SlingShot : MonoBehaviour
 
     IEnumerator Release()
     {
-        audio.Play();
+        
         yield return new WaitForSeconds(releaseTime);
         GetComponent<SpringJoint2D>().enabled = false;
         
