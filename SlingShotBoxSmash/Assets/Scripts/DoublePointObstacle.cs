@@ -60,6 +60,7 @@ public class DoublePointObstacle : MonoBehaviour
             scoreTextPop.scoreText.fontSize = 100;
 
             CameraShake.Instance.ShakeCamera(13f, 0.2f);
+
             Vector3 vel = collision.gameObject.GetComponentInParent<Rigidbody2D>().velocity;
             var force = transform.position - collision.transform.position;
             force.Normalize();

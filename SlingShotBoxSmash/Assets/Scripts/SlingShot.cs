@@ -15,6 +15,7 @@ public class SlingShot : MonoBehaviour
     public Text tutorialText;
     public static bool cooldown = false;
     public AudioSource audio;
+    public static bool isDead = false;
 
     public LineRenderer lineRenderer;
 
@@ -51,9 +52,14 @@ public class SlingShot : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (isDead)
+        {
+            return;
+        }
+
         ComboHandler.ResetValues();
 
-        if ( cooldown == false)
+        if ( cooldown == false && isDead == false)
         {
             isHeldDown = true;
             tutorialText.text = "Now let go!";
@@ -90,20 +96,27 @@ public class SlingShot : MonoBehaviour
 
     private void OnMouseUp()
     {
+        if(isDead == false)
+        {
+            // CameraShake.Instance.ShakeCamera(12f, 0.5f);
+            Destroy(tutorialText);
+            isHeldDown = false;
+            rigidBody.isKinematic = false;
+            rigidBody.constraints = RigidbodyConstraints2D.None;
+
+            trail.emitting = true;
+
+            lineRenderer.enabled = false;
+
+            timeManager.StopSlowMotion();
+
+            StartCoroutine(Release());
+        }
+        else
+        {
+            return;
+        }
         
-        // CameraShake.Instance.ShakeCamera(12f, 0.5f);
-        Destroy(tutorialText);
-        isHeldDown = false;
-        rigidBody.isKinematic = false;
-        rigidBody.constraints = RigidbodyConstraints2D.None;
-
-        trail.emitting = true;
-
-        lineRenderer.enabled = false;
-
-        timeManager.StopSlowMotion();
-
-        StartCoroutine(Release());
     }
 
     IEnumerator Release()

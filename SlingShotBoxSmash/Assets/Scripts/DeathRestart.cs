@@ -2,7 +2,7 @@
 using UnityEngine;
 
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UIElements;
 
 public class DeathRestart : MonoBehaviour
 {
@@ -27,14 +27,14 @@ public class DeathRestart : MonoBehaviour
                 DestroyPlayer();
                 SlingShot.isHeldDown = false;
             }
-        }
-                        
+        }                     
         
     }
 
     public void DestroyPlayer()
-    { 
-        Destroy(playerBig);
+    {
+        SlingShot.isDead = true;
+        playerBig.GetComponent<TrailRenderer>().enabled = false;
         Instantiate(deathEffect, playerBig.gameObject.transform.position, Quaternion.identity);
         CameraShake.Instance.ShakeCamera(25f, 0.75f);
         timeManager.StartSlowMotion(0.3f);
@@ -68,8 +68,9 @@ public class DeathRestart : MonoBehaviour
     public void RestartGame()
     {
         GameObject music = GameObject.Find("Music");
-
-        if(music.GetComponent<AudioSource>().isPlaying == false)
+        SlingShot.isDead = false;
+        playerBig.GetComponent<TrailRenderer>().enabled = true;
+        if (music.GetComponent<AudioSource>().isPlaying == false)
         {
             music.GetComponent<AudioSource>().Play();
         }
