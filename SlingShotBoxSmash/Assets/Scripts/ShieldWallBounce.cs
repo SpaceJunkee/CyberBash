@@ -5,36 +5,65 @@ using UnityEngine;
 
 public class ShieldWallBounce : MonoBehaviour
 {
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Player") && SlingShot.isHeldDown)
+        {
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {   
-         
-        if (collision.gameObject.tag.Equals("PlayerBig"))
-        {
-            gameObject.GetComponent<SpriteRenderer>().enabled = false;
-            gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
+        else 
+        {
+            if (collision.gameObject.tag.Equals("Player")){
+                Debug.Log("In box Big");
+                gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                gameObject.GetComponent<BoxCollider2D>().enabled = false;
 
-        CameraShake.Instance.ShakeCamera(5f, 1f);
+                if (gameObject.name.Equals("ShieldWallBottom"))
+                {
+                    Invoke("DeactivateBounceBottom", 0.1f);                   
+                    ActivateShieldSmashEffect("ShieldSmashBottom");
+                }
+                else if (gameObject.name.Equals("ShieldWallLeft"))
+                {
+                    Invoke("DeactivateBounceLeft", 0.1f);
+                    ActivateShieldSmashEffect("ShieldSmashLeft");
+                }
+                else if (gameObject.name.Equals("ShieldWallRight"))
+                {
+                    Invoke("DeactivateBounceRight", 0.1f);
+                    ActivateShieldSmashEffect("ShieldSmashRight");
+                }
+                else if (gameObject.name.Equals("ShieldWallTop"))
+                {
+                    Invoke("DeactivateBounceTop", 0.1f);
+                    ActivateShieldSmashEffect("ShieldSmashTop");
+                }
 
-        if (gameObject.name.Equals("ShieldWallBottom"))
-        {
-            ActivateShieldSmashEffect("ShieldSmashBottom");
-        }
-        else if (gameObject.name.Equals("ShieldWallLeft"))
-        {
-            ActivateShieldSmashEffect("ShieldSmashLeft");
-        }
-        else if (gameObject.name.Equals("ShieldWallRight"))
-        {
-            ActivateShieldSmashEffect("ShieldSmashRight");
-        }
-        else if (gameObject.name.Equals("ShieldWallTop"))
-        {
-            ActivateShieldSmashEffect("ShieldSmashTop");
-        }
+                CameraShake.Instance.ShakeCamera(5f, 1f);
+            }
             
+        }
     }
+
+    private void DeactivateBounceBottom()
+    {
+        GameObject.Find("ShieldBounceBottom").GetComponent<BoxCollider2D>().enabled = false;
+    }
+    private void DeactivateBounceLeft()
+    {
+        GameObject.Find("ShieldBounceLeft").GetComponent<BoxCollider2D>().enabled = false;
+    }
+
+    private void DeactivateBounceRight()
+    {
+        GameObject.Find("ShieldBounceRight").GetComponent<BoxCollider2D>().enabled = false;
+    }
+
+    private void DeactivateBounceTop()
+    {
+        GameObject.Find("ShieldBounceTop").GetComponent<BoxCollider2D>().enabled = false;
+    }
+
 
     private void ActivateShieldSmashEffect(string name)
     {
@@ -45,5 +74,9 @@ public class ShieldWallBounce : MonoBehaviour
     {
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
         gameObject.GetComponent<BoxCollider2D>().enabled = true;
+        GameObject.Find("ShieldBounceBottom").GetComponent<BoxCollider2D>().enabled = true;
+        GameObject.Find("ShieldBounceLeft").GetComponent<BoxCollider2D>().enabled = true;
+        GameObject.Find("ShieldBounceRight").GetComponent<BoxCollider2D>().enabled = true;
+        GameObject.Find("ShieldBounceTop").GetComponent<BoxCollider2D>().enabled = true;
     }
 }

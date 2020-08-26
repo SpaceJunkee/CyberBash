@@ -18,6 +18,7 @@ TagManager:
   - Boss
   - HitPoint
   - Shield
+  - PlayerShieldTrigger
   layers:
   - Default
   - TransparentFX
