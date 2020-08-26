@@ -70,7 +70,8 @@ public class DeathRestart : MonoBehaviour
         GameObject music = GameObject.Find("Music");
         SlingShot.isDead = false;
         playerBig.GetComponent<TrailRenderer>().enabled = true;
-        if (music.GetComponent<AudioSource>().isPlaying == false)
+
+        if (music.GetComponent<AudioSource>().isPlaying == false && music.GetComponent<AudioSource>()!= null)
         {
             music.GetComponent<AudioSource>().Play();
         }
