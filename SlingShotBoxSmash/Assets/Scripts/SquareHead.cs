@@ -95,6 +95,7 @@ public class SquareHead : MonoBehaviour
 
     public void Die()
     {
+        GameObject.Find("SquareHeadDeathSound").GetComponent<AudioSource>().Play();
         CameraShake.Instance.ShakeCamera(13f, 1.5f);          
         GameObject newDeathEffect = (GameObject)Instantiate(squareHeadDeathEffect, transform.position, Quaternion.identity);
         Destroy(newDeathEffect, 4);

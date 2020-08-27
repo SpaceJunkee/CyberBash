@@ -23,7 +23,7 @@ public class DeathRestart : MonoBehaviour
         {
             if (collision.gameObject.tag.Equals("Player"))
             {
-                GameObject.Find("PlayerDeath").GetComponent<AudioSource>().Play();              
+                GameObject.Find("PlayerDeathSound").GetComponent<AudioSource>().Play();              
                 Destroy(collision.gameObject);
                 DestroyPlayer();
                 SlingShot.isHeldDown = false;

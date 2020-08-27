@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10e484466b315d04e9a0d87b9f645f3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 7875966177798800841, guid: c25d9afd9942ae94f9237d2a12ff209f,
+  projectile: {fileID: 7381069376607413152, guid: c25d9afd9942ae94f9237d2a12ff209f,
     type: 3}
   greenGuyDeathEffect: {fileID: 2765993866868109795, guid: c02224fa729f13d488430ff8ae08a9f6,
     type: 3}
@@ -60,7 +60,7 @@ MonoBehaviour:
   floatingTextPrefab: {fileID: 2083494464573393691, guid: 16bb703cc76f3ec4db3ddc5003b02f40,
     type: 3}
   boxBreakAudio: {fileID: 2495951086398163935}
-  greenGuyBoxBreakClip: {fileID: 8300000, guid: e0f4883a3923fce41a51ef234f63d04c,
+  greenGuyBoxBreakClip: {fileID: 8300000, guid: c82fc22669beb944cacbd9431ac43b22,
     type: 3}
   spawnConfiner: {fileID: 0}
   player: {fileID: 0}
@@ -155,7 +155,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5b81cded4b81b0748b0002b20f0899b8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c82fc22669beb944cacbd9431ac43b22, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
