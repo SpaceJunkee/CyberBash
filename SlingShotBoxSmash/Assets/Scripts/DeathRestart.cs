@@ -23,8 +23,7 @@ public class DeathRestart : MonoBehaviour
         {
             if (collision.gameObject.tag.Equals("Player"))
             {
-                GameObject.Find("PlayerDeath").GetComponent<AudioSource>().Play();
-                SlingShot.isDead = true;               
+                GameObject.Find("PlayerDeath").GetComponent<AudioSource>().Play();              
                 Destroy(collision.gameObject);
                 DestroyPlayer();
                 SlingShot.isHeldDown = false;
@@ -35,6 +34,7 @@ public class DeathRestart : MonoBehaviour
 
     public void DestroyPlayer()
     {
+        SlingShot.isDead = true;
         playerBig.GetComponent<TrailRenderer>().enabled = false;
         Instantiate(deathEffect, playerBig.gameObject.transform.position, Quaternion.identity);
         CameraShake.Instance.ShakeCamera(25f, 0.75f);
