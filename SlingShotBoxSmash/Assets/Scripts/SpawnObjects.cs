@@ -52,7 +52,7 @@ public class SpawnObjects : MonoBehaviour
     {
         audio = GameObject.Find("Music");
         audioBoss = GameObject.Find("BossMusic");
-        SpawnNormalObstacles(20);
+        SpawnNormalObstacles(10);
         SpawnDoublePointObstacles(3);
     }
 
