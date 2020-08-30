@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 public class NormalObstacle : MonoBehaviour
@@ -130,7 +129,7 @@ public class NormalObstacle : MonoBehaviour
         {
             boxBreakAudio.clip = combo3SoundNormal;
             boxBreakAudio.Play();
-            comboSlowMo = 4.25f;
+            comboSlowMo = 4.5f;
             timeManager.StartSlowMotion(0.1f);
             floatingTextPrefab.GetComponent<TextMesh>().fontSize = 50;
         }
@@ -138,7 +137,7 @@ public class NormalObstacle : MonoBehaviour
         {
             boxBreakAudio.clip = combo3SoundNormal;
             boxBreakAudio.Play();
-            comboSlowMo = 5.75f;
+            comboSlowMo = 6f;
             timeManager.StartSlowMotion(0.07f);
             floatingTextPrefab.GetComponent<TextMesh>().fontSize = 60;
         }
@@ -146,7 +145,7 @@ public class NormalObstacle : MonoBehaviour
         {
             boxBreakAudio.clip = combo3SoundNormal;
             boxBreakAudio.Play();
-            comboSlowMo = 6.5f;
+            comboSlowMo = 6.75f;
             timeManager.StartSlowMotion(0.05f);
             floatingTextPrefab.GetComponent<TextMesh>().fontSize = 70;
         }

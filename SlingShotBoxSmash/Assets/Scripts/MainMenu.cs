@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
-using UnityEngine.Animations;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
@@ -13,6 +11,11 @@ public class MainMenu : MonoBehaviour
     private ChromaticAberration ca;
 
     public void PlayGame()
+    {
+        Invoke("LoadLevel", 0.5f);
+    }
+
+    private void LoadLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }

@@ -1,6 +1,4 @@
 ﻿
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -54,7 +52,7 @@ public class SpawnObjects : MonoBehaviour
     {
         audio = GameObject.Find("Music");
         audioBoss = GameObject.Find("BossMusic");
-        SpawnNormalObstacles(10);
+        SpawnNormalObstacles(20);
         SpawnDoublePointObstacles(3);
     }
 
