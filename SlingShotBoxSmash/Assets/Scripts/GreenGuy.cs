@@ -185,19 +185,19 @@ public class GreenGuy : MonoBehaviour
         }
         else if (ComboHandler.hitCount == 4)
         {
-            comboSlowMo = 4.25f;
+            comboSlowMo = 4.5f;
             timeManager.StartSlowMotion(0.1f);
             floatingTextPrefab.GetComponent<TextMesh>().fontSize = 50;
         }
         else if (ComboHandler.hitCount == 5)
         {
-            comboSlowMo = 5.75f;
+            comboSlowMo = 6f;
             timeManager.StartSlowMotion(0.07f);
             floatingTextPrefab.GetComponent<TextMesh>().fontSize = 60;
         }
         else if (ComboHandler.hitCount > 5)
         {
-            comboSlowMo = 6.5f;
+            comboSlowMo = 6.75f;
             timeManager.StartSlowMotion(0.05f);
             floatingTextPrefab.GetComponent<TextMesh>().fontSize = 70;
         }

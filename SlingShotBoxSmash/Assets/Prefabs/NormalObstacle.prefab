@@ -246,7 +246,9 @@ MonoBehaviour:
   normalBoxBreakClip: {fileID: 8300000, guid: 8ef5e9987d77e724e9f2d273b74803d1, type: 3}
   combo1SoundNormal: {fileID: 8300000, guid: af4affec8ed63a8498b43beb38f96e21, type: 3}
   combo2SoundNormal: {fileID: 8300000, guid: de75b0645e5da9140b4ba7a0256cbc4a, type: 3}
-  combo3SoundNormal: {fileID: 8300000, guid: 7d1069453374c7e4eb0e738967e2ffd3, type: 3}
+  combo3SoundNormal: {fileID: 8300000, guid: 1cc6eecbdc0e0ba4098dfab96f644119, type: 3}
+  combo4SoundNormal: {fileID: 8300000, guid: 6673a29b5d44041439602e563dc798dd, type: 3}
+  combo5SoundNormal: {fileID: 8300000, guid: 933e09e86a5d9d448aca033b895e7cb4, type: 3}
   spawnConfiner: {fileID: 0}
   timeManager: {fileID: 4800997520552027495, guid: e1231ab3c50cd5440a3561ef97c5af9b,
     type: 3}

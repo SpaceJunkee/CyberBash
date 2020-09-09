@@ -3,19 +3,26 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
 
     public VolumeProfile myProfile;
     private ChromaticAberration ca;
-
-    public void PlayGame()
+    public AudioSource audio;
+    public static int menuMusicPlaying = 0;
+    private void Start()
     {
-        Invoke("LoadLevel", 0.5f);
-    }
+        menuMusicPlaying++;
 
-    private void LoadLevel()
+        if (menuMusicPlaying > 2)
+        {
+            audio.Stop();
+        }
+
+    }
+    public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
@@ -43,6 +50,11 @@ public class MainMenu : MonoBehaviour
             ca.active = true;
         }
 
+    }
+
+    public void SetShopCurrency()
+    {
+        GameObject.Find("CurrencyText").GetComponent<Text>().text = $"${PlayerPrefs.GetInt("NormalCurrency")}";
     }
 
 }

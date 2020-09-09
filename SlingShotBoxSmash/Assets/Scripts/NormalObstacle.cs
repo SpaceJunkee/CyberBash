@@ -12,6 +12,8 @@ public class NormalObstacle : MonoBehaviour
     public AudioClip combo1SoundNormal;
     public AudioClip combo2SoundNormal;
     public AudioClip combo3SoundNormal;
+    public AudioClip combo4SoundNormal;
+    public AudioClip combo5SoundNormal;
     public GameObject spawnConfiner;
     public TimeManager timeManager;
     public static float comboSlowMo = 1;
@@ -105,21 +107,21 @@ public class NormalObstacle : MonoBehaviour
 
         if (ComboHandler.hitCount < 2)
         {
-            boxBreakAudio.clip = normalBoxBreakClip;
+            boxBreakAudio.clip = combo1SoundNormal;
             boxBreakAudio.Play();
             comboSlowMo = 1f;
             floatingTextPrefab.GetComponent<TextMesh>().fontSize = 20;
         }
         else if (ComboHandler.hitCount == 2)
         {
-            boxBreakAudio.clip = combo1SoundNormal;
+            boxBreakAudio.clip = combo2SoundNormal;
             boxBreakAudio.Play();
             comboSlowMo = 1f;
             floatingTextPrefab.GetComponent<TextMesh>().fontSize = 30;
         }
         else if (ComboHandler.hitCount == 3)
         {
-            boxBreakAudio.clip = combo2SoundNormal;
+            boxBreakAudio.clip = combo3SoundNormal;
             boxBreakAudio.Play();
             comboSlowMo = 2.25f;
             timeManager.StartSlowMotion(0.2f);
@@ -127,7 +129,7 @@ public class NormalObstacle : MonoBehaviour
         }
         else if (ComboHandler.hitCount == 4)
         {
-            boxBreakAudio.clip = combo3SoundNormal;
+            boxBreakAudio.clip = combo4SoundNormal;
             boxBreakAudio.Play();
             comboSlowMo = 4.5f;
             timeManager.StartSlowMotion(0.1f);
@@ -135,20 +137,21 @@ public class NormalObstacle : MonoBehaviour
         }
         else if (ComboHandler.hitCount == 5)
         {
-            boxBreakAudio.clip = combo3SoundNormal;
+            boxBreakAudio.clip = combo5SoundNormal;
             boxBreakAudio.Play();
             comboSlowMo = 6f;
             timeManager.StartSlowMotion(0.07f);
             floatingTextPrefab.GetComponent<TextMesh>().fontSize = 60;
         }
-        else if (ComboHandler.hitCount > 5)
+        else if (ComboHandler.hitCount >= 6)
         {
-            boxBreakAudio.clip = combo3SoundNormal;
+            boxBreakAudio.clip = combo5SoundNormal;
             boxBreakAudio.Play();
             comboSlowMo = 6.75f;
             timeManager.StartSlowMotion(0.05f);
             floatingTextPrefab.GetComponent<TextMesh>().fontSize = 70;
         }
+        
 
     }
 }

@@ -12,10 +12,24 @@ public class ScoreDisplay : MonoBehaviour
     public static int scoreMultiplier = 1;
     public static int multiplierGoal = 50;
 
+    public static int highScore;
+
+    private void Start()
+    {
+        highScore = PlayerPrefs.GetInt("HighScore");
+    }
+
     private void Update()
     {
         scoreText.text = $"{score}";
         scoreMultiplierText.text = $"x{scoreMultiplier}";
+
+        if(score > highScore)
+        {
+            highScore = score;
+
+            PlayerPrefs.SetInt("HighScore", score);
+        }
 
         if(scoreText.fontSize != 20)
         {

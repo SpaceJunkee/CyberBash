@@ -68,6 +68,8 @@ public class DeathRestart : MonoBehaviour
 
     public void RestartGame()
     {
+        PlayerPrefs.SetInt("NormalCurrency", PlayerPrefs.GetInt("NormalCurrency") + Mathf.RoundToInt(ScoreDisplay.score) / 10);
+        PlayerPrefs.SetInt("MoneyEarned", Mathf.RoundToInt(ScoreDisplay.score) / 10);
         GameObject music = GameObject.Find("Music");
         SlingShot.isDead = false;
         playerBig.GetComponent<TrailRenderer>().enabled = true;
@@ -79,7 +81,7 @@ public class DeathRestart : MonoBehaviour
 
         ResetScores();
         timeManager.StopSlowMotion();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     private void ResetScores()
