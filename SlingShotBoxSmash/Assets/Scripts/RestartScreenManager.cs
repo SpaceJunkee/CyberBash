@@ -15,9 +15,6 @@ public class RestartScreenManager : MonoBehaviour
     {
         StartCoroutine(CountUpToTarget());
         GameObject.Find("HighScore").GetComponent<Text>().text = $"High Score\n{PlayerPrefs.GetInt("HighScore")}";
-        //GameObject.Find("SpecialCurrencyText").GetComponent<Text>().text = $"Gems\n{PlayerPrefs.GetInt("SpecialCurrency")}";
-        // GameObject.Find("NormalCurrencyText").GetComponent<Text>().text = $"〄{PlayerPrefs.GetInt("NormalCurrency")}";
-
     }
 
     IEnumerator CountUpToTarget()

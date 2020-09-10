@@ -63,7 +63,6 @@ public class SpawnObjects : MonoBehaviour
 
         if (hasBossBeenKilled == true)
         {
-            PlayerPrefs.SetInt("SpecialCurrency", PlayerPrefs.GetInt("SpecialCurrency") + 1);
             Invoke("StopBossMusic", 3f);
             Invoke("SpawnNormalObstaclesAfterBomb", 2.5f);
             hasBossBeenKilled = false;
