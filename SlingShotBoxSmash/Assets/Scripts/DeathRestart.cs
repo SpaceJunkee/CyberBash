@@ -2,7 +2,7 @@
 using UnityEngine;
 
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UIElements;
 
 public class DeathRestart : MonoBehaviour
 {
@@ -23,18 +23,19 @@ public class DeathRestart : MonoBehaviour
         {
             if (collision.gameObject.tag.Equals("Player"))
             {
+                GameObject.Find("PlayerDeathSound").GetComponent<AudioSource>().Play();              
                 Destroy(collision.gameObject);
                 DestroyPlayer();
                 SlingShot.isHeldDown = false;
             }
-        }
-                        
+        }                     
         
     }
 
     public void DestroyPlayer()
-    { 
-        Destroy(playerBig);
+    {
+        SlingShot.isDead = true;
+        playerBig.GetComponent<TrailRenderer>().enabled = false;
         Instantiate(deathEffect, playerBig.gameObject.transform.position, Quaternion.identity);
         CameraShake.Instance.ShakeCamera(25f, 0.75f);
         timeManager.StartSlowMotion(0.3f);
@@ -67,14 +68,25 @@ public class DeathRestart : MonoBehaviour
 
     public void RestartGame()
     {
-        
+        PlayerPrefs.SetInt("NormalCurrency", PlayerPrefs.GetInt("NormalCurrency") + Mathf.RoundToInt(ScoreDisplay.score) / 10);
+        PlayerPrefs.SetInt("MoneyEarned", Mathf.RoundToInt(ScoreDisplay.score) / 10);
+        GameObject music = GameObject.Find("Music");
+        SlingShot.isDead = false;
+        playerBig.GetComponent<TrailRenderer>().enabled = true;
+
+        if (music.GetComponent<AudioSource>().isPlaying == false && music.GetComponent<AudioSource>()!= null)
+        {
+            music.GetComponent<AudioSource>().Play();
+        }
+
         ResetScores();
         timeManager.StopSlowMotion();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     private void ResetScores()
     {
+        SpawnObjects.hasFirstBombGoneOff = false;
         ScoreDisplay.score = 0;
         ScoreDisplay.scoreMultiplier = 1;
         ScoreDisplay.multiplierGoal = 50;

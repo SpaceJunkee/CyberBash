@@ -1,7 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class SlingShot : MonoBehaviour
@@ -13,8 +11,12 @@ public class SlingShot : MonoBehaviour
     public float releaseTime = 0.15f;
     public float maxDragDistance = 2f;
     public Text tutorialText;
-    private bool cooldown = false;
+    public static bool cooldown = false;
     public AudioSource audio;
+    public AudioClip playerDeathSound;
+    public AudioClip playerFlickSound;
+
+    public static bool isDead = false;
 
     public LineRenderer lineRenderer;
 
@@ -22,7 +24,7 @@ public class SlingShot : MonoBehaviour
 
     private void Update()
     {
-
+   
         if (ComboHandler.hitCount < 3)
         {
             NormalObstacle.comboSlowMo = 1f;
@@ -50,11 +52,17 @@ public class SlingShot : MonoBehaviour
 
 
     private void OnMouseDown()
-    {
+    {    
+        if (isDead)
+        {
+            return;
+        }
+
         ComboHandler.ResetValues();
 
-        if ( cooldown == false)
+        if ( cooldown == false && isDead == false)
         {
+            audio.Stop();
             isHeldDown = true;
             tutorialText.text = "Now let go!";
             rigidBody.isKinematic = true;
@@ -90,25 +98,38 @@ public class SlingShot : MonoBehaviour
 
     private void OnMouseUp()
     {
+        if(isDead == false)
+        {
+
+            if (cooldown)
+            {
+                audio.Play();
+            }
+
+            // CameraShake.Instance.ShakeCamera(12f, 0.5f);
+            Destroy(tutorialText);
+            isHeldDown = false;
+            rigidBody.isKinematic = false;
+            rigidBody.constraints = RigidbodyConstraints2D.None;
+
+            trail.emitting = true;
+
+            lineRenderer.enabled = false;
+
+            timeManager.StopSlowMotion();
+
+            StartCoroutine(Release());
+        }
+        else
+        {
+            return;
+        }
         
-        // CameraShake.Instance.ShakeCamera(12f, 0.5f);
-        Destroy(tutorialText);
-        isHeldDown = false;
-        rigidBody.isKinematic = false;
-        rigidBody.constraints = RigidbodyConstraints2D.None;
-
-        trail.emitting = true;
-
-        lineRenderer.enabled = false;
-
-        timeManager.StopSlowMotion();
-
-        StartCoroutine(Release());
     }
 
     IEnumerator Release()
     {
-        audio.Play();
+        
         yield return new WaitForSeconds(releaseTime);
         GetComponent<SpringJoint2D>().enabled = false;
         

@@ -21,6 +21,7 @@ public class GreenGuy : MonoBehaviour
     public static float comboSlowMo = 1;
     public bool isDead = false;
     public GameObject[] leftOverProjectiles;
+    public Animator anim;
 
     private void Start()
     {
@@ -39,9 +40,11 @@ public class GreenGuy : MonoBehaviour
     {
         if(Time.time > nextFireTime && isDead == false)
         {
-            if(player != null)
+            anim.SetBool("Fire", false);
+            if (player != null)
             {
                 Invoke("SpawnProjectile", 2f);
+                
             }
             else
             {
@@ -54,7 +57,9 @@ public class GreenGuy : MonoBehaviour
 
     private void SpawnProjectile()
     {
+        anim.SetBool("Fire", true);
         Instantiate(projectile, transform.position, Quaternion.identity);
+        
     }
 
     private void Restart()
@@ -129,8 +134,13 @@ public class GreenGuy : MonoBehaviour
 
     public void Die()
     {
-        CancelInvoke();
-        timeManager.Invoke("StopSlowMotion", 0.05f);
+        CancelInvoke("SpawnProjectile");
+
+        if (SlingShot.isHeldDown == false)
+        {
+            timeManager.Invoke("StopSlowMotion", 0.05f);
+        }
+
         DisableObject();
         spawnConfiner.GetComponent<SpawnObjects>().SpawnNormalObstacles(1);
         GameObject newDeathEffect = (GameObject)Instantiate(greenGuyDeathEffect, transform.position, Quaternion.identity);
@@ -175,19 +185,19 @@ public class GreenGuy : MonoBehaviour
         }
         else if (ComboHandler.hitCount == 4)
         {
-            comboSlowMo = 3.25f;
+            comboSlowMo = 4.5f;
             timeManager.StartSlowMotion(0.1f);
             floatingTextPrefab.GetComponent<TextMesh>().fontSize = 50;
         }
         else if (ComboHandler.hitCount == 5)
         {
-            comboSlowMo = 3.75f;
+            comboSlowMo = 6f;
             timeManager.StartSlowMotion(0.07f);
             floatingTextPrefab.GetComponent<TextMesh>().fontSize = 60;
         }
         else if (ComboHandler.hitCount > 5)
         {
-            comboSlowMo = 4.5f;
+            comboSlowMo = 6.75f;
             timeManager.StartSlowMotion(0.05f);
             floatingTextPrefab.GetComponent<TextMesh>().fontSize = 70;
         }

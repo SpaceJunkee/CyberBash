@@ -15,6 +15,10 @@ TagManager:
   - NormalObstacle
   - GreenGuy
   - Projectile
+  - Boss
+  - HitPoint
+  - Shield
+  - PlayerShieldTrigger
   layers:
   - Default
   - TransparentFX

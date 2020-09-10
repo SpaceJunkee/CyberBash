@@ -60,6 +60,7 @@ public class DoublePointObstacle : MonoBehaviour
             scoreTextPop.scoreText.fontSize = 100;
 
             CameraShake.Instance.ShakeCamera(13f, 0.2f);
+
             Vector3 vel = collision.gameObject.GetComponentInParent<Rigidbody2D>().velocity;
             var force = transform.position - collision.transform.position;
             force.Normalize();
@@ -71,7 +72,11 @@ public class DoublePointObstacle : MonoBehaviour
 
     private void Die()
     {
-        timeManager.Invoke("StopSlowMotion", 0.05f);
+        if (SlingShot.isHeldDown == false)
+        {
+            timeManager.Invoke("StopSlowMotion", 0.05f);
+        }
+
         DisableObject();
         GameObject newDeathEffect = (GameObject)Instantiate(doublePointObjectDeathEffect, transform.position, Quaternion.identity);
         Destroy(newDeathEffect, 2);
@@ -113,19 +118,19 @@ public class DoublePointObstacle : MonoBehaviour
         }
         else if (ComboHandler.hitCount == 4)
         {
-            comboSlowMo = 3.25f;
+            comboSlowMo = 4.5f;
             timeManager.StartSlowMotion(0.1f);
             floatingTextPrefab.GetComponent<TextMesh>().fontSize = 50;
         }
         else if (ComboHandler.hitCount == 5)
         {
-            comboSlowMo = 3.75f;
+            comboSlowMo = 6f;
             timeManager.StartSlowMotion(0.07f);
             floatingTextPrefab.GetComponent<TextMesh>().fontSize = 60;
         }
         else if (ComboHandler.hitCount > 5)
         {
-            comboSlowMo = 4.5f;
+            comboSlowMo = 6.75f;
             timeManager.StartSlowMotion(0.05f);
             floatingTextPrefab.GetComponent<TextMesh>().fontSize = 70;
         }
