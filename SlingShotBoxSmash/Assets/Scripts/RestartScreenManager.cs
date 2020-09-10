@@ -10,6 +10,8 @@ public class RestartScreenManager : MonoBehaviour
     public float moneyEarnedBaseScore = 0;
     public float delay = 0.005f;
     public int moneyBaseMultiplier = 2;
+    public AdsManager adManager;
+    public static bool playerRewarded = false;
 
     private void Start()
     {
@@ -40,6 +42,7 @@ public class RestartScreenManager : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        playerRewarded = false;
     }
 
     public void DeletePrefs()
@@ -50,6 +53,18 @@ public class RestartScreenManager : MonoBehaviour
     public void ReturnHome()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
+    }
+
+    public void ShowRewardAd()
+    {
+        adManager.ShowRewardAd();
+        
+    }
+
+    public void DisableAdButton()
+    {
+        GameObject.Find("AdButton").SetActive(false);
+
     }
 
 }
