@@ -54,7 +54,7 @@ public class MainMenu : MonoBehaviour
 
     public void SetShopCurrency()
     {
-        GameObject.Find("CurrencyText").GetComponent<Text>().text = $"${PlayerPrefs.GetInt("NormalCurrency")}";
+        GameObject.Find("CurrencyText").GetComponent<Text>().text = $"〄{PlayerPrefs.GetInt("NormalCurrency")}";
     }
 
 }

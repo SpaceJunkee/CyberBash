@@ -6,12 +6,38 @@ using UnityEngine.UI;
 
 public class RestartScreenManager : MonoBehaviour
 {
+
+    public float moneyEarnedBaseScore = 0;
+    public float delay = 0.005f;
+    public int moneyBaseMultiplier = 2;
+
     private void Start()
     {
-        GameObject.Find("HighScore").GetComponent<Text>().text = $"HighScore\n{PlayerPrefs.GetInt("HighScore")}";
-        GameObject.Find("SpecialCurrencyText").GetComponent<Text>().text = $"Gems\n{PlayerPrefs.GetInt("SpecialCurrency")}";
-        GameObject.Find("NormalCurrencyText").GetComponent<Text>().text = $"Money\n${PlayerPrefs.GetInt("NormalCurrency")}";
-        GameObject.Find("MoneyEarnedText").GetComponent<Text>().text = $"$ {PlayerPrefs.GetInt("MoneyEarned")}";
+        StartCoroutine(CountUpToTarget());
+        GameObject.Find("HighScore").GetComponent<Text>().text = $"High Score\n{PlayerPrefs.GetInt("HighScore")}";
+        //GameObject.Find("SpecialCurrencyText").GetComponent<Text>().text = $"Gems\n{PlayerPrefs.GetInt("SpecialCurrency")}";
+        // GameObject.Find("NormalCurrencyText").GetComponent<Text>().text = $"〄{PlayerPrefs.GetInt("NormalCurrency")}";
+
+    }
+
+    IEnumerator CountUpToTarget()
+    {
+        while (moneyEarnedBaseScore < PlayerPrefs.GetInt("MoneyEarned"))
+        {
+            if(moneyEarnedBaseScore > 25 && moneyEarnedBaseScore < 1000)
+            {
+                delay = 0.005f;
+            }
+            else if(moneyEarnedBaseScore > 1000)
+            {
+                moneyBaseMultiplier += 1;
+            }
+
+            moneyEarnedBaseScore += moneyBaseMultiplier; 
+            moneyEarnedBaseScore = Mathf.Clamp(moneyEarnedBaseScore, 0f, PlayerPrefs.GetInt("MoneyEarned"));
+            GameObject.Find("MoneyEarnedText").GetComponent<Text>().text = "〄" + moneyEarnedBaseScore + "";
+            yield return new WaitForSeconds(delay);
+        }
     }
 
     public void RestartGame()
