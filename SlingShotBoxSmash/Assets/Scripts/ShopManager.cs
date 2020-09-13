@@ -1,33 +1,75 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
-    public int firstTierPrice = 1000;
-    public int secondTierPrice = 5000;
-    public int thirdTierPrice = 10000;
-    public void BuyFirstTierUpgrade()
+    public bool hasBeenBought = false;
+    string prefUpgrade = "";
+
+    private void Start()
     {
-        if(PlayerPrefs.GetInt("NormalCurrency") > firstTierPrice)
+        if(PlayerPrefs.GetInt("AbilityTile1") == 1)
         {
-            //Apply upgrade and remove money
+            DisableTile("AbilityTile1");
+        }
+
+        if(PlayerPrefs.GetInt("AbilityTile2") == 1)
+        {
+            DisableTile("AbilityTile2");
+        }
+
+        if (PlayerPrefs.GetInt("AbilityTile3") == 1)
+        {
+            DisableTile("AbilityTile3");
+        }
+
+        if (PlayerPrefs.GetInt("AbilityTile4") == 1)
+        {
+            DisableTile("AbilityTile4");
+        }
+
+        if (PlayerPrefs.GetInt("AbilityTile5") == 1)
+        {
+            DisableTile("AbilityTile5");
         }
     }
 
-    public void BuySecondTierUpgrade()
+    public void BuyUpgrade(int price)
     {
-        if (PlayerPrefs.GetInt("NormalCurrency") > secondTierPrice)
+        if(PlayerPrefs.GetInt("NormalCurrency") >= price && hasBeenBought != true)
         {
-            //Apply upgrade and remove money
+            hasBeenBought = true;
+            PlayerPrefs.SetInt("NormalCurrency", PlayerPrefs.GetInt("NormalCurrency") - price);
+            GameObject.Find("CurrencyText").GetComponent<Text>().text = $"〄{PlayerPrefs.GetInt("NormalCurrency")}";
+            SaveBuyingStatus(prefUpgrade);
         }
     }
 
-    public void BuyThirdTierUpgrade()
+    public void SaveBuyingStatus(string prefUpgrade)
     {
-        if (PlayerPrefs.GetInt("NormalCurrency") > thirdTierPrice)
+        if (hasBeenBought)
         {
-            //Apply upgrade and remove money
+            GameObject.Find(prefUpgrade).GetComponent<Image>().enabled = false;
+            GameObject.Find(prefUpgrade).GetComponentInChildren<Text>().enabled = false;
+            GameObject.Find(prefUpgrade).GetComponent<Button>().enabled = false;
+            PlayerPrefs.SetInt(prefUpgrade, 1);
         }
+        
+        hasBeenBought = false;
     }
+
+    public void setPrefUpgradeString(string prefUpgradeParam)
+    {
+        prefUpgrade = prefUpgradeParam;
+    }
+
+    public void DisableTile(string tileName)
+    {
+        GameObject.Find(tileName).GetComponent<Image>().enabled = false;
+        GameObject.Find(tileName).GetComponentInChildren<Text>().enabled = false;
+        GameObject.Find(tileName).GetComponent<Button>().enabled = false;
+    }
+
 }

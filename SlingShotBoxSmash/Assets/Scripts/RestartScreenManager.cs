@@ -63,7 +63,7 @@ public class RestartScreenManager : MonoBehaviour
 
     public void DisableAdButton()
     {
-        GameObject.Find("AdButton").SetActive(false);
+        
 
     }
 

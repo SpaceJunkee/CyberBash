@@ -21,7 +21,9 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
             yield return null;
         }
 
-        
+        GameObject.Find("AdButton").SetActive(true);
+
+
     }
 
     public void ShowRewardAd()
@@ -38,13 +40,15 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
         {          
             GameObject.Find("MoneyEarnedText").GetComponent<Text>().text = "〄" + PlayerPrefs.GetInt("MoneyEarned") * 2 + "";
             PlayerPrefs.SetInt("NormalCurrency", normalCurrency + moneyEarned);
+            GameObject.Find("AdButton").GetComponent<Button>().enabled = false;
+            GameObject.Find("AdButton").GetComponent<Image>().enabled = false;
+            GameObject.Find("AdButton").GetComponentInChildren<Text>().enabled = false;
         }
         else if (showResult == ShowResult.Failed)
         {
             // :(
         }
-
-        RestartScreenManager.playerRewarded = false;
+        
     }
 
     public void OnUnityAdsDidError(string message)
