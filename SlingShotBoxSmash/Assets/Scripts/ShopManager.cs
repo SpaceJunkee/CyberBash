@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
@@ -12,7 +13,14 @@ public class ShopManager : MonoBehaviour
     {
         if(PlayerPrefs.GetInt("AbilityTile1") == 1)
         {
+            ScoreDisplay.scoreMultiplier = 2;
+            ScoreDisplay.scoreMultiplierIncreaser = 2;
             DisableTile("AbilityTile1");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("ScoreMultiplier", 1);
+            PlayerPrefs.SetInt("scoreMultiplierIncreaser", 1);
         }
 
         if(PlayerPrefs.GetInt("AbilityTile2") == 1)
@@ -38,12 +46,18 @@ public class ShopManager : MonoBehaviour
 
     public void BuyUpgrade(int price)
     {
-        if(PlayerPrefs.GetInt("NormalCurrency") >= price && hasBeenBought != true)
+        if (PlayerPrefs.GetInt("NormalCurrency") >= price && hasBeenBought != true)
         {
             hasBeenBought = true;
             PlayerPrefs.SetInt("NormalCurrency", PlayerPrefs.GetInt("NormalCurrency") - price);
             GameObject.Find("CurrencyText").GetComponent<Text>().text = $"〄{PlayerPrefs.GetInt("NormalCurrency")}";
             SaveBuyingStatus(prefUpgrade);
+
+            if(EventSystem.current.currentSelectedGameObject.name == "AbilityTile1")
+            {
+                ScoreDisplay.scoreMultiplier = 2;
+                ScoreDisplay.scoreMultiplierIncreaser = 2;
+            }
         }
     }
 
@@ -71,5 +85,6 @@ public class ShopManager : MonoBehaviour
         GameObject.Find(tileName).GetComponentInChildren<Text>().enabled = false;
         GameObject.Find(tileName).GetComponent<Button>().enabled = false;
     }
+
 
 }

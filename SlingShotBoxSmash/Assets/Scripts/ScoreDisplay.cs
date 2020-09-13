@@ -10,6 +10,7 @@ public class ScoreDisplay : MonoBehaviour
     public Text scoreMultiplierText;
     public static int score = 0;
     public static int scoreMultiplier = 1;
+    public static int scoreMultiplierIncreaser = 1;
     public static int multiplierGoal = 50;
 
     public static int highScore;
