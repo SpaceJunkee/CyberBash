@@ -29,7 +29,7 @@ public class NormalObstacle : MonoBehaviour
         
         if (ScoreDisplay.score >= ScoreDisplay.multiplierGoal)
         {
-            ScoreDisplay.scoreMultiplier++;
+            ScoreDisplay.scoreMultiplier += ScoreDisplay.scoreMultiplierIncreaser;
             scoreTextPop.scoreMultiplierText.fontSize = 70;
             ScoreDisplay.multiplierGoal *= 3;
         }

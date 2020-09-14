@@ -1,4 +1,5 @@
 ﻿
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -12,11 +13,13 @@ public class MainMenu : MonoBehaviour
     private ChromaticAberration ca;
     public AudioSource audio;
     public static int menuMusicPlaying = 0;
+    public Animator transition;
+
     private void Start()
     {
         menuMusicPlaying++;
 
-        if (menuMusicPlaying > 2)
+        if (menuMusicPlaying > 2 && audio!= null)
         {
             audio.Stop();
         }
@@ -24,6 +27,15 @@ public class MainMenu : MonoBehaviour
     }
     public void PlayGame()
     {
+        StartCoroutine(LoadLevel());       
+    }
+
+    IEnumerator LoadLevel()
+    {
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSeconds(1f);
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

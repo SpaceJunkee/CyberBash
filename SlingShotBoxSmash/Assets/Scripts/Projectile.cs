@@ -37,17 +37,17 @@ public class Projectile : MonoBehaviour
         Destroy(newDeathEffect, 2);
     }
     private void PlayDeathSound()
-    {
-        
+    {       
         GameObject.Find("ProjectileEndSound").GetComponent<AudioSource>().Play();    
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
         if (collision.gameObject.tag.Equals("Bomb"))
         {
             Destroy(gameObject);
         }
     }
+  
+
 }

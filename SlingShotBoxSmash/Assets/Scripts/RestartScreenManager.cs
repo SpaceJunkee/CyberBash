@@ -10,25 +10,24 @@ public class RestartScreenManager : MonoBehaviour
     public float moneyEarnedBaseScore = 0;
     public float delay = 0.005f;
     public int moneyBaseMultiplier = 2;
+    public AdsManager adManager;
+    public static bool playerRewarded = false;
 
     private void Start()
     {
         StartCoroutine(CountUpToTarget());
         GameObject.Find("HighScore").GetComponent<Text>().text = $"High Score\n{PlayerPrefs.GetInt("HighScore")}";
-        //GameObject.Find("SpecialCurrencyText").GetComponent<Text>().text = $"Gems\n{PlayerPrefs.GetInt("SpecialCurrency")}";
-        // GameObject.Find("NormalCurrencyText").GetComponent<Text>().text = $"〄{PlayerPrefs.GetInt("NormalCurrency")}";
-
     }
 
     IEnumerator CountUpToTarget()
     {
         while (moneyEarnedBaseScore < PlayerPrefs.GetInt("MoneyEarned"))
         {
-            if(moneyEarnedBaseScore > 25 && moneyEarnedBaseScore < 1000)
+            if(moneyEarnedBaseScore > 25 && moneyEarnedBaseScore < 500)
             {
                 delay = 0.005f;
             }
-            else if(moneyEarnedBaseScore > 1000)
+            else if(moneyEarnedBaseScore > 500)
             {
                 moneyBaseMultiplier += 1;
             }
@@ -43,6 +42,7 @@ public class RestartScreenManager : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        playerRewarded = false;
     }
 
     public void DeletePrefs()
@@ -53,6 +53,18 @@ public class RestartScreenManager : MonoBehaviour
     public void ReturnHome()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
+    }
+
+    public void ShowRewardAd()
+    {
+        adManager.ShowRewardAd();
+        
+    }
+
+    public void DisableAdButton()
+    {
+        
+
     }
 
 }
