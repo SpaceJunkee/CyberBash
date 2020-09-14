@@ -15,6 +15,8 @@ public class ScoreDisplay : MonoBehaviour
 
     public static int highScore;
 
+    public static int moneyBagsDrops = 0;
+
     private void Start()
     {
         highScore = PlayerPrefs.GetInt("HighScore");

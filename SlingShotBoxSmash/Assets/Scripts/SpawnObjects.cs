@@ -29,6 +29,7 @@ public class SpawnObjects : MonoBehaviour
     public int greenGuyCount = 1;
     public static bool hasFirstBombGoneOff = false;
     public static bool hasBombGoBoom = false;
+    public bool hasMoneyBagsSpawned = false;
 
     public GameObject normalObstaclePrefab;
     public GameObject doublePointPrefab;
@@ -37,6 +38,7 @@ public class SpawnObjects : MonoBehaviour
     public GameObject bossBombPrefab;
     public GameObject greenGuyPrefab;
     public GameObject squareHeadPrefab;
+    public GameObject moneyBagPrefab;
 
     public Text bombGoalText;
     public Text bossGoalText;
@@ -226,6 +228,15 @@ public class SpawnObjects : MonoBehaviour
         {
             Vector2 position = center + new Vector2(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2));
             Instantiate(greenGuyPrefab, position, Quaternion.identity);
+        }
+    }
+
+    public void SpawnMoneyBag(int spawnRate)
+    {
+        for (int i = 0; i < spawnRate; i++)
+        {
+            Vector2 position = center + new Vector2(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2));
+            Instantiate(moneyBagPrefab, position, Quaternion.Euler(0,0,-45));
         }
     }
 

@@ -2948,7 +2948,7 @@ Transform:
   - {fileID: 1039535684}
   - {fileID: 173992312}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &829975036
 MonoBehaviour:
@@ -4010,6 +4010,7 @@ MonoBehaviour:
   squareHeadGoal: 5000
   squareHeadMultiplier: 1
   greenGuyCount: 1
+  hasMoneyBagsSpawned: 0
   normalObstaclePrefab: {fileID: 1845430362422084132, guid: b1fe58e24ff024441a3505354b447c02,
     type: 3}
   doublePointPrefab: {fileID: 5701224675419248475, guid: 9a9cadc9f9dbca44d81b88a9ac5969b4,
@@ -4023,6 +4024,8 @@ MonoBehaviour:
   greenGuyPrefab: {fileID: 2495951086398163937, guid: 15c584af3e700e44db2ed5f0441fbdd1,
     type: 3}
   squareHeadPrefab: {fileID: 7515559436649452824, guid: 3d20d5b7ede46e14fb74e0ebc886c63b,
+    type: 3}
+  moneyBagPrefab: {fileID: 1108445330058410996, guid: d0f8f3085be024c43aba8e93fc7b6fe7,
     type: 3}
   bombGoalText: {fileID: 835305972}
   bossGoalText: {fileID: 1213201875}
@@ -5204,7 +5207,7 @@ PrefabInstance:
     - target: {fileID: 6463566364921291032, guid: 2defe903ddb9ed545a6fc47571f6425a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6463566364921291032, guid: 2defe903ddb9ed545a6fc47571f6425a,
         type: 3}

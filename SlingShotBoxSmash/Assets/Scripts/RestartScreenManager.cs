@@ -23,11 +23,11 @@ public class RestartScreenManager : MonoBehaviour
     {
         while (moneyEarnedBaseScore < PlayerPrefs.GetInt("MoneyEarned"))
         {
-            if(moneyEarnedBaseScore > 25 && moneyEarnedBaseScore < 1000)
+            if(moneyEarnedBaseScore > 25 && moneyEarnedBaseScore < 500)
             {
                 delay = 0.005f;
             }
-            else if(moneyEarnedBaseScore > 1000)
+            else if(moneyEarnedBaseScore > 500)
             {
                 moneyBaseMultiplier += 1;
             }

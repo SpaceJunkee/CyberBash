@@ -14,11 +14,12 @@ public class MainMenu : MonoBehaviour
     public AudioSource audio;
     public static int menuMusicPlaying = 0;
     public Animator transition;
+
     private void Start()
     {
         menuMusicPlaying++;
 
-        if (menuMusicPlaying > 2)
+        if (menuMusicPlaying > 2 && audio!= null)
         {
             audio.Stop();
         }

@@ -13,6 +13,7 @@ public class DeathRestart : MonoBehaviour
     GameObject[] musicObject;
     public AudioSource audio;
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (gameObject.tag.Equals("Lava") && SlingShot.isHeldDown)
@@ -69,7 +70,7 @@ public class DeathRestart : MonoBehaviour
     public void RestartGame()
     {
         PlayerPrefs.SetInt("NormalCurrency", PlayerPrefs.GetInt("NormalCurrency") + Mathf.RoundToInt(ScoreDisplay.score) / 10);
-        PlayerPrefs.SetInt("MoneyEarned", Mathf.RoundToInt(ScoreDisplay.score) / 10);
+        PlayerPrefs.SetInt("MoneyEarned", Mathf.RoundToInt(ScoreDisplay.score) / 10 + ScoreDisplay.moneyBagsDrops);
         GameObject music = GameObject.Find("Music");
         SlingShot.isDead = false;
         playerBig.GetComponent<TrailRenderer>().enabled = true;
