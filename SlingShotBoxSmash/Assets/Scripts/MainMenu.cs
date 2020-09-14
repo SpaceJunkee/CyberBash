@@ -27,6 +27,8 @@ public class MainMenu : MonoBehaviour
     }
     public void PlayGame()
     {
+        HandleAbilityTiles();
+
         StartCoroutine(LoadLevel());       
     }
 
@@ -68,5 +70,60 @@ public class MainMenu : MonoBehaviour
     {
         GameObject.Find("CurrencyText").GetComponent<Text>().text = $"〄{PlayerPrefs.GetInt("NormalCurrency")}";
     }
+    public void HandleAbilityTiles()
+    {
+        if (PlayerPrefs.GetInt("AbilityTile1") == 1)
+        {
+            ShieldWallBounce.isShieldActive = true;
+        }
+
+        if (PlayerPrefs.GetInt("AbilityTile2") == 1)
+        {
+
+        }
+
+        if (PlayerPrefs.GetInt("AbilityTile3") == 1)
+        {
+            ScoreDisplay.scoreMultiplier = 2;
+            ScoreDisplay.scoreMultiplierIncreaser = 2;
+
+        }
+
+        if (PlayerPrefs.GetInt("AbilityTile4") == 1)
+        {
+
+        }
+
+        if (PlayerPrefs.GetInt("AbilityTile5") == 1)
+        {
+
+        }
+
+        if (PlayerPrefs.GetInt("AbilityTile6") == 1)
+        {
+
+        }
+
+        if (PlayerPrefs.GetInt("AbilityTile7") == 1)
+        {
+
+        }
+
+        if (PlayerPrefs.GetInt("AbilityTile8") == 1)
+        {
+
+        }
+
+        if (PlayerPrefs.GetInt("AbilityTile9") == 1)
+        {
+
+        }
+
+        if (PlayerPrefs.GetInt("AbilityTile10") == 1)
+        {
+
+        }
+    }
+
 
 }

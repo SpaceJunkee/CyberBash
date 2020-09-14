@@ -10,16 +10,30 @@ public class ShieldWallBounce : MonoBehaviour
     private bool hasLeftShieldBeenHit = false;
     private bool hasRightShieldBeenHit = false;
 
+    public static bool isShieldActive = false;
+
+    private void Start()
+    {
+        if (isShieldActive)
+        {
+            GameObject.Find("Shields").SetActive(true);
+        }
+        else
+        {
+            GameObject.Find("Shields").SetActive(false);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.gameObject.tag.Equals("Player") && SlingShot.isHeldDown)
+        if (collision.gameObject.tag.Equals("Player") && SlingShot.isHeldDown && isShieldActive)
         {
 
         }
         else 
         {
-            if (collision.gameObject.tag.Equals("Player")){
+            if (collision.gameObject.tag.Equals("Player") && isShieldActive){
                 
                 gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 gameObject.GetComponent<BoxCollider2D>().enabled = false;
@@ -121,22 +135,26 @@ public class ShieldWallBounce : MonoBehaviour
 
     public void ResetShields()
     {
-        gameObject.GetComponent<SpriteRenderer>().enabled = true;
-        gameObject.GetComponent<BoxCollider2D>().enabled = true;
+        if (isShieldActive)
+        {
+            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            gameObject.GetComponent<BoxCollider2D>().enabled = true;
 
-        GameObject.Find("ShieldBounceBottom").GetComponent<BoxCollider2D>().enabled = true;
-        GameObject.Find("ShieldBounceLeft").GetComponent<BoxCollider2D>().enabled = true;
-        GameObject.Find("ShieldBounceRight").GetComponent<BoxCollider2D>().enabled = true;
-        GameObject.Find("ShieldBounceTop").GetComponent<BoxCollider2D>().enabled = true;
+            GameObject.Find("ShieldBounceBottom").GetComponent<BoxCollider2D>().enabled = true;
+            GameObject.Find("ShieldBounceLeft").GetComponent<BoxCollider2D>().enabled = true;
+            GameObject.Find("ShieldBounceRight").GetComponent<BoxCollider2D>().enabled = true;
+            GameObject.Find("ShieldBounceTop").GetComponent<BoxCollider2D>().enabled = true;
 
-        GameObject.Find("ShieldBounceBottom").GetComponent<BoxCollider2D>().isTrigger = true;
-        GameObject.Find("ShieldBounceLeft").GetComponent<BoxCollider2D>().isTrigger = true;
-        GameObject.Find("ShieldBounceRight").GetComponent<BoxCollider2D>().isTrigger = true;
-        GameObject.Find("ShieldBounceTop").GetComponent<BoxCollider2D>().isTrigger = true;
+            GameObject.Find("ShieldBounceBottom").GetComponent<BoxCollider2D>().isTrigger = true;
+            GameObject.Find("ShieldBounceLeft").GetComponent<BoxCollider2D>().isTrigger = true;
+            GameObject.Find("ShieldBounceRight").GetComponent<BoxCollider2D>().isTrigger = true;
+            GameObject.Find("ShieldBounceTop").GetComponent<BoxCollider2D>().isTrigger = true;
 
-        hasTopShieldBeenHit = false;
-        hasBottomShieldBeenHit = false;
-        hasLeftShieldBeenHit = false;
-        hasRightShieldBeenHit = false;
-}
+            hasTopShieldBeenHit = false;
+            hasBottomShieldBeenHit = false;
+            hasLeftShieldBeenHit = false;
+            hasRightShieldBeenHit = false;
+        }
+        
+    }
 }

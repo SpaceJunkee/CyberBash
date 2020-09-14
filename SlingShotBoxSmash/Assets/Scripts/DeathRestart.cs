@@ -89,7 +89,18 @@ public class DeathRestart : MonoBehaviour
     {
         SpawnObjects.hasFirstBombGoneOff = false;
         ScoreDisplay.score = 0;
-        ScoreDisplay.scoreMultiplier = 1;
+
+        if (PlayerPrefs.GetInt("AbilityTile3") == 1)
+        {
+            ScoreDisplay.scoreMultiplier = 2;
+            ScoreDisplay.scoreMultiplierIncreaser = 2;
+        }
+        else
+        {
+            ScoreDisplay.scoreMultiplier = 1;
+            ScoreDisplay.scoreMultiplierIncreaser = 1;
+        }
+
         ScoreDisplay.multiplierGoal = 50;
         Destroy(GameObject.FindGameObjectWithTag("Projectile"));
 

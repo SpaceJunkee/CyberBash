@@ -11,7 +11,7 @@ public class ShopManager : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.SetInt("NormalCurrency", 99999999);
+        PlayerPrefs.SetInt("NormalCurrency", 999999);
 
         if(this.gameObject.name == "ShopMenuDisplay1")
         {
@@ -34,11 +34,6 @@ public class ShopManager : MonoBehaviour
             GameObject.Find("CurrencyText").GetComponent<Text>().text = $"〄{PlayerPrefs.GetInt("NormalCurrency")}";
             SaveBuyingStatus(prefUpgrade);
 
-            if(EventSystem.current.currentSelectedGameObject.name == "AbilityTile1")
-            {
-                ScoreDisplay.scoreMultiplier = 2;
-                ScoreDisplay.scoreMultiplierIncreaser = 2;
-            }
         }
     }
 
@@ -71,23 +66,20 @@ public class ShopManager : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("AbilityTile1") == 1)
         {
-            ScoreDisplay.scoreMultiplier = 2;
-            ScoreDisplay.scoreMultiplierIncreaser = 2;
+            ShieldWallBounce.isShieldActive = true;
             DisableTile("AbilityTile1");
-        }
-        else
-        {
-            PlayerPrefs.SetInt("ScoreMultiplier", 1);
-            PlayerPrefs.SetInt("scoreMultiplierIncreaser", 1);
         }
 
         if (PlayerPrefs.GetInt("AbilityTile2") == 1)
         {
+
             DisableTile("AbilityTile2");
         }
 
         if (PlayerPrefs.GetInt("AbilityTile3") == 1)
         {
+            ScoreDisplay.scoreMultiplier = 2;
+            ScoreDisplay.scoreMultiplierIncreaser = 2;
             DisableTile("AbilityTile3");
         }
 
