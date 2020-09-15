@@ -40,6 +40,14 @@ public class NormalObstacle : MonoBehaviour
             ScoreDisplay.score += 5;
         }
 
+        if (collision.gameObject.tag.Equals("OrbBullet"))
+        { 
+            ScoreDisplay.score += ComboHandler.normalScoreValue * ScoreDisplay.scoreMultiplier;
+            scoreTextPop.scoreText.fontSize = 100;
+            Die();
+            Destroy(collision.gameObject);
+        }
+
         if (collision.gameObject.tag.Equals("Player"))
         {
             if (!SlingShot.isHeldDown)

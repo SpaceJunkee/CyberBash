@@ -19,6 +19,7 @@ TagManager:
   - HitPoint
   - Shield
   - PlayerShieldTrigger
+  - OrbBullet
   layers:
   - Default
   - TransparentFX
@@ -29,9 +30,9 @@ TagManager:
   - 
   - 
   - Lava
-  - 
-  - 
-  - 
+  - OrbBullet
+  - Player
+  - Box
   - 
   - 
   - 

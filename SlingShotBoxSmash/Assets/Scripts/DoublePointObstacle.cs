@@ -36,6 +36,14 @@ public class DoublePointObstacle : MonoBehaviour
             ScoreDisplay.score += 10;
         }
 
+        if (collision.gameObject.tag.Equals("OrbBullet"))
+        {
+            ScoreDisplay.score += ComboHandler.doubleScoreValue * ScoreDisplay.scoreMultiplier;
+            scoreTextPop.scoreText.fontSize = 100;
+            Die();
+            Destroy(collision.gameObject);
+        }
+
         if (collision.gameObject.tag.Equals("Player"))
         {
             if (!SlingShot.isHeldDown)

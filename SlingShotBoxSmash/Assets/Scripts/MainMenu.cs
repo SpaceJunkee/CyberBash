@@ -101,12 +101,12 @@ public class MainMenu : MonoBehaviour
 
         if (PlayerPrefs.GetInt("AbilityTile6") == 1)
         {
-
+            
         }
 
         if (PlayerPrefs.GetInt("AbilityTile7") == 1)
         {
-
+            LaunchPlayerProjectiles.hasPlayerProjectileBeenBought = true;
         }
 
         if (PlayerPrefs.GetInt("AbilityTile8") == 1)

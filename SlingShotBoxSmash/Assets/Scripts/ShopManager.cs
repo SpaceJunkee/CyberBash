@@ -96,11 +96,13 @@ public class ShopManager : MonoBehaviour
 
         if (PlayerPrefs.GetInt("AbilityTile6") == 1)
         {
+            
             DisableTile("AbilityTile6");
         }
 
         if (PlayerPrefs.GetInt("AbilityTile7") == 1)
         {
+            LaunchPlayerProjectiles.hasPlayerProjectileBeenBought = true;
             DisableTile("AbilityTile7");
         }
 
