@@ -79,13 +79,13 @@ public class MainMenu : MonoBehaviour
 
         if (PlayerPrefs.GetInt("AbilityTile2") == 1)
         {
-
+            SpawnObjects.isMoneyBagUnlocked = true;
         }
 
         if (PlayerPrefs.GetInt("AbilityTile3") == 1)
         {
-            ScoreDisplay.scoreMultiplier = 2;
-            ScoreDisplay.scoreMultiplierIncreaser = 2;
+            ScoreDisplay.scoreMultiplier = 4;
+            ScoreDisplay.scoreMultiplierIncreaser = 1;
 
         }
 

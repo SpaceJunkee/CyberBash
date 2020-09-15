@@ -4009,8 +4009,8 @@ MonoBehaviour:
   bombPointGoal: 1000
   squareHeadGoal: 5000
   squareHeadMultiplier: 1
+  comboHitMultiplier: 1
   greenGuyCount: 1
-  hasMoneyBagsSpawned: 0
   normalObstaclePrefab: {fileID: 1845430362422084132, guid: b1fe58e24ff024441a3505354b447c02,
     type: 3}
   doublePointPrefab: {fileID: 5701224675419248475, guid: 9a9cadc9f9dbca44d81b88a9ac5969b4,
@@ -4025,7 +4025,7 @@ MonoBehaviour:
     type: 3}
   squareHeadPrefab: {fileID: 7515559436649452824, guid: 3d20d5b7ede46e14fb74e0ebc886c63b,
     type: 3}
-  moneyBagPrefab: {fileID: 1108445330058410996, guid: d0f8f3085be024c43aba8e93fc7b6fe7,
+  moneyBagPrefab: {fileID: 3471652806730214928, guid: d0f8f3085be024c43aba8e93fc7b6fe7,
     type: 3}
   bombGoalText: {fileID: 835305972}
   bossGoalText: {fileID: 1213201875}

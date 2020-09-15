@@ -72,14 +72,14 @@ public class ShopManager : MonoBehaviour
 
         if (PlayerPrefs.GetInt("AbilityTile2") == 1)
         {
-
+            SpawnObjects.isMoneyBagUnlocked = true;
             DisableTile("AbilityTile2");
         }
 
         if (PlayerPrefs.GetInt("AbilityTile3") == 1)
         {
-            ScoreDisplay.scoreMultiplier = 2;
-            ScoreDisplay.scoreMultiplierIncreaser = 2;
+            ScoreDisplay.scoreMultiplier = 4;
+            ScoreDisplay.scoreMultiplierIncreaser = 1;
             DisableTile("AbilityTile3");
         }
 
@@ -90,6 +90,7 @@ public class ShopManager : MonoBehaviour
 
         if (PlayerPrefs.GetInt("AbilityTile5") == 1)
         {
+
             DisableTile("AbilityTile5");
         }
 

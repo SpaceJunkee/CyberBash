@@ -53,7 +53,7 @@ public class MoneyBags : MonoBehaviour
 
             boxBreakAudio.Play();
            
-            ShowFloatingText(moneyBagsValue, new Color32(255, 0, 194, 255));
+            ShowFloatingText(moneyBagsValue, new Color32(9, 0, 7, 255));
 
             scoreTextPop.scoreText.fontSize = 100;
 
@@ -82,7 +82,6 @@ public class MoneyBags : MonoBehaviour
 
     private void ShowFloatingText(int hitScore, Color32 color)
     {
-        IncreaseComboFloatScoreSize();
         var go = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity);
         go.GetComponent<TextMesh>().text = hitScore.ToString();
         go.GetComponent<TextMesh>().color = color;
@@ -91,6 +90,9 @@ public class MoneyBags : MonoBehaviour
     private void DisableObject()
     {
         SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>();
+        ParticleSystem particleSystem = GetComponent<ParticleSystem>();
+
+        particleSystem.Stop();
         foreach (SpriteRenderer sr in renderers)
             sr.enabled = false;
 
@@ -98,56 +100,4 @@ public class MoneyBags : MonoBehaviour
         this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
     }
 
-    private void IncreaseComboFloatScoreSize()
-    {
-
-        if (ComboHandler.hitCount < 2)
-        {
-            boxBreakAudio.clip = combo1SoundNormal;
-            boxBreakAudio.Play();
-            comboSlowMo = 1f;
-            floatingTextPrefab.GetComponent<TextMesh>().fontSize = 20;
-        }
-        else if (ComboHandler.hitCount == 2)
-        {
-            boxBreakAudio.clip = combo2SoundNormal;
-            boxBreakAudio.Play();
-            comboSlowMo = 1f;
-            floatingTextPrefab.GetComponent<TextMesh>().fontSize = 30;
-        }
-        else if (ComboHandler.hitCount == 3)
-        {
-            boxBreakAudio.clip = combo3SoundNormal;
-            boxBreakAudio.Play();
-            comboSlowMo = 2.25f;
-            timeManager.StartSlowMotion(0.2f);
-            floatingTextPrefab.GetComponent<TextMesh>().fontSize = 40;
-        }
-        else if (ComboHandler.hitCount == 4)
-        {
-            boxBreakAudio.clip = combo4SoundNormal;
-            boxBreakAudio.Play();
-            comboSlowMo = 4.5f;
-            timeManager.StartSlowMotion(0.1f);
-            floatingTextPrefab.GetComponent<TextMesh>().fontSize = 50;
-        }
-        else if (ComboHandler.hitCount == 5)
-        {
-            boxBreakAudio.clip = combo5SoundNormal;
-            boxBreakAudio.Play();
-            comboSlowMo = 6f;
-            timeManager.StartSlowMotion(0.07f);
-            floatingTextPrefab.GetComponent<TextMesh>().fontSize = 60;
-        }
-        else if (ComboHandler.hitCount >= 6)
-        {
-            boxBreakAudio.clip = combo5SoundNormal;
-            boxBreakAudio.Play();
-            comboSlowMo = 6.75f;
-            timeManager.StartSlowMotion(0.05f);
-            floatingTextPrefab.GetComponent<TextMesh>().fontSize = 70;
-        }
-
-
-    }
 }

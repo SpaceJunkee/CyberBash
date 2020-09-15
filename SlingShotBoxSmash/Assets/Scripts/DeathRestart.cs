@@ -92,8 +92,8 @@ public class DeathRestart : MonoBehaviour
 
         if (PlayerPrefs.GetInt("AbilityTile3") == 1)
         {
-            ScoreDisplay.scoreMultiplier = 2;
-            ScoreDisplay.scoreMultiplierIncreaser = 2;
+            ScoreDisplay.scoreMultiplier = 4;
+            ScoreDisplay.scoreMultiplierIncreaser = 1;
         }
         else
         {
