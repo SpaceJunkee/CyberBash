@@ -18,7 +18,7 @@ public class ShieldWallBounce : MonoBehaviour
         {
             GameObject.Find("Shields").SetActive(true);
         }
-        else
+        else if(isShieldActive == false)
         {
             GameObject.Find("Shields").SetActive(false);
         }

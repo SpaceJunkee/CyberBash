@@ -86,7 +86,6 @@ public class MainMenu : MonoBehaviour
         {
             ScoreDisplay.scoreMultiplier = 4;
             ScoreDisplay.scoreMultiplierIncreaser = 1;
-
         }
 
         if (PlayerPrefs.GetInt("AbilityTile4") == 1)

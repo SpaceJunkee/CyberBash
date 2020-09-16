@@ -11,7 +11,6 @@ public class ShopManager : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.SetInt("NormalCurrency", 999999);
 
         if(this.gameObject.name == "ShopMenuDisplay1")
         {
