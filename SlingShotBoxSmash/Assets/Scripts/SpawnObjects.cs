@@ -7,6 +7,7 @@ public class SpawnObjects : MonoBehaviour
 {
     public TimeManager timeManager;
     public ShieldWallBounce[] shieldWalls;
+    public GreenOrbShield greenOrbShield;
 
     public Vector2 center;
     public Vector2 size;
@@ -211,6 +212,11 @@ public class SpawnObjects : MonoBehaviour
             shield.ResetShields();
         }
 
+        if (GreenOrbShield.hasGreenShieldBeenBought)
+        {
+            greenOrbShield.ResetGreenOrbShield();
+        }
+        
         timeManager.StartSlowMotion(0.05f);
         timeManager.Invoke("StopSlowMotion", 2f);
         DisableIncomingText(incomingBombText);

@@ -11,7 +11,7 @@ public class ShopManager : MonoBehaviour
 
     private void Start()
     {
-
+        PlayerPrefs.SetInt("NormalCurrency", 100000);
         if(this.gameObject.name == "ShopMenuDisplay1")
         {
             HandleAbilityTiles();         
@@ -95,7 +95,7 @@ public class ShopManager : MonoBehaviour
 
         if (PlayerPrefs.GetInt("AbilityTile6") == 1)
         {
-            
+            GreenOrbShield.hasGreenShieldBeenBought = true;
             DisableTile("AbilityTile6");
         }
 

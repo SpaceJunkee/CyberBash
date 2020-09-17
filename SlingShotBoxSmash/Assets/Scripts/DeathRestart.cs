@@ -13,7 +13,17 @@ public class DeathRestart : MonoBehaviour
     GameObject[] musicObject;
     public AudioSource audio;
 
-
+    private void Update()
+    {
+        if (this.gameObject.tag.Equals("Projectile") && GreenOrbShield.isGreenShieldActive == true)
+        {
+            GameObject.FindGameObjectWithTag("Projectile").GetComponent<CircleCollider2D>().isTrigger = false;
+        }
+        else if(this.gameObject.tag.Equals("Projectile") && GreenOrbShield.isGreenShieldActive == false)
+        {
+            GameObject.FindGameObjectWithTag("Projectile").GetComponent<CircleCollider2D>().isTrigger = true;
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (gameObject.tag.Equals("Lava") && SlingShot.isHeldDown)
@@ -24,7 +34,7 @@ public class DeathRestart : MonoBehaviour
         {
             if (collision.gameObject.tag.Equals("Player"))
             {
-                GameObject.Find("PlayerDeathSound").GetComponent<AudioSource>().Play();              
+                GameObject.Find("PlayerDeathSound").GetComponent<AudioSource>().Play();
                 Destroy(collision.gameObject);
                 DestroyPlayer();
                 SlingShot.isHeldDown = false;
@@ -89,6 +99,13 @@ public class DeathRestart : MonoBehaviour
     {
         SpawnObjects.hasFirstBombGoneOff = false;
         ScoreDisplay.score = 0;
+
+        if(GreenOrbShield.hasGreenShieldBeenBought == true)
+        {
+            GreenOrbShield.isGreenShieldActive = true;
+        }
+        
+
 
         if (PlayerPrefs.GetInt("AbilityTile3") == 1)
         {

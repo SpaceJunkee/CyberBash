@@ -100,7 +100,7 @@ public class MainMenu : MonoBehaviour
 
         if (PlayerPrefs.GetInt("AbilityTile6") == 1)
         {
-            
+            GreenOrbShield.hasGreenShieldBeenBought = true;
         }
 
         if (PlayerPrefs.GetInt("AbilityTile7") == 1)
