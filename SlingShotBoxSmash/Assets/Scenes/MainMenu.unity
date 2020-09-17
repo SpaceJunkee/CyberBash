@@ -12983,7 +12983,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Start every round \nwith X4 multiplier"
+  m_Text: "Start every round \nwith X3 multiplier"
 --- !u!222 &2071680165
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13061,7 +13061,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: X4
+  m_Text: X3
 --- !u!222 &2080150784
 CanvasRenderer:
   m_ObjectHideFlags: 0

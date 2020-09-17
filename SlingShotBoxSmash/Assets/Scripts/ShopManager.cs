@@ -77,7 +77,7 @@ public class ShopManager : MonoBehaviour
 
         if (PlayerPrefs.GetInt("AbilityTile3") == 1)
         {
-            ScoreDisplay.scoreMultiplier = 4;
+            ScoreDisplay.scoreMultiplier = 3;
             ScoreDisplay.scoreMultiplierIncreaser = 1;
             DisableTile("AbilityTile3");
         }
