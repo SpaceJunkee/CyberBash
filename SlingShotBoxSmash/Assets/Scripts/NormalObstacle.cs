@@ -18,7 +18,6 @@ public class NormalObstacle : MonoBehaviour
     public TimeManager timeManager;
     public static float comboSlowMo = 1;
 
-
     private void Start()
     {
         spawnConfiner = GameObject.FindGameObjectWithTag("Confiner");
@@ -73,7 +72,15 @@ public class NormalObstacle : MonoBehaviour
             var force = transform.position - collision.transform.position;
             force.Normalize();
 
-            collision.gameObject.GetComponentInParent<Rigidbody2D>().AddForce((-force * vel.magnitude * (125 * comboSlowMo)));
+            if (SlingShot.isInBerzerkMode)
+            {
+                collision.gameObject.GetComponentInParent<Rigidbody2D>().AddForce((-force * vel.magnitude * (125 * 0.15f)));
+            }
+            else
+            {
+                collision.gameObject.GetComponentInParent<Rigidbody2D>().AddForce((-force * vel.magnitude * (125 * comboSlowMo)));
+            }
+            
             Die();
         }
     }

@@ -110,7 +110,7 @@ public class MainMenu : MonoBehaviour
 
         if (PlayerPrefs.GetInt("AbilityTile8") == 1)
         {
-
+            SlingShot.hasBezerkBeenBought = true;
         }
 
         if (PlayerPrefs.GetInt("AbilityTile9") == 1)

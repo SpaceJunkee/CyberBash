@@ -107,6 +107,7 @@ public class ShopManager : MonoBehaviour
 
         if (PlayerPrefs.GetInt("AbilityTile8") == 1)
         {
+            SlingShot.hasBezerkBeenBought = true;
             DisableTile("AbilityTile8");
         }
 

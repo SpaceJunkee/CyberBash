@@ -34,10 +34,18 @@ public class DeathRestart : MonoBehaviour
         {
             if (collision.gameObject.tag.Equals("Player"))
             {
-                GameObject.Find("PlayerDeathSound").GetComponent<AudioSource>().Play();
-                Destroy(collision.gameObject);
-                DestroyPlayer();
-                SlingShot.isHeldDown = false;
+                if (gameObject.tag.Equals("Projectile") && SlingShot.isInBerzerkMode)
+                {
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    GameObject.Find("PlayerDeathSound").GetComponent<AudioSource>().Play();
+                    Destroy(collision.gameObject);
+                    DestroyPlayer();
+                    SlingShot.isHeldDown = false;
+                }
+                
             }
         }                     
         
