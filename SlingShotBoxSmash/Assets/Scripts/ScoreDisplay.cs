@@ -17,9 +17,21 @@ public class ScoreDisplay : MonoBehaviour
 
     public static int moneyBagsDrops = 0;
 
+    private void Awake()
+    {
+        if (PlayerPrefs.GetInt("AbilityTile8") == 1)
+        {
+            GameObject.FindGameObjectWithTag("BerzerkMeter").GetComponentInChildren<Text>().enabled = true;
+            Image[] images = GameObject.FindGameObjectWithTag("BerzerkMeter").GetComponentsInChildren<Image>();
+            foreach (Image im in images)
+                im.enabled = true;
+        }
+
+    }
+
     private void Start()
     {
-        highScore = PlayerPrefs.GetInt("HighScore");
+        highScore = PlayerPrefs.GetInt("HighScore");      
     }
 
     private void Update()

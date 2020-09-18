@@ -21,6 +21,7 @@ TagManager:
   - PlayerShieldTrigger
   - OrbBullet
   - Berzerk
+  - BerzerkMeter
   layers:
   - Default
   - TransparentFX
