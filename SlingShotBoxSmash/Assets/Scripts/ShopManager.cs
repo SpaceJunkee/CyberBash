@@ -151,26 +151,31 @@ public class ShopManager : MonoBehaviour
 
         if (PlayerPrefs.GetInt("SkinTile6") == 1)
         {
+            PlaylistManager.hasSong1BeenPurchased = true;
             DisableTile("SkinTile6");
         }
 
         if (PlayerPrefs.GetInt("SkinTile7") == 1)
         {
+            PlaylistManager.hasSong2BeenPurchased = true;
             DisableTile("SkinTile7");
         }
 
         if (PlayerPrefs.GetInt("SkinTile8") == 1)
         {
+            PlaylistManager.hasSong3BeenPurchased = true;
             DisableTile("SkinTile8");
         }
 
         if (PlayerPrefs.GetInt("SkinTile9") == 1)
         {
+            PlaylistManager.hasSong4BeenPurchased = true;
             DisableTile("SkinTile9");
         }
 
         if (PlayerPrefs.GetInt("SkinTile10") == 1)
         {
+            PlaylistManager.hasSong5BeenPurchased = true;
             DisableTile("SkinTile10");
         }
     }

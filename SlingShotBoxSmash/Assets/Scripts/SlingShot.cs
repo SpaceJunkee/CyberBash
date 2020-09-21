@@ -210,7 +210,7 @@ public class SlingShot : MonoBehaviour
         {
             if (!canFillCombo2)
             {
-                berzerkMeter.IncreaseFill(5);
+                berzerkMeter.IncreaseFill(7);
                 canFillCombo2 = true;
             }
         }

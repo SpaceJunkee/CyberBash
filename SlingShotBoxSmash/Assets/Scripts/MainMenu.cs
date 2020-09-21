@@ -29,6 +29,8 @@ public class MainMenu : MonoBehaviour
     {
         HandleAbilityTiles();
 
+        HandleCustomizationTiles();
+
         StartCoroutine(LoadLevel());       
     }
 
@@ -124,5 +126,57 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    public void HandleCustomizationTiles()
+    {
+        if (PlayerPrefs.GetInt("SkinTile1") == 1)
+        {
+
+        }
+
+        if (PlayerPrefs.GetInt("SkinTile2") == 1)
+        {
+
+        }
+
+        if (PlayerPrefs.GetInt("SkinTile3") == 1)
+        {
+
+        }
+
+        if (PlayerPrefs.GetInt("SkinTile4") == 1)
+        {
+
+        }
+
+        if (PlayerPrefs.GetInt("SkinTile5") == 1)
+        {
+
+        }
+
+        if (PlayerPrefs.GetInt("SkinTile6") == 1)
+        {
+            PlaylistManager.hasSong1BeenPurchased = true;
+        }
+
+        if (PlayerPrefs.GetInt("SkinTile7") == 1)
+        {
+            PlaylistManager.hasSong2BeenPurchased = true;
+        }
+
+        if (PlayerPrefs.GetInt("SkinTile8") == 1)
+        {
+            PlaylistManager.hasSong3BeenPurchased = true;
+        }
+
+        if (PlayerPrefs.GetInt("SkinTile9") == 1)
+        {
+            PlaylistManager.hasSong4BeenPurchased = true;
+        }
+
+        if (PlayerPrefs.GetInt("SkinTile10") == 1)
+        {
+            PlaylistManager.hasSong5BeenPurchased = true;
+        }
+    }
 
 }
