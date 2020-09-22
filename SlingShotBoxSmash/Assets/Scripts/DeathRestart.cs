@@ -87,7 +87,7 @@ public class DeathRestart : MonoBehaviour
 
     public void RestartGame()
     {
-        PlayerPrefs.SetInt("NormalCurrency", PlayerPrefs.GetInt("NormalCurrency") + Mathf.RoundToInt(ScoreDisplay.score) / 10);
+        PlayerPrefs.SetInt("NormalCurrency", PlayerPrefs.GetInt("NormalCurrency") + Mathf.RoundToInt(ScoreDisplay.score) / 10 + ScoreDisplay.moneyBagsDrops);
         PlayerPrefs.SetInt("MoneyEarned", Mathf.RoundToInt(ScoreDisplay.score) / 10 + ScoreDisplay.moneyBagsDrops);
         GameObject music = GameObject.Find("Music");
         SlingShot.isDead = false;
@@ -107,6 +107,7 @@ public class DeathRestart : MonoBehaviour
     {
         SpawnObjects.hasFirstBombGoneOff = false;
         ScoreDisplay.score = 0;
+        ScoreDisplay.moneyBagsDrops = 0;
 
         if(GreenOrbShield.hasGreenShieldBeenBought == true)
         {

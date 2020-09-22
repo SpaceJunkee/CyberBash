@@ -90,7 +90,7 @@ public class MainMenu : MonoBehaviour
             ScoreDisplay.scoreMultiplierIncreaser = 1;
         }
 
-        if (PlayerPrefs.GetInt("AbilityTile4") == 1)
+        /*if (PlayerPrefs.GetInt("AbilityTile4") == 1)
         {
 
         }
@@ -98,7 +98,7 @@ public class MainMenu : MonoBehaviour
         if (PlayerPrefs.GetInt("AbilityTile5") == 1)
         {
 
-        }
+        }*/
 
         if (PlayerPrefs.GetInt("AbilityTile6") == 1)
         {
@@ -115,7 +115,7 @@ public class MainMenu : MonoBehaviour
             SlingShot.hasBezerkBeenBought = true;
         }
 
-        if (PlayerPrefs.GetInt("AbilityTile9") == 1)
+       /* if (PlayerPrefs.GetInt("AbilityTile9") == 1)
         {
 
         }
@@ -123,34 +123,34 @@ public class MainMenu : MonoBehaviour
         if (PlayerPrefs.GetInt("AbilityTile10") == 1)
         {
 
-        }
+        }*/
     }
 
     public void HandleCustomizationTiles()
     {
         if (PlayerPrefs.GetInt("SkinTile1") == 1)
         {
-
+            PlayerSkinManager.hasSkin1BeenPurchased = true;
         }
 
         if (PlayerPrefs.GetInt("SkinTile2") == 1)
         {
-
+            PlayerSkinManager.hasSkin2BeenPurchased = true;
         }
 
         if (PlayerPrefs.GetInt("SkinTile3") == 1)
         {
-
+            PlayerSkinManager.hasSkin3BeenPurchased = true;
         }
 
         if (PlayerPrefs.GetInt("SkinTile4") == 1)
         {
-
+            PlayerSkinManager.hasSkin4BeenPurchased = true;
         }
 
         if (PlayerPrefs.GetInt("SkinTile5") == 1)
         {
-
+            PlayerSkinManager.hasSkin5BeenPurchased = true;
         }
 
         if (PlayerPrefs.GetInt("SkinTile6") == 1)

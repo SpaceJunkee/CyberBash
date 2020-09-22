@@ -22,6 +22,7 @@ TagManager:
   - OrbBullet
   - Berzerk
   - BerzerkMeter
+  - Lock
   layers:
   - Default
   - TransparentFX

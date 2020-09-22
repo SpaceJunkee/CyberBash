@@ -86,6 +86,7 @@ public class SpawnObjects : MonoBehaviour
         if(ScoreDisplay.score >= (squareHeadGoal * squareHeadMultiplier))
         {
             squareHeadMultiplier++;
+            squareHeadGoal += 5000;
             SpawnSquareHead(1);
         }
 
@@ -94,7 +95,7 @@ public class SpawnObjects : MonoBehaviour
             hasFirstBombGoneOff = true;
             hasBombGoBoom = true;
             bombSpawnMultiplier++;
-            bombPointGoal += 250;
+            bombPointGoal += 750;
             SpawnBomb(1);
         }
 

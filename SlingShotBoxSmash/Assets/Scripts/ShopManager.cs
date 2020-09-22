@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
@@ -11,7 +12,7 @@ public class ShopManager : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.SetInt("NormalCurrency", 100000);
+        PlayerPrefs.SetInt("NormalCurrency", 150000);
         if(this.gameObject.name == "ShopMenuDisplay1")
         {
             HandleAbilityTiles();         
@@ -82,7 +83,7 @@ public class ShopManager : MonoBehaviour
             DisableTile("AbilityTile3");
         }
 
-        if (PlayerPrefs.GetInt("AbilityTile4") == 1)
+       /* if (PlayerPrefs.GetInt("AbilityTile4") == 1)
         {
             DisableTile("AbilityTile4");
         }
@@ -91,7 +92,7 @@ public class ShopManager : MonoBehaviour
         {
 
             DisableTile("AbilityTile5");
-        }
+        }*/
 
         if (PlayerPrefs.GetInt("AbilityTile6") == 1)
         {
@@ -111,7 +112,7 @@ public class ShopManager : MonoBehaviour
             DisableTile("AbilityTile8");
         }
 
-        if (PlayerPrefs.GetInt("AbilityTile9") == 1)
+       /* if (PlayerPrefs.GetInt("AbilityTile9") == 1)
         {
             DisableTile("AbilityTile9");
         }
@@ -119,33 +120,38 @@ public class ShopManager : MonoBehaviour
         if (PlayerPrefs.GetInt("AbilityTile10") == 1)
         {
             DisableTile("AbilityTile10");
-        }
+        }*/
     }
 
     public void HandleCustomiseTiles()
     {
         if (PlayerPrefs.GetInt("SkinTile1") == 1)
         {
+            PlayerSkinManager.hasSkin1BeenPurchased = true;
             DisableTile("SkinTile1");
         }
 
         if (PlayerPrefs.GetInt("SkinTile2") == 1)
         {
+            PlayerSkinManager.hasSkin2BeenPurchased = true;
             DisableTile("SkinTile2");
         }
 
         if (PlayerPrefs.GetInt("SkinTile3") == 1)
         {
+            PlayerSkinManager.hasSkin3BeenPurchased = true;
             DisableTile("SkinTile3");
         }
 
         if (PlayerPrefs.GetInt("SkinTile4") == 1)
         {
+            PlayerSkinManager.hasSkin4BeenPurchased = true;
             DisableTile("SkinTile4");
         }
 
         if (PlayerPrefs.GetInt("SkinTile5") == 1)
         {
+            PlayerSkinManager.hasSkin5BeenPurchased = true;
             DisableTile("SkinTile5");
         }
 

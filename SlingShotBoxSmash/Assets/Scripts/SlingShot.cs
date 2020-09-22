@@ -186,7 +186,7 @@ public class SlingShot : MonoBehaviour
     IEnumerator DisableBerzerk()
     {
         berzerkMeter.SetFill(0);
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(10);
         isInBerzerkMode = false;
         isBerzerkMeterBlocked = false;
         maxDragDistance = 8f;

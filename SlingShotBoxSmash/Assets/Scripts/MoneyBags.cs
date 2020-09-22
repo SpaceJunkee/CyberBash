@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MoneyBags : MonoBehaviour
 {
@@ -50,6 +51,8 @@ public class MoneyBags : MonoBehaviour
                     ComboHandler.hitCount = 1;
                 }
             }
+
+            ScoreDisplay.moneyBagsDrops += 25;
 
             boxBreakAudio.Play();
            
