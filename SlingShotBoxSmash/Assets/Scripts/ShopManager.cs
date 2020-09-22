@@ -186,5 +186,47 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-
+    public void SelectASkin(string skin)
+    {
+        if(skin == "Skin1")
+        {
+            PlayerPrefs.SetInt("WearingSkin1", 1);
+            PlayerPrefs.SetInt("WearingSkin2", 0);
+            PlayerPrefs.SetInt("WearingSkin3", 0);
+            PlayerPrefs.SetInt("WearingSkin4", 0);
+            PlayerPrefs.SetInt("WearingSkin5", 0);
+        }
+        else if(skin == "Skin2")
+        {
+            PlayerPrefs.SetInt("WearingSkin1", 0);
+            PlayerPrefs.SetInt("WearingSkin2", 1);
+            PlayerPrefs.SetInt("WearingSkin3", 0);
+            PlayerPrefs.SetInt("WearingSkin4", 0);
+            PlayerPrefs.SetInt("WearingSkin5", 0);
+        }
+        else if (skin == "Skin3")
+        {
+            PlayerPrefs.SetInt("WearingSkin1", 0);
+            PlayerPrefs.SetInt("WearingSkin2", 0);
+            PlayerPrefs.SetInt("WearingSkin3", 1);
+            PlayerPrefs.SetInt("WearingSkin4", 0);
+            PlayerPrefs.SetInt("WearingSkin5", 0);
+        }
+        else if (skin == "Skin4")
+        {
+            PlayerPrefs.SetInt("WearingSkin1", 0);
+            PlayerPrefs.SetInt("WearingSkin2", 0);
+            PlayerPrefs.SetInt("WearingSkin3", 0);
+            PlayerPrefs.SetInt("WearingSkin4", 1);
+            PlayerPrefs.SetInt("WearingSkin5", 0);
+        }
+        else if (skin == "Skin5")
+        {
+            PlayerPrefs.SetInt("WearingSkin1", 0);
+            PlayerPrefs.SetInt("WearingSkin2", 0);
+            PlayerPrefs.SetInt("WearingSkin3", 0);
+            PlayerPrefs.SetInt("WearingSkin4", 0);
+            PlayerPrefs.SetInt("WearingSkin5", 1);
+        }
+    }
 }
