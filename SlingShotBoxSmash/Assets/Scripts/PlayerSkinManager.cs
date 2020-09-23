@@ -16,17 +16,11 @@ public class PlayerSkinManager : MonoBehaviour
     {
         if (hasSkin1BeenPurchased && PlayerPrefs.GetInt("WearingSkin1") == 1)
         {
-            //Wear skin 1
-            SpriteRenderer[] eyeBallSprites = GameObject.Find("EyeBallSkin").GetComponentsInChildren<SpriteRenderer>();
-
-            foreach (SpriteRenderer sprite in eyeBallSprites)
-            {
-                sprite.enabled = true;
-            }
+            
         }
         else if (hasSkin2BeenPurchased && PlayerPrefs.GetInt("WearingSkin2") == 1)
         {
-            //Wear skin 2
+            GameObject.Find("PhantomFlowerSkin").GetComponent<ParticleSystem>().Play();
         }
         else if (hasSkin3BeenPurchased && PlayerPrefs.GetInt("WearingSkin3") == 1)
         {
@@ -34,7 +28,23 @@ public class PlayerSkinManager : MonoBehaviour
         }
         else if (hasSkin4BeenPurchased && PlayerPrefs.GetInt("WearingSkin4") == 1)
         {
+            SpriteRenderer[] redBallSprites = GameObject.Find("RedBall").GetComponentsInChildren<SpriteRenderer>();
 
+            foreach (SpriteRenderer sprite in redBallSprites)
+            {
+                sprite.enabled = true;
+            }
+
+            if (GreenOrbShield.hasGreenShieldBeenBought == true)
+            {
+                ParticleSystem.MainModule settings = GameObject.Find("GreenOrbShield").GetComponent<ParticleSystem>().main;
+                settings.startColor = new ParticleSystem.MinMaxGradient(new Color32(2, 0, 22, 255));
+            }
+
+            GameObject.Find("RedBall").GetComponent<ParticleSystem>().Play();
+            GameObject.Find("PlayerSprite").GetComponent<SpriteRenderer>().color = new Color32(233, 22, 0, 255);
+            GameObject.Find("Player").GetComponent<TrailRenderer>().startColor = new Color32(255, 30, 0, 255);
+            GameObject.Find("Player").GetComponent<TrailRenderer>().endColor = new Color32(255, 30, 0, 255);
         }
         else if (hasSkin5BeenPurchased && PlayerPrefs.GetInt("WearingSkin5") == 1)
         {
