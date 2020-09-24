@@ -21,7 +21,10 @@ public class ShopManager : MonoBehaviour
         if (this.gameObject.name == "ShopMenuDisplay2")
         {
             HandleCustomiseTiles();
+            CheckSelectableTiles();
         }
+
+       
 
     }
 
@@ -57,6 +60,7 @@ public class ShopManager : MonoBehaviour
 
     public void DisableTile(string tileName)
     {
+        
         GameObject.Find(tileName).GetComponent<Image>().enabled = false;
         GameObject.Find(tileName).GetComponentInChildren<Text>().enabled = false;
         GameObject.Find(tileName).GetComponent<Button>().enabled = false;
@@ -227,6 +231,65 @@ public class ShopManager : MonoBehaviour
             PlayerPrefs.SetInt("WearingSkin3", 0);
             PlayerPrefs.SetInt("WearingSkin4", 0);
             PlayerPrefs.SetInt("WearingSkin5", 1);
+        }
+    }
+
+    public void DeactivateSkinBuyButton(string skinTile)
+    {
+        if(skinTile == "ImgSelect1" && PlayerPrefs.GetInt("SkinTile1") == 1)
+        {
+            GameObject.Find(skinTile).GetComponent<CanvasGroup>().interactable = true;
+            GameObject.Find(skinTile).GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
+        else if(skinTile == "ImgSelect2" && PlayerPrefs.GetInt("SkinTile2") == 1)
+        {
+            GameObject.Find(skinTile).GetComponent<CanvasGroup>().interactable = true;
+            GameObject.Find(skinTile).GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
+        else if (skinTile == "ImgSelect3" && PlayerPrefs.GetInt("SkinTile3") == 1)
+        {
+            GameObject.Find(skinTile).GetComponent<CanvasGroup>().interactable = true;
+            GameObject.Find(skinTile).GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
+        else if (skinTile == "ImgSelect4" && PlayerPrefs.GetInt("SkinTile4") == 1)
+        {
+            GameObject.Find(skinTile).GetComponent<CanvasGroup>().interactable = true;
+            GameObject.Find(skinTile).GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
+        else if (skinTile == "ImgSelect5" && PlayerPrefs.GetInt("SkinTile5") == 1)
+        {
+            GameObject.Find(skinTile).GetComponent<CanvasGroup>().interactable = true;
+            GameObject.Find(skinTile).GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
+
+    }
+
+    public void CheckSelectableTiles()
+    {
+        if (PlayerPrefs.GetInt("SkinTile1") == 1)
+        {
+            GameObject.Find("ImgSelect1").GetComponent<CanvasGroup>().interactable = true;
+            GameObject.Find("ImgSelect1").GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
+        if (PlayerPrefs.GetInt("SkinTile2") == 1)
+        {
+            GameObject.Find("ImgSelect2").GetComponent<CanvasGroup>().interactable = true;
+            GameObject.Find("ImgSelect2").GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
+        if (PlayerPrefs.GetInt("SkinTile3") == 1)
+        {
+            GameObject.Find("ImgSelect3").GetComponent<CanvasGroup>().interactable = true;
+            GameObject.Find("ImgSelect3").GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
+        if (PlayerPrefs.GetInt("SkinTile4") == 1)
+        {
+            GameObject.Find("ImgSelect4").GetComponent<CanvasGroup>().interactable = true;
+            GameObject.Find("ImgSelect4").GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
+        if (PlayerPrefs.GetInt("SkinTile5") == 1)
+        {
+            GameObject.Find("ImgSelect5").GetComponent<CanvasGroup>().interactable = true;
+            GameObject.Find("ImgSelect5").GetComponent<CanvasGroup>().blocksRaycasts = true;
         }
     }
 }

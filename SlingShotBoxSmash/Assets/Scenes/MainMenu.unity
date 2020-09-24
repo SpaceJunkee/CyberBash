@@ -6671,8 +6671,9 @@ GameObject:
   - component: {fileID: 909758660}
   - component: {fileID: 909758658}
   - component: {fileID: 909758659}
+  - component: {fileID: 909758662}
   m_Layer: 5
-  m_Name: Image (21)
+  m_Name: ImgSelect1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6740,7 +6741,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.35100216, g: 0.22516909, b: 0.41509432, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.08627451, g: 0.08627451, b: 0.08627451, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -6807,6 +6808,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 909758656}
   m_CullTransparentMesh: 0
+--- !u!225 &909758662
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909758656}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &912463406
 GameObject:
   m_ObjectHideFlags: 0
@@ -9679,6 +9692,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1826728617}
+        m_MethodName: DeactivateSkinBuyButton
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ImgSelect3
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1282678758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10474,8 +10498,9 @@ GameObject:
   - component: {fileID: 1311945967}
   - component: {fileID: 1311945965}
   - component: {fileID: 1311945966}
+  - component: {fileID: 1311945969}
   m_Layer: 5
-  m_Name: Image (17)
+  m_Name: ImgSelect5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10543,7 +10568,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.35100216, g: 0.22516909, b: 0.41509432, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.08627451, g: 0.08627451, b: 0.08627451, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -10610,6 +10635,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1311945963}
   m_CullTransparentMesh: 0
+--- !u!225 &1311945969
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311945963}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1321359155
 GameObject:
   m_ObjectHideFlags: 0
@@ -11590,6 +11627,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1826728617}
+        m_MethodName: DeactivateSkinBuyButton
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ImgSelect2
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1422276577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12485,8 +12533,9 @@ GameObject:
   - component: {fileID: 1529176483}
   - component: {fileID: 1529176481}
   - component: {fileID: 1529176482}
+  - component: {fileID: 1529176485}
   m_Layer: 5
-  m_Name: Image (18)
+  m_Name: ImgSelect4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12554,7 +12603,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.35100216, g: 0.22516909, b: 0.41509432, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.08627451, g: 0.08627451, b: 0.08627451, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -12621,6 +12670,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1529176479}
   m_CullTransparentMesh: 0
+--- !u!225 &1529176485
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529176479}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1530924789
 GameObject:
   m_ObjectHideFlags: 0
@@ -13155,6 +13216,7 @@ GameObject:
   - component: {fileID: 1563628610}
   - component: {fileID: 1563628609}
   - component: {fileID: 1563628608}
+  - component: {fileID: 1563628607}
   m_Layer: 5
   m_Name: SkinTile1
   m_TagString: Untagged
@@ -13186,6 +13248,18 @@ RectTransform:
   m_AnchoredPosition: {x: -251, y: 39.0002}
   m_SizeDelta: {x: 105, y: 105}
   m_Pivot: {x: 1, y: 0.5}
+--- !u!225 &1563628607
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563628605}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &1563628608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13251,16 +13325,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1826728617}
+        m_MethodName: DeactivateSkinBuyButton
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
+          m_StringArgument: ImgSelect1
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1563628609
 MonoBehaviour:
@@ -15883,8 +15957,9 @@ GameObject:
   - component: {fileID: 1908010141}
   - component: {fileID: 1908010139}
   - component: {fileID: 1908010140}
+  - component: {fileID: 1908010143}
   m_Layer: 5
-  m_Name: Image (19)
+  m_Name: ImgSelect3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15952,7 +16027,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.35100216, g: 0.22516909, b: 0.41509432, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.08627451, g: 0.08627451, b: 0.08627451, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -16019,6 +16094,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1908010137}
   m_CullTransparentMesh: 0
+--- !u!225 &1908010143
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908010137}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1915914926
 GameObject:
   m_ObjectHideFlags: 0
@@ -16492,6 +16579,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1826728617}
+        m_MethodName: DeactivateSkinBuyButton
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ImgSelect4
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1939681760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16659,6 +16757,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1826728617}
+        m_MethodName: DeactivateSkinBuyButton
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ImgSelect5
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1976252148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16709,8 +16818,9 @@ GameObject:
   - component: {fileID: 1978601422}
   - component: {fileID: 1978601420}
   - component: {fileID: 1978601421}
+  - component: {fileID: 1978601424}
   m_Layer: 5
-  m_Name: Image (20)
+  m_Name: ImgSelect2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16778,7 +16888,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.35100216, g: 0.22516909, b: 0.41509432, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.08627451, g: 0.08627451, b: 0.08627451, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -16845,6 +16955,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1978601418}
   m_CullTransparentMesh: 0
+--- !u!225 &1978601424
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978601418}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &2022082576
 GameObject:
   m_ObjectHideFlags: 0
