@@ -37,6 +37,16 @@ public class SlingShot : MonoBehaviour
     private void Start()
     {
         berzerkMeter.SetMaxFill(100);
+        berzerkMeter.SetFill(0);
+        isInBerzerkMode = false;
+        isBerzerkMeterBlocked = false;
+        maxDragDistance = 8f;
+        rigidBody.angularDrag = 0.05f;
+        rigidBody.drag = 0f;
+        trail.startWidth = 5;
+        trail.startColor = new Color32(0, 241, 255, 255);
+        lineRenderer.startWidth = 2;
+        lineRenderer.startColor = new Color32(0, 241, 255, 255);
     }
 
     private void Update()

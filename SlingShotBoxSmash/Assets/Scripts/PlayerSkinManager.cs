@@ -21,10 +21,12 @@ public class PlayerSkinManager : MonoBehaviour
         else if (hasSkin2BeenPurchased && PlayerPrefs.GetInt("WearingSkin2") == 1)
         {
             GameObject.Find("PhantomFlowerSkin").GetComponent<ParticleSystem>().Play();
+            
         }
         else if (hasSkin3BeenPurchased && PlayerPrefs.GetInt("WearingSkin3") == 1)
         {
-
+            GameObject.Find("PlayerSprite").GetComponent<Animator>().SetBool("IsRainbowSelected", true);
+            GameObject.Find("RainbowSkin").GetComponent<ParticleSystem>().Play();
         }
         else if (hasSkin4BeenPurchased && PlayerPrefs.GetInt("WearingSkin4") == 1)
         {
