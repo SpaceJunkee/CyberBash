@@ -12,6 +12,7 @@ public class RestartScreenManager : MonoBehaviour
     public int moneyBaseMultiplier = 2;
     public AdsManager adManager;
     public static bool playerRewarded = false;
+    public static bool hasPlayerClickedAd = false;
 
     private void Start()
     {
@@ -21,7 +22,7 @@ public class RestartScreenManager : MonoBehaviour
 
     IEnumerator CountUpToTarget()
     {
-        while (moneyEarnedBaseScore < PlayerPrefs.GetInt("MoneyEarned"))
+        while (moneyEarnedBaseScore < PlayerPrefs.GetInt("MoneyEarned") && hasPlayerClickedAd == false)
         {
             if(moneyEarnedBaseScore > 25 && moneyEarnedBaseScore < 500)
             {
