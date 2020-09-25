@@ -95,7 +95,7 @@ public class SpawnObjects : MonoBehaviour
             hasFirstBombGoneOff = true;
             hasBombGoBoom = true;
             bombSpawnMultiplier++;
-            bombPointGoal += 750;
+            bombPointGoal += 500;
             SpawnBomb(1);
         }
 

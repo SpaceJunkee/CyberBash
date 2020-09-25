@@ -45,7 +45,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
             GameObject.Find("AdButton").GetComponent<Image>().enabled = false;
             GameObject.Find("AdButton").GetComponentInChildren<Text>().enabled = false;
             GameObject.Find("WatchAdText").GetComponent<Text>().enabled = false;
-            GameObject.Find("MoneyEarnedText").GetComponent<Text>().fontSize = 38;
+            GameObject.Find("MoneyEarnedText").GetComponent<Text>().fontSize = 36;
             GameObject.Find("MoneyEarnedText").GetComponent<Text>().color = new Color32(0,255,133,255);
         }
         else if (showResult == ShowResult.Failed)

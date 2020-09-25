@@ -31,7 +31,9 @@ public class MainMenu : MonoBehaviour
 
         HandleCustomizationTiles();
 
-        StartCoroutine(LoadLevel());       
+        StartCoroutine(LoadLevel());
+
+        RestartScreenManager.hasPlayerClickedAd = false;
     }
 
     IEnumerator LoadLevel()
