@@ -11,6 +11,9 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
     int moneyEarned;
     int normalCurrency;
 
+    //ADD SKIPPABLE ADDS
+    public static int numberOfRestarts = 0;
+
     IEnumerator Start()
     {
         Advertisement.AddListener(this);

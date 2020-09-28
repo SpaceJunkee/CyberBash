@@ -40,8 +40,8 @@ public class DeathRestart : MonoBehaviour
                 }
                 else
                 {
-                    GameObject.Find("PlayerDeathSound").GetComponent<AudioSource>().Play();
-                    Destroy(collision.gameObject);
+                   
+                    
                     DestroyPlayer();
                     SlingShot.isHeldDown = false;
                 }
@@ -59,6 +59,10 @@ public class DeathRestart : MonoBehaviour
         CameraShake.Instance.ShakeCamera(25f, 0.75f);
         timeManager.StartSlowMotion(0.3f);
         Invoke("RestartGame", 0.5f);
+        //Disbale player
+        GameObject.Find("PlayerSprite").GetComponent<SpriteRenderer>().enabled = false;
+        GameObject.Find("PlayerSprite").GetComponent<CircleCollider2D>().enabled = false;
+        GameObject.Find("PlayerDeathSound").GetComponent<AudioSource>().Play();
     }
 
 
