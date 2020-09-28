@@ -1,4 +1,5 @@
 ﻿
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +7,7 @@ public class SpawnObjects : MonoBehaviour
 {
     public TimeManager timeManager;
     public ShieldWallBounce[] shieldWalls;
+    public GreenOrbShield greenOrbShield;
 
     public Vector2 center;
     public Vector2 size;
@@ -26,10 +28,11 @@ public class SpawnObjects : MonoBehaviour
     public float bombPointGoal = 1000;
     public float squareHeadGoal = 5500;
     public float squareHeadMultiplier = 1f;
+    public float comboHitMultiplier = 1f;
     public int greenGuyCount = 1;
     public static bool hasFirstBombGoneOff = false;
     public static bool hasBombGoBoom = false;
-    public bool hasMoneyBagsSpawned = false;
+    public static bool isMoneyBagUnlocked = false;
 
     public GameObject normalObstaclePrefab;
     public GameObject doublePointPrefab;
@@ -60,8 +63,18 @@ public class SpawnObjects : MonoBehaviour
 
     private void Update()
     {
-
         ShowWarningText();
+
+        if(ComboHandler.hitCount == 0)
+        {
+            comboHitMultiplier = 1;
+        }
+
+        if(isMoneyBagUnlocked && ComboHandler.hitCount >= 2 + comboHitMultiplier)
+        {
+            comboHitMultiplier++;
+            SpawnMoneyBag(1);
+        }
 
         if (hasBossBeenKilled == true)
         {
@@ -73,6 +86,7 @@ public class SpawnObjects : MonoBehaviour
         if(ScoreDisplay.score >= (squareHeadGoal * squareHeadMultiplier))
         {
             squareHeadMultiplier++;
+            squareHeadGoal += 5000;
             SpawnSquareHead(1);
         }
 
@@ -81,7 +95,7 @@ public class SpawnObjects : MonoBehaviour
             hasFirstBombGoneOff = true;
             hasBombGoBoom = true;
             bombSpawnMultiplier++;
-            bombPointGoal += 250;
+            bombPointGoal += 500;
             SpawnBomb(1);
         }
 
@@ -199,6 +213,11 @@ public class SpawnObjects : MonoBehaviour
             shield.ResetShields();
         }
 
+        if (GreenOrbShield.hasGreenShieldBeenBought)
+        {
+            greenOrbShield.ResetGreenOrbShield();
+        }
+        
         timeManager.StartSlowMotion(0.05f);
         timeManager.Invoke("StopSlowMotion", 2f);
         DisableIncomingText(incomingBombText);
@@ -233,6 +252,7 @@ public class SpawnObjects : MonoBehaviour
 
     public void SpawnMoneyBag(int spawnRate)
     {
+        
         for (int i = 0; i < spawnRate; i++)
         {
             Vector2 position = center + new Vector2(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2));

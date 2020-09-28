@@ -14,6 +14,8 @@ public class DoublePointObstacle : MonoBehaviour
     public TimeManager timeManager;
     public static float comboSlowMo = 1;
 
+    public static int velocityPower = 135;
+
     private void Start()
     {
         spawnConfiner = GameObject.FindGameObjectWithTag("Confiner");
@@ -34,6 +36,14 @@ public class DoublePointObstacle : MonoBehaviour
         {
             Destroy(gameObject);
             ScoreDisplay.score += 10;
+        }
+
+        if (collision.gameObject.tag.Equals("OrbBullet"))
+        {
+            ScoreDisplay.score += ComboHandler.doubleScoreValue * ScoreDisplay.scoreMultiplier;
+            scoreTextPop.scoreText.fontSize = 100;
+            Die();
+            Destroy(collision.gameObject);
         }
 
         if (collision.gameObject.tag.Equals("Player"))
@@ -65,7 +75,15 @@ public class DoublePointObstacle : MonoBehaviour
             var force = transform.position - collision.transform.position;
             force.Normalize();
 
-            collision.gameObject.GetComponentInParent<Rigidbody2D>().AddForce((-force * vel.magnitude * 135));
+            if (SlingShot.isInBerzerkMode)
+            {
+                collision.gameObject.GetComponentInParent<Rigidbody2D>().AddForce((-force * vel.magnitude * (125 * 0.15f)));
+            }
+            else
+            {
+                collision.gameObject.GetComponentInParent<Rigidbody2D>().AddForce((-force * vel.magnitude * velocityPower));
+            }
+                       
             Die();
         }
     }

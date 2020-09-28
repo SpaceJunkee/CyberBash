@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
@@ -11,8 +12,7 @@ public class ShopManager : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.SetInt("NormalCurrency", 99999999);
-
+        PlayerPrefs.SetInt("NormalCurrency", 150000);
         if(this.gameObject.name == "ShopMenuDisplay1")
         {
             HandleAbilityTiles();         
@@ -21,7 +21,10 @@ public class ShopManager : MonoBehaviour
         if (this.gameObject.name == "ShopMenuDisplay2")
         {
             HandleCustomiseTiles();
+            CheckSelectableTiles();
         }
+
+       
 
     }
 
@@ -34,11 +37,6 @@ public class ShopManager : MonoBehaviour
             GameObject.Find("CurrencyText").GetComponent<Text>().text = $"〄{PlayerPrefs.GetInt("NormalCurrency")}";
             SaveBuyingStatus(prefUpgrade);
 
-            if(EventSystem.current.currentSelectedGameObject.name == "AbilityTile1")
-            {
-                ScoreDisplay.scoreMultiplier = 2;
-                ScoreDisplay.scoreMultiplierIncreaser = 2;
-            }
         }
     }
 
@@ -62,6 +60,7 @@ public class ShopManager : MonoBehaviour
 
     public void DisableTile(string tileName)
     {
+        
         GameObject.Find(tileName).GetComponent<Image>().enabled = false;
         GameObject.Find(tileName).GetComponentInChildren<Text>().enabled = false;
         GameObject.Find(tileName).GetComponent<Button>().enabled = false;
@@ -71,52 +70,53 @@ public class ShopManager : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("AbilityTile1") == 1)
         {
-            ScoreDisplay.scoreMultiplier = 2;
-            ScoreDisplay.scoreMultiplierIncreaser = 2;
+            ShieldWallBounce.isShieldActive = true;
             DisableTile("AbilityTile1");
-        }
-        else
-        {
-            PlayerPrefs.SetInt("ScoreMultiplier", 1);
-            PlayerPrefs.SetInt("scoreMultiplierIncreaser", 1);
         }
 
         if (PlayerPrefs.GetInt("AbilityTile2") == 1)
         {
+            SpawnObjects.isMoneyBagUnlocked = true;
             DisableTile("AbilityTile2");
         }
 
         if (PlayerPrefs.GetInt("AbilityTile3") == 1)
         {
+            ScoreDisplay.scoreMultiplier = 3;
+            ScoreDisplay.scoreMultiplierIncreaser = 1;
             DisableTile("AbilityTile3");
         }
 
-        if (PlayerPrefs.GetInt("AbilityTile4") == 1)
+       /* if (PlayerPrefs.GetInt("AbilityTile4") == 1)
         {
             DisableTile("AbilityTile4");
         }
 
         if (PlayerPrefs.GetInt("AbilityTile5") == 1)
         {
+
             DisableTile("AbilityTile5");
-        }
+        }*/
 
         if (PlayerPrefs.GetInt("AbilityTile6") == 1)
         {
+            GreenOrbShield.hasGreenShieldBeenBought = true;
             DisableTile("AbilityTile6");
         }
 
         if (PlayerPrefs.GetInt("AbilityTile7") == 1)
         {
+            LaunchPlayerProjectiles.hasPlayerProjectileBeenBought = true;
             DisableTile("AbilityTile7");
         }
 
         if (PlayerPrefs.GetInt("AbilityTile8") == 1)
         {
+            SlingShot.hasBezerkBeenBought = true;
             DisableTile("AbilityTile8");
         }
 
-        if (PlayerPrefs.GetInt("AbilityTile9") == 1)
+       /* if (PlayerPrefs.GetInt("AbilityTile9") == 1)
         {
             DisableTile("AbilityTile9");
         }
@@ -124,61 +124,172 @@ public class ShopManager : MonoBehaviour
         if (PlayerPrefs.GetInt("AbilityTile10") == 1)
         {
             DisableTile("AbilityTile10");
-        }
+        }*/
     }
 
     public void HandleCustomiseTiles()
     {
         if (PlayerPrefs.GetInt("SkinTile1") == 1)
         {
+            PlayerSkinManager.hasSkin1BeenPurchased = true;
             DisableTile("SkinTile1");
         }
 
         if (PlayerPrefs.GetInt("SkinTile2") == 1)
         {
+            PlayerSkinManager.hasSkin2BeenPurchased = true;
             DisableTile("SkinTile2");
         }
 
         if (PlayerPrefs.GetInt("SkinTile3") == 1)
         {
+            PlayerSkinManager.hasSkin3BeenPurchased = true;
             DisableTile("SkinTile3");
         }
 
         if (PlayerPrefs.GetInt("SkinTile4") == 1)
         {
+            PlayerSkinManager.hasSkin4BeenPurchased = true;
             DisableTile("SkinTile4");
         }
 
         if (PlayerPrefs.GetInt("SkinTile5") == 1)
         {
+            PlayerSkinManager.hasSkin5BeenPurchased = true;
             DisableTile("SkinTile5");
         }
 
         if (PlayerPrefs.GetInt("SkinTile6") == 1)
         {
+            PlaylistManager.hasSong1BeenPurchased = true;
             DisableTile("SkinTile6");
         }
 
         if (PlayerPrefs.GetInt("SkinTile7") == 1)
         {
+            PlaylistManager.hasSong2BeenPurchased = true;
             DisableTile("SkinTile7");
         }
 
         if (PlayerPrefs.GetInt("SkinTile8") == 1)
         {
+            PlaylistManager.hasSong3BeenPurchased = true;
             DisableTile("SkinTile8");
         }
 
         if (PlayerPrefs.GetInt("SkinTile9") == 1)
         {
+            PlaylistManager.hasSong4BeenPurchased = true;
             DisableTile("SkinTile9");
         }
 
         if (PlayerPrefs.GetInt("SkinTile10") == 1)
         {
+            PlaylistManager.hasSong5BeenPurchased = true;
             DisableTile("SkinTile10");
         }
     }
 
+    public void SelectASkin(string skin)
+    {
+        if(skin == "Skin1")
+        {
+            PlayerPrefs.SetInt("WearingSkin1", 1);
+            PlayerPrefs.SetInt("WearingSkin2", 0);
+            PlayerPrefs.SetInt("WearingSkin3", 0);
+            PlayerPrefs.SetInt("WearingSkin4", 0);
+            PlayerPrefs.SetInt("WearingSkin5", 0);
+        }
+        else if(skin == "Skin2")
+        {
+            PlayerPrefs.SetInt("WearingSkin1", 0);
+            PlayerPrefs.SetInt("WearingSkin2", 1);
+            PlayerPrefs.SetInt("WearingSkin3", 0);
+            PlayerPrefs.SetInt("WearingSkin4", 0);
+            PlayerPrefs.SetInt("WearingSkin5", 0);
+        }
+        else if (skin == "Skin3")
+        {
+            PlayerPrefs.SetInt("WearingSkin1", 0);
+            PlayerPrefs.SetInt("WearingSkin2", 0);
+            PlayerPrefs.SetInt("WearingSkin3", 1);
+            PlayerPrefs.SetInt("WearingSkin4", 0);
+            PlayerPrefs.SetInt("WearingSkin5", 0);
+        }
+        else if (skin == "Skin4")
+        {
+            PlayerPrefs.SetInt("WearingSkin1", 0);
+            PlayerPrefs.SetInt("WearingSkin2", 0);
+            PlayerPrefs.SetInt("WearingSkin3", 0);
+            PlayerPrefs.SetInt("WearingSkin4", 1);
+            PlayerPrefs.SetInt("WearingSkin5", 0);
+        }
+        else if (skin == "Skin5")
+        {
+            PlayerPrefs.SetInt("WearingSkin1", 0);
+            PlayerPrefs.SetInt("WearingSkin2", 0);
+            PlayerPrefs.SetInt("WearingSkin3", 0);
+            PlayerPrefs.SetInt("WearingSkin4", 0);
+            PlayerPrefs.SetInt("WearingSkin5", 1);
+        }
+    }
 
+    public void DeactivateSkinBuyButton(string skinTile)
+    {
+        if(skinTile == "ImgSelect1" && PlayerPrefs.GetInt("SkinTile1") == 1)
+        {
+            GameObject.Find(skinTile).GetComponent<CanvasGroup>().interactable = true;
+            GameObject.Find(skinTile).GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
+        else if(skinTile == "ImgSelect2" && PlayerPrefs.GetInt("SkinTile2") == 1)
+        {
+            GameObject.Find(skinTile).GetComponent<CanvasGroup>().interactable = true;
+            GameObject.Find(skinTile).GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
+        else if (skinTile == "ImgSelect3" && PlayerPrefs.GetInt("SkinTile3") == 1)
+        {
+            GameObject.Find(skinTile).GetComponent<CanvasGroup>().interactable = true;
+            GameObject.Find(skinTile).GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
+        else if (skinTile == "ImgSelect4" && PlayerPrefs.GetInt("SkinTile4") == 1)
+        {
+            GameObject.Find(skinTile).GetComponent<CanvasGroup>().interactable = true;
+            GameObject.Find(skinTile).GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
+        else if (skinTile == "ImgSelect5" && PlayerPrefs.GetInt("SkinTile5") == 1)
+        {
+            GameObject.Find(skinTile).GetComponent<CanvasGroup>().interactable = true;
+            GameObject.Find(skinTile).GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
+
+    }
+
+    public void CheckSelectableTiles()
+    {
+        if (PlayerPrefs.GetInt("SkinTile1") == 1)
+        {
+            GameObject.Find("ImgSelect1").GetComponent<CanvasGroup>().interactable = true;
+            GameObject.Find("ImgSelect1").GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
+        if (PlayerPrefs.GetInt("SkinTile2") == 1)
+        {
+            GameObject.Find("ImgSelect2").GetComponent<CanvasGroup>().interactable = true;
+            GameObject.Find("ImgSelect2").GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
+        if (PlayerPrefs.GetInt("SkinTile3") == 1)
+        {
+            GameObject.Find("ImgSelect3").GetComponent<CanvasGroup>().interactable = true;
+            GameObject.Find("ImgSelect3").GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
+        if (PlayerPrefs.GetInt("SkinTile4") == 1)
+        {
+            GameObject.Find("ImgSelect4").GetComponent<CanvasGroup>().interactable = true;
+            GameObject.Find("ImgSelect4").GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
+        if (PlayerPrefs.GetInt("SkinTile5") == 1)
+        {
+            GameObject.Find("ImgSelect5").GetComponent<CanvasGroup>().interactable = true;
+            GameObject.Find("ImgSelect5").GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
+    }
 }

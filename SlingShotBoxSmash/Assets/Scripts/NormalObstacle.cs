@@ -18,7 +18,6 @@ public class NormalObstacle : MonoBehaviour
     public TimeManager timeManager;
     public static float comboSlowMo = 1;
 
-
     private void Start()
     {
         spawnConfiner = GameObject.FindGameObjectWithTag("Confiner");
@@ -38,6 +37,14 @@ public class NormalObstacle : MonoBehaviour
         {
             Destroy(gameObject);
             ScoreDisplay.score += 5;
+        }
+
+        if (collision.gameObject.tag.Equals("OrbBullet"))
+        { 
+            ScoreDisplay.score += ComboHandler.normalScoreValue * ScoreDisplay.scoreMultiplier;
+            scoreTextPop.scoreText.fontSize = 100;
+            Die();
+            Destroy(collision.gameObject);
         }
 
         if (collision.gameObject.tag.Equals("Player"))
@@ -65,7 +72,15 @@ public class NormalObstacle : MonoBehaviour
             var force = transform.position - collision.transform.position;
             force.Normalize();
 
-            collision.gameObject.GetComponentInParent<Rigidbody2D>().AddForce((-force * vel.magnitude * (125 * comboSlowMo)));
+            if (SlingShot.isInBerzerkMode)
+            {
+                collision.gameObject.GetComponentInParent<Rigidbody2D>().AddForce((-force * vel.magnitude * (125 * 0.15f)));
+            }
+            else
+            {
+                collision.gameObject.GetComponentInParent<Rigidbody2D>().AddForce((-force * vel.magnitude * (125 * comboSlowMo)));
+            }
+            
             Die();
         }
     }

@@ -9,8 +9,6 @@ public class ComboHandler : MonoBehaviour
     public static int greenGuyScore = 15;
     public static int hitCount = 0;
 
-
-
     public static void ResetValues()
     {
         normalScoreValue = 5;

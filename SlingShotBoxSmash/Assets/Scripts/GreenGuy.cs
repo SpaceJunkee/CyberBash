@@ -22,6 +22,7 @@ public class GreenGuy : MonoBehaviour
     public bool isDead = false;
     public GameObject[] leftOverProjectiles;
     public Animator anim;
+    public static int velocityPower = 135;
 
     private void Start()
     {
@@ -101,6 +102,14 @@ public class GreenGuy : MonoBehaviour
             ScoreDisplay.score += 10;
         }
 
+        if (collision.gameObject.tag.Equals("OrbBullet"))
+        {
+            ScoreDisplay.score += ComboHandler.greenGuyScore * ScoreDisplay.scoreMultiplier;
+            scoreTextPop.scoreText.fontSize = 100;
+            Die();
+            Destroy(collision.gameObject);
+        }
+
         if (collision.gameObject.tag.Equals("Player"))
         {
             isDead = true;
@@ -127,7 +136,15 @@ public class GreenGuy : MonoBehaviour
             var force = transform.position - collision.transform.position;
             force.Normalize();
 
-            collision.gameObject.GetComponentInParent<Rigidbody2D>().AddForce((-force * vel.magnitude * (125 * comboSlowMo)));
+            if (SlingShot.isInBerzerkMode)
+            {
+                collision.gameObject.GetComponentInParent<Rigidbody2D>().AddForce((-force * vel.magnitude * (125 * 0.15f)));
+            }
+            else
+            {
+                collision.gameObject.GetComponentInParent<Rigidbody2D>().AddForce((-force * vel.magnitude * (125 * comboSlowMo)));
+            }
+            
             Die();
         }
     }

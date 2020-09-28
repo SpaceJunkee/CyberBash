@@ -11,6 +11,9 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
     int moneyEarned;
     int normalCurrency;
 
+    //ADD SKIPPABLE ADDS
+    public static int numberOfRestarts = 0;
+
     IEnumerator Start()
     {
         Advertisement.AddListener(this);
@@ -31,6 +34,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
         moneyEarned = PlayerPrefs.GetInt("MoneyEarned");
         normalCurrency = PlayerPrefs.GetInt("NormalCurrency");
         Advertisement.Show(placement);
+        RestartScreenManager.hasPlayerClickedAd = true;
     }
 
    
@@ -43,6 +47,9 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
             GameObject.Find("AdButton").GetComponent<Button>().enabled = false;
             GameObject.Find("AdButton").GetComponent<Image>().enabled = false;
             GameObject.Find("AdButton").GetComponentInChildren<Text>().enabled = false;
+            GameObject.Find("WatchAdText").GetComponent<Text>().enabled = false;
+            GameObject.Find("MoneyEarnedText").GetComponent<Text>().fontSize = 36;
+            GameObject.Find("MoneyEarnedText").GetComponent<Text>().color = new Color32(0,255,133,255);
         }
         else if (showResult == ShowResult.Failed)
         {

@@ -19,6 +19,10 @@ TagManager:
   - HitPoint
   - Shield
   - PlayerShieldTrigger
+  - OrbBullet
+  - Berzerk
+  - BerzerkMeter
+  - Lock
   layers:
   - Default
   - TransparentFX
@@ -29,9 +33,9 @@ TagManager:
   - 
   - 
   - Lava
-  - 
-  - 
-  - 
+  - OrbBullet
+  - Player
+  - Box
   - 
   - 
   - 

@@ -13,7 +13,17 @@ public class DeathRestart : MonoBehaviour
     GameObject[] musicObject;
     public AudioSource audio;
 
-
+    private void Update()
+    {
+        if (this.gameObject.tag.Equals("Projectile") && GreenOrbShield.isGreenShieldActive == true)
+        {
+            GameObject.FindGameObjectWithTag("Projectile").GetComponent<CircleCollider2D>().isTrigger = false;
+        }
+        else if(this.gameObject.tag.Equals("Projectile") && GreenOrbShield.isGreenShieldActive == false)
+        {
+            GameObject.FindGameObjectWithTag("Projectile").GetComponent<CircleCollider2D>().isTrigger = true;
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (gameObject.tag.Equals("Lava") && SlingShot.isHeldDown)
@@ -24,10 +34,18 @@ public class DeathRestart : MonoBehaviour
         {
             if (collision.gameObject.tag.Equals("Player"))
             {
-                GameObject.Find("PlayerDeathSound").GetComponent<AudioSource>().Play();              
-                Destroy(collision.gameObject);
-                DestroyPlayer();
-                SlingShot.isHeldDown = false;
+                if (gameObject.tag.Equals("Projectile") && SlingShot.isInBerzerkMode)
+                {
+                    Destroy(gameObject);
+                }
+                else
+                {
+                   
+                    
+                    DestroyPlayer();
+                    SlingShot.isHeldDown = false;
+                }
+                
             }
         }                     
         
@@ -41,6 +59,10 @@ public class DeathRestart : MonoBehaviour
         CameraShake.Instance.ShakeCamera(25f, 0.75f);
         timeManager.StartSlowMotion(0.3f);
         Invoke("RestartGame", 0.5f);
+        //Disbale player
+        GameObject.Find("PlayerSprite").GetComponent<SpriteRenderer>().enabled = false;
+        GameObject.Find("PlayerSprite").GetComponent<CircleCollider2D>().enabled = false;
+        GameObject.Find("PlayerDeathSound").GetComponent<AudioSource>().Play();
     }
 
 
@@ -69,7 +91,7 @@ public class DeathRestart : MonoBehaviour
 
     public void RestartGame()
     {
-        PlayerPrefs.SetInt("NormalCurrency", PlayerPrefs.GetInt("NormalCurrency") + Mathf.RoundToInt(ScoreDisplay.score) / 10);
+        PlayerPrefs.SetInt("NormalCurrency", PlayerPrefs.GetInt("NormalCurrency") + Mathf.RoundToInt(ScoreDisplay.score) / 10 + ScoreDisplay.moneyBagsDrops);
         PlayerPrefs.SetInt("MoneyEarned", Mathf.RoundToInt(ScoreDisplay.score) / 10 + ScoreDisplay.moneyBagsDrops);
         GameObject music = GameObject.Find("Music");
         SlingShot.isDead = false;
@@ -89,7 +111,26 @@ public class DeathRestart : MonoBehaviour
     {
         SpawnObjects.hasFirstBombGoneOff = false;
         ScoreDisplay.score = 0;
-        ScoreDisplay.scoreMultiplier = 1;
+        ScoreDisplay.moneyBagsDrops = 0;
+
+        if(GreenOrbShield.hasGreenShieldBeenBought == true)
+        {
+            GreenOrbShield.isGreenShieldActive = true;
+        }
+        
+
+
+        if (PlayerPrefs.GetInt("AbilityTile3") == 1)
+        {
+            ScoreDisplay.scoreMultiplier = 3;
+            ScoreDisplay.scoreMultiplierIncreaser = 1;
+        }
+        else
+        {
+            ScoreDisplay.scoreMultiplier = 1;
+            ScoreDisplay.scoreMultiplierIncreaser = 1;
+        }
+
         ScoreDisplay.multiplierGoal = 50;
         Destroy(GameObject.FindGameObjectWithTag("Projectile"));
 
