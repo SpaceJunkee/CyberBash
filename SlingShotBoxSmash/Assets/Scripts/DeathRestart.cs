@@ -12,6 +12,8 @@ public class DeathRestart : MonoBehaviour
     public GameObject playerBig;
     GameObject[] musicObject;
     public AudioSource audio;
+    public static int bossScoreMoney = 0;
+    public static int bossesKilled = 0;
 
     private void Update()
     {
@@ -91,8 +93,8 @@ public class DeathRestart : MonoBehaviour
 
     public void RestartGame()
     {
-        PlayerPrefs.SetInt("NormalCurrency", PlayerPrefs.GetInt("NormalCurrency") + Mathf.RoundToInt(ScoreDisplay.score) / 10 + ScoreDisplay.moneyBagsDrops);
-        PlayerPrefs.SetInt("MoneyEarned", Mathf.RoundToInt(ScoreDisplay.score) / 10 + ScoreDisplay.moneyBagsDrops);
+        PlayerPrefs.SetInt("NormalCurrency", PlayerPrefs.GetInt("NormalCurrency") + Mathf.RoundToInt(ScoreDisplay.score) / 10 + ScoreDisplay.moneyBagsDrops + bossScoreMoney);
+        PlayerPrefs.SetInt("MoneyEarned", Mathf.RoundToInt(ScoreDisplay.score) / 10 + ScoreDisplay.moneyBagsDrops + bossScoreMoney);
         GameObject music = GameObject.Find("Music");
         SlingShot.isDead = false;
         playerBig.GetComponent<TrailRenderer>().enabled = true;
@@ -112,8 +114,10 @@ public class DeathRestart : MonoBehaviour
         SpawnObjects.hasFirstBombGoneOff = false;
         ScoreDisplay.score = 0;
         ScoreDisplay.moneyBagsDrops = 0;
+        bossScoreMoney = 0;
+        bossesKilled = 0;
 
-        if(GreenOrbShield.hasGreenShieldBeenBought == true)
+        if (GreenOrbShield.hasGreenShieldBeenBought == true)
         {
             GreenOrbShield.isGreenShieldActive = true;
         }

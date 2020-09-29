@@ -70,6 +70,22 @@ public class MainMenu : MonoBehaviour
 
     }
 
+    public void MuteAllAudio()
+    {
+        AudioListener.pause = true;
+
+
+        AudioListener.volume = 0;
+    }
+
+    public void UnMuteAllAudio()
+    {
+        AudioListener.pause = false;
+
+
+        AudioListener.volume = 1;
+    }
+
     public void PlayButtonSound()
     {
         GameObject.Find("MenuSounds").GetComponent<AudioSource>().Play();

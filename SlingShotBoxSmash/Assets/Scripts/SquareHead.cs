@@ -116,6 +116,7 @@ public class SquareHead : MonoBehaviour
     {
         GameObject.Find("SquareHeadRotateSound").GetComponent<AudioSource>().Stop();
         GameObject.Find("SquareHeadDeathSound").GetComponent<AudioSource>().Play();
+        DeathRestart.bossScoreMoney += 1000;
         CameraShake.Instance.ShakeCamera(13f, 1.5f);          
         GameObject newDeathEffect = (GameObject)Instantiate(squareHeadDeathEffect, transform.position, Quaternion.identity);
         Destroy(newDeathEffect, 4);
