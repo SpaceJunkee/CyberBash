@@ -24,6 +24,12 @@ public class GreenGuy : MonoBehaviour
     public Animator anim;
     public static int velocityPower = 135;
 
+    public AudioClip combo1SoundGreen;
+    public AudioClip combo2SoundGreen;
+    public AudioClip combo3SoundGreen;
+    public AudioClip combo4SoundGreen;
+    public AudioClip combo5SoundGreen;
+
     private void Start()
     {
         spawnConfiner = GameObject.FindGameObjectWithTag("Confiner");
@@ -104,6 +110,7 @@ public class GreenGuy : MonoBehaviour
 
         if (collision.gameObject.tag.Equals("OrbBullet"))
         {
+            GameObject.Find("OrbBulletHitEffect").GetComponent<AudioSource>().Play();
             ScoreDisplay.score += ComboHandler.greenGuyScore * ScoreDisplay.scoreMultiplier;
             scoreTextPop.scoreText.fontSize = 100;
             Die();
@@ -189,31 +196,48 @@ public class GreenGuy : MonoBehaviour
     private void IncreaseComboFloatScoreSize()
     {
 
-        if (ComboHandler.hitCount < 3)
+        if (ComboHandler.hitCount < 2)
         {
+            boxBreakAudio.clip = combo1SoundGreen;
+            boxBreakAudio.Play();
             comboSlowMo = 1f;
             floatingTextPrefab.GetComponent<TextMesh>().fontSize = 20;
         }
+        else if (ComboHandler.hitCount == 2)
+        {
+            boxBreakAudio.clip = combo2SoundGreen;
+            boxBreakAudio.Play();
+            comboSlowMo = 1f;
+            floatingTextPrefab.GetComponent<TextMesh>().fontSize = 30;
+        }
         else if (ComboHandler.hitCount == 3)
         {
+            boxBreakAudio.clip = combo3SoundGreen;
+            boxBreakAudio.Play();
             comboSlowMo = 2.25f;
             timeManager.StartSlowMotion(0.2f);
             floatingTextPrefab.GetComponent<TextMesh>().fontSize = 40;
         }
         else if (ComboHandler.hitCount == 4)
         {
+            boxBreakAudio.clip = combo4SoundGreen;
+            boxBreakAudio.Play();
             comboSlowMo = 4.5f;
             timeManager.StartSlowMotion(0.1f);
             floatingTextPrefab.GetComponent<TextMesh>().fontSize = 50;
         }
         else if (ComboHandler.hitCount == 5)
         {
+            boxBreakAudio.clip = combo5SoundGreen;
+            boxBreakAudio.Play();
             comboSlowMo = 6f;
             timeManager.StartSlowMotion(0.07f);
             floatingTextPrefab.GetComponent<TextMesh>().fontSize = 60;
         }
         else if (ComboHandler.hitCount > 5)
         {
+            boxBreakAudio.clip = combo5SoundGreen;
+            boxBreakAudio.Play();
             comboSlowMo = 6.75f;
             timeManager.StartSlowMotion(0.05f);
             floatingTextPrefab.GetComponent<TextMesh>().fontSize = 70;

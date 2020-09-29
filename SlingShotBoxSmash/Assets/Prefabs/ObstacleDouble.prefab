@@ -4940,6 +4940,11 @@ MonoBehaviour:
   spawnConfiner: {fileID: 0}
   timeManager: {fileID: 4800997520552027495, guid: e1231ab3c50cd5440a3561ef97c5af9b,
     type: 3}
+  combo1SoundDouble: {fileID: 8300000, guid: 8e4cc65522757e548b6aed16cf34375a, type: 3}
+  combo2SoundDouble: {fileID: 8300000, guid: 2d78d8f1161a0a640836c02c50dcb800, type: 3}
+  combo3SoundDouble: {fileID: 8300000, guid: e6ce82edbbf747c4eb4b2f4bf3140c69, type: 3}
+  combo4SoundDouble: {fileID: 8300000, guid: 181d5bdc125089945afca5ba4cf1d119, type: 3}
+  combo5SoundDouble: {fileID: 8300000, guid: 5794b20e8cd84dc4bad947d68ef7e5fb, type: 3}
 --- !u!114 &5701224675419248470
 MonoBehaviour:
   m_ObjectHideFlags: 0

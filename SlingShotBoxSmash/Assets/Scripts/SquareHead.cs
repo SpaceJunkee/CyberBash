@@ -17,6 +17,9 @@ public class SquareHead : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().color = new Color32(255,0,0,255);
         renderers = GetComponentsInChildren<Renderer>();
 
+        GameObject.Find("SquareHeadEnterSound").GetComponent<AudioSource>().Play();
+        Invoke("PlayRotateLoop", 5f);
+
         CameraShake.Instance.ShakeCamera(10f, 5f);
 
         foreach (Renderer renderer in renderers)
@@ -58,8 +61,9 @@ public class SquareHead : MonoBehaviour
 
     private void Update()
     {
-        if(health <= 0)
+        if (health <= 0)
         {
+            GameObject.Find("SquareHeadRotateSound").GetComponent<AudioSource>().Stop();
             GameObject explosion = (GameObject)Instantiate(explosionCirclePrefab, transform.position, Quaternion.identity); ;
             Destroy(explosion, 3f);
             timeManager.StartSlowMotion(0.4f);
@@ -88,12 +92,17 @@ public class SquareHead : MonoBehaviour
             collision.gameObject.GetComponentInParent<Rigidbody2D>().AddForce((-force * vel.magnitude * (150)));
             hitSound.Play();
         }
-
         
+    }
+
+    private void PlayRotateLoop()
+    {
+        GameObject.Find("SquareHeadRotateSound").GetComponent<AudioSource>().Play();
     }
 
     public void Die()
     {
+        GameObject.Find("SquareHeadRotateSound").GetComponent<AudioSource>().Stop();
         GameObject.Find("SquareHeadDeathSound").GetComponent<AudioSource>().Play();
         CameraShake.Instance.ShakeCamera(13f, 1.5f);          
         GameObject newDeathEffect = (GameObject)Instantiate(squareHeadDeathEffect, transform.position, Quaternion.identity);

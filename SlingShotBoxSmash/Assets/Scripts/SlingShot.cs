@@ -178,13 +178,14 @@ public class SlingShot : MonoBehaviour
         isInBerzerkMode = true;
         isBerzerkMeterBlocked = true;
         maxDragDistance = 15f;
-        rigidBody.angularDrag = 7500f;
-        rigidBody.drag = 1f;
+        rigidBody.angularDrag = 5000f;
+        rigidBody.drag = 0.5f;
         trail.startWidth = 9.5f;
         trail.startColor = new Color32(255,0,33,255);
         lineRenderer.startWidth = 5;
         lineRenderer.startColor = new Color32(255, 0, 33, 255);
-            
+
+        GameObject.Find("BerzerkModeSound").GetComponent<AudioSource>().Play();
         GameObject.Find("BerzerkSprite").GetComponent<SpriteRenderer>().enabled = true;
         GameObject.Find("BerzerkSprite").GetComponent<CircleCollider2D>().enabled = true;
         GameObject.Find("PlayerSprite").GetComponent<SpriteRenderer>().enabled = false;

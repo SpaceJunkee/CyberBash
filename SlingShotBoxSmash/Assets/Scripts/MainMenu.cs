@@ -70,6 +70,11 @@ public class MainMenu : MonoBehaviour
 
     }
 
+    public void PlayButtonSound()
+    {
+        GameObject.Find("MenuSounds").GetComponent<AudioSource>().Play();
+    }
+
     public void SetShopCurrency()
     {
         GameObject.Find("CurrencyText").GetComponent<Text>().text = $"〄{PlayerPrefs.GetInt("NormalCurrency")}";

@@ -69,6 +69,11 @@ MonoBehaviour:
   isDead: 0
   leftOverProjectiles: []
   anim: {fileID: 2495951086398163936}
+  combo1SoundGreen: {fileID: 8300000, guid: c82fc22669beb944cacbd9431ac43b22, type: 3}
+  combo2SoundGreen: {fileID: 8300000, guid: 3163d27646c698a4da874a841155327f, type: 3}
+  combo3SoundGreen: {fileID: 8300000, guid: 3b03075944bf99241a4ff5c3bd1ea7e3, type: 3}
+  combo4SoundGreen: {fileID: 8300000, guid: 519e81eabcce48642b0e44853166972b, type: 3}
+  combo5SoundGreen: {fileID: 8300000, guid: d5a1ddf8a909c5f4a93c318c84f854e5, type: 3}
 --- !u!212 &2495951086398163929
 SpriteRenderer:
   m_ObjectHideFlags: 0

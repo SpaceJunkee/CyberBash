@@ -16,6 +16,12 @@ public class DoublePointObstacle : MonoBehaviour
 
     public static int velocityPower = 135;
 
+    public AudioClip combo1SoundDouble;
+    public AudioClip combo2SoundDouble;
+    public AudioClip combo3SoundDouble;
+    public AudioClip combo4SoundDouble;
+    public AudioClip combo5SoundDouble;
+
     private void Start()
     {
         spawnConfiner = GameObject.FindGameObjectWithTag("Confiner");
@@ -40,6 +46,7 @@ public class DoublePointObstacle : MonoBehaviour
 
         if (collision.gameObject.tag.Equals("OrbBullet"))
         {
+            GameObject.Find("OrbBulletHitEffect").GetComponent<AudioSource>().Play();
             ScoreDisplay.score += ComboHandler.doubleScoreValue * ScoreDisplay.scoreMultiplier;
             scoreTextPop.scoreText.fontSize = 100;
             Die();
@@ -123,31 +130,48 @@ public class DoublePointObstacle : MonoBehaviour
     private void IncreaseComboFloatScoreSize()
     {
 
-        if (ComboHandler.hitCount < 3)
+        if (ComboHandler.hitCount < 2)
         {
+            doublePointBoxBreakAudio.clip = combo1SoundDouble;
+            doublePointBoxBreakAudio.Play();
             comboSlowMo = 1f;
             floatingTextPrefab.GetComponent<TextMesh>().fontSize = 20;
         }
+        else if (ComboHandler.hitCount == 2)
+        {
+            doublePointBoxBreakAudio.clip = combo2SoundDouble;
+            doublePointBoxBreakAudio.Play();
+            comboSlowMo = 1f;
+            floatingTextPrefab.GetComponent<TextMesh>().fontSize = 30;
+        }
         else if (ComboHandler.hitCount == 3)
         {
+            doublePointBoxBreakAudio.clip = combo3SoundDouble;
+            doublePointBoxBreakAudio.Play();
             comboSlowMo = 2.25f;
             timeManager.StartSlowMotion(0.2f);
             floatingTextPrefab.GetComponent<TextMesh>().fontSize = 40;
         }
         else if (ComboHandler.hitCount == 4)
         {
+            doublePointBoxBreakAudio.clip = combo4SoundDouble;
+            doublePointBoxBreakAudio.Play();
             comboSlowMo = 4.5f;
             timeManager.StartSlowMotion(0.1f);
             floatingTextPrefab.GetComponent<TextMesh>().fontSize = 50;
         }
         else if (ComboHandler.hitCount == 5)
         {
+            doublePointBoxBreakAudio.clip = combo5SoundDouble;
+            doublePointBoxBreakAudio.Play();
             comboSlowMo = 6f;
             timeManager.StartSlowMotion(0.07f);
             floatingTextPrefab.GetComponent<TextMesh>().fontSize = 60;
         }
         else if (ComboHandler.hitCount > 5)
         {
+            doublePointBoxBreakAudio.clip = combo5SoundDouble;
+            doublePointBoxBreakAudio.Play();
             comboSlowMo = 6.75f;
             timeManager.StartSlowMotion(0.05f);
             floatingTextPrefab.GetComponent<TextMesh>().fontSize = 70;

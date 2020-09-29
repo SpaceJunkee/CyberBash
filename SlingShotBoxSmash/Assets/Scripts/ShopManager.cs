@@ -33,6 +33,7 @@ public class ShopManager : MonoBehaviour
         if (PlayerPrefs.GetInt("NormalCurrency") >= price && hasBeenBought != true)
         {
             hasBeenBought = true;
+            GameObject.Find("UpgradeBoughtSound").GetComponent<AudioSource>().Play();
             PlayerPrefs.SetInt("NormalCurrency", PlayerPrefs.GetInt("NormalCurrency") - price);
             GameObject.Find("CurrencyText").GetComponent<Text>().text = $"〄{PlayerPrefs.GetInt("NormalCurrency")}";
             SaveBuyingStatus(prefUpgrade);

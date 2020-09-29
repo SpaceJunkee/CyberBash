@@ -40,7 +40,8 @@ public class NormalObstacle : MonoBehaviour
         }
 
         if (collision.gameObject.tag.Equals("OrbBullet"))
-        { 
+        {
+            GameObject.Find("OrbBulletHitEffect").GetComponent<AudioSource>().Play();
             ScoreDisplay.score += ComboHandler.normalScoreValue * ScoreDisplay.scoreMultiplier;
             scoreTextPop.scoreText.fontSize = 100;
             Die();
