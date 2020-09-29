@@ -17,7 +17,8 @@ public class SquareHead : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().color = new Color32(255,0,0,255);
         renderers = GetComponentsInChildren<Renderer>();
 
-        GameObject.Find("SquareHeadEnterSound").GetComponent<AudioSource>().Play();
+        Invoke("PlayEnterSound", 1f);
+        Invoke("PlayLaserSound", 4.8f);
         Invoke("PlayRotateLoop", 5f);
 
         CameraShake.Instance.ShakeCamera(10f, 5f);
@@ -98,6 +99,17 @@ public class SquareHead : MonoBehaviour
     private void PlayRotateLoop()
     {
         GameObject.Find("SquareHeadRotateSound").GetComponent<AudioSource>().Play();
+    }
+
+    private void PlayLaserSound()
+    {
+        GameObject.Find("SquareHeadLaserSound").GetComponent<AudioSource>().Play();
+    }
+    
+
+    private void PlayEnterSound()
+    {
+        GameObject.Find("SquareHeadEnterSound").GetComponent<AudioSource>().Play();
     }
 
     public void Die()
