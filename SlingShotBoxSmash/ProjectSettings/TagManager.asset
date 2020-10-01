@@ -23,6 +23,7 @@ TagManager:
   - Berzerk
   - BerzerkMeter
   - Lock
+  - BossHealthBar
   layers:
   - Default
   - TransparentFX

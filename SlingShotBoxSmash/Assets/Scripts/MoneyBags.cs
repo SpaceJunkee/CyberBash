@@ -56,7 +56,7 @@ public class MoneyBags : MonoBehaviour
 
             boxBreakAudio.Play();
            
-            ShowFloatingText(moneyBagsValue, new Color32(9, 0, 7, 255));
+            ShowFloatingText(moneyBagsValue, new Color32(37, 0, 41, 255));
 
             scoreTextPop.scoreText.fontSize = 100;
 

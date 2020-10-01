@@ -1,5 +1,6 @@
 ﻿
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SquareHead : MonoBehaviour
 {
@@ -11,9 +12,18 @@ public class SquareHead : MonoBehaviour
     Renderer[] renderers;
     public TimeManager timeManager;
     public GameObject explosionCirclePrefab;
+    public GameObject floatingTextPrefab;
+    public GameObject bossHealthBar;
 
     private void Start()
     {
+
+        bossHealthBar = GameObject.FindGameObjectWithTag("BossHealthBar");
+        GameObject.Find("Border").GetComponent<Image>().enabled = true;
+        GameObject.Find("Health").GetComponent<Image>().enabled = true;
+
+        bossHealthBar.GetComponent<BossHealthBar>().SetMaxHealth(health);
+
         gameObject.GetComponent<SpriteRenderer>().color = new Color32(255,0,0,255);
         renderers = GetComponentsInChildren<Renderer>();
 
@@ -69,8 +79,19 @@ public class SquareHead : MonoBehaviour
             Destroy(explosion, 3f);
             timeManager.StartSlowMotion(0.4f);
             timeManager.Invoke("StopSlowMotion", 0.75f);
+            ShowFloatingText(1000, new Color32(37, 0, 41, 255));
+            GameObject.Find("Border").GetComponent<Image>().enabled = false;
+            GameObject.Find("Health").GetComponent<Image>().enabled = false;
             Die();
         }
+    }
+
+    private void ShowFloatingText(int hitScore, Color32 color)
+    {
+        var go = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity);
+        go.GetComponent<TextMesh>().text = hitScore.ToString();
+        go.GetComponent<TextMesh>().fontSize = 75;
+        go.GetComponent<TextMesh>().color = color;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -89,6 +110,7 @@ public class SquareHead : MonoBehaviour
             Destroy(newDeathEffect, 2);
 
             health -= 12.5f;
+            bossHealthBar.GetComponent<BossHealthBar>().SetHealth(health);
 
             collision.gameObject.GetComponentInParent<Rigidbody2D>().AddForce((-force * vel.magnitude * (150)));
             hitSound.Play();
