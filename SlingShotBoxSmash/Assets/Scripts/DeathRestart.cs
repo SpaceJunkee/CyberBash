@@ -40,10 +40,12 @@ public class DeathRestart : MonoBehaviour
                 {
                     Destroy(gameObject);
                 }
-                else
+                else if(gameObject.tag.Equals("Projectile") && GreenOrbShield.isGreenShieldActive == true)
                 {
-                   
-                    
+
+                }
+                else
+                {                  
                     DestroyPlayer();
                     SlingShot.isHeldDown = false;
                 }
