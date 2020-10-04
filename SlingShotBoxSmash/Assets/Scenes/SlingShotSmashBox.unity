@@ -847,9 +847,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.052050274, y: 0.05814119}
+  m_Offset: {x: 0.00012461345, y: 0.08186283}
   serializedVersion: 2
-  m_Radius: 2.7882016
+  m_Radius: 3.2863054
 --- !u!212 &116108451
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11677,7 +11677,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 461644376}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0000009536743, y: 7.800001, z: -26.9}
+  m_LocalPosition: {x: -0.0000019073486, y: 7.800001, z: -26.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 265705888}
@@ -15626,9 +15626,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: da5deaed47ce4984299448ac824d2c4b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a91e25817acf2eb469405af4bc143342, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -16494,7 +16494,7 @@ PrefabInstance:
     - target: {fileID: 6463566364921291032, guid: 2defe903ddb9ed545a6fc47571f6425a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6463566364921291032, guid: 2defe903ddb9ed545a6fc47571f6425a,
         type: 3}
@@ -16797,10 +16797,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tracks:
   - {fileID: 8300000, guid: 55dd95cbfbeaf254f855013078569527, type: 3}
-  - {fileID: 8300000, guid: e95677413b2a8774182646ef8de22c4e, type: 3}
+  - {fileID: 8300000, guid: ff703da5c33207d468f65df3079dcded, type: 3}
   - {fileID: 8300000, guid: 2c4b7f7169683514ba5d4dc2941a73c9, type: 3}
   - {fileID: 8300000, guid: 5e084546bf5a3114e960a111646d0135, type: 3}
   - {fileID: 8300000, guid: f619fcfea9ae34746b58b4b3810498bf, type: 3}
+  - {fileID: 8300000, guid: e95677413b2a8774182646ef8de22c4e, type: 3}
   audioSource: {fileID: 1512235816}
 --- !u!1 &1552681846
 GameObject:
@@ -18443,7 +18444,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1824600922
 GameObject:
