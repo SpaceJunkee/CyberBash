@@ -20,7 +20,6 @@ public class PlaylistManager : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.SetInt("NormalCurrency", 50000);
 
         if (hasSong1BeenPurchased)
         {
@@ -55,9 +54,6 @@ public class PlaylistManager : MonoBehaviour
         {
             audioSource.loop = false;
         }
-
-        Debug.Log("number of tracks in trackPlaylist:" + trackPlaylist.Count.ToString());
-
 
         PlayRandomTrack();
     }
