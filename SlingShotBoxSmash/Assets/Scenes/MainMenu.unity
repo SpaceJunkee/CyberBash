@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -421,7 +421,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 9000
+          m_IntArgument: 4500
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2240,7 +2240,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 7500
+          m_IntArgument: 6000
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3000,7 +3000,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u300420000"
+  m_Text: "\u300412000"
 --- !u!222 &295175571
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6093,7 +6093,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30042000"
+  m_Text: "\u30041000"
 --- !u!222 &821282391
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6396,7 +6396,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 15000
+          m_IntArgument: 9000
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -8361,7 +8361,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30049000"
+  m_Text: "\u30044500"
 --- !u!222 &1132542101
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8749,7 +8749,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 20000
+          m_IntArgument: 12000
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -11736,7 +11736,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30043500"
+  m_Text: "\u30042000"
 --- !u!222 &1429417191
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13499,7 +13499,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3500
+          m_IntArgument: 2000
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -14258,7 +14258,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30047500"
+  m_Text: "\u30046000"
 --- !u!222 &1719765745
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17277,7 +17277,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u300415000"
+  m_Text: "\u30049000"
 --- !u!222 &2028055839
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17785,7 +17785,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2000
+          m_IntArgument: 1000
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -18201,7 +18201,7 @@ PrefabInstance:
     - target: {fileID: 6463566364921291035, guid: 2defe903ddb9ed545a6fc47571f6425a,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6463566365444334470, guid: 2defe903ddb9ed545a6fc47571f6425a,
         type: 3}

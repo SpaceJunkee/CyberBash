@@ -26,6 +26,11 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
 
         GameObject.Find("AdButton").SetActive(true);
 
+        if(numberOfRestarts == 3)
+        {
+            Advertisement.Show();
+            numberOfRestarts = 0;
+        }
 
     }
 
@@ -40,7 +45,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
    
     public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
     {
-        if(showResult == ShowResult.Finished)
+        if(showResult == ShowResult.Finished && RestartScreenManager.hasPlayerClickedAd == true)
         {          
             GameObject.Find("MoneyEarnedText").GetComponent<Text>().text = "〄" + PlayerPrefs.GetInt("MoneyEarned") * 2 + "";
             PlayerPrefs.SetInt("NormalCurrency", normalCurrency + moneyEarned);

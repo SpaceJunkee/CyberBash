@@ -20,7 +20,8 @@ public class PlaylistManager : MonoBehaviour
 
     private void Start()
     {
-        
+        PlayerPrefs.SetInt("NormalCurrency", 50000);
+
         if (hasSong1BeenPurchased)
         {
             trackPlaylist.Add(tracks[0]);
@@ -46,6 +47,17 @@ public class PlaylistManager : MonoBehaviour
             trackPlaylist.Add(tracks[4]);
         }
 
+        if (trackPlaylist.Count == 0)
+        {
+            audioSource.loop = true;
+        }
+        else if (trackPlaylist.Count > 0)
+        {
+            audioSource.loop = false;
+        }
+
+        Debug.Log("number of tracks in trackPlaylist:" + trackPlaylist.Count.ToString());
+
 
         PlayRandomTrack();
     }
@@ -69,6 +81,5 @@ public class PlaylistManager : MonoBehaviour
             audioSource.Play();
         }
 
-        Debug.Log(trackPlaylist.Count.ToString());
     }
 }

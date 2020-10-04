@@ -20,7 +20,7 @@ public class MoneyBags : MonoBehaviour
     public TimeManager timeManager;
     public static float comboSlowMo = 1;
 
-    public static int moneyBagsValue = 25;
+    public static int moneyBagsValue = 10;
 
 
     private void Start()

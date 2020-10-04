@@ -95,6 +95,7 @@ public class DeathRestart : MonoBehaviour
 
     public void RestartGame()
     {
+        AdsManager.numberOfRestarts++;
         PlayerPrefs.SetInt("NormalCurrency", PlayerPrefs.GetInt("NormalCurrency") + Mathf.RoundToInt(ScoreDisplay.score) / 10 + ScoreDisplay.moneyBagsDrops + bossScoreMoney);
         PlayerPrefs.SetInt("MoneyEarned", Mathf.RoundToInt(ScoreDisplay.score) / 10 + ScoreDisplay.moneyBagsDrops + bossScoreMoney);
         GameObject music = GameObject.Find("Music");
