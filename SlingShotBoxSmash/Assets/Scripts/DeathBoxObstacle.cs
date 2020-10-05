@@ -45,7 +45,6 @@ public class DeathBoxObstacle : MonoBehaviour
                 {
                     deathBoxAudio.Play();
 
-                    Destroy(collision.gameObject);
                     Die();
                 }
                 else if (SlingShot.isHeldDown && !SlingShot.isInBerzerkMode)

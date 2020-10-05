@@ -20,7 +20,6 @@ public class PlaylistManager : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.SetInt("NormalCurrency", 50000);
 
         //Add default song to laylist
         trackPlaylist.Add(tracks[5]);
@@ -58,8 +57,6 @@ public class PlaylistManager : MonoBehaviour
         {
             audioSource.loop = false;
         }
-
-        Debug.Log("Total Tracks in playlist" + trackPlaylist.Count.ToString());
 
         PlayRandomTrack();
     }
