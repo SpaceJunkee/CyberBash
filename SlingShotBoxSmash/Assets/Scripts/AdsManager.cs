@@ -13,6 +13,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
 
     //ADD SKIPPABLE ADDS
     public static int numberOfRestarts = 0;
+    public static bool hasRemoveAdsBeenBought = false;
 
     IEnumerator Start()
     {
@@ -24,12 +25,23 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
             yield return null;
         }
 
-        GameObject.Find("AdButton").SetActive(true);
-
-        if(numberOfRestarts == 3)
+        if(hasRemoveAdsBeenBought == false)
+        {
+            GameObject.Find("AdButton").SetActive(true);
+        }
+        
+        if(numberOfRestarts == 6 && hasRemoveAdsBeenBought == false)
         {
             Advertisement.Show();
             numberOfRestarts = 0;
+        }
+
+        if(hasRemoveAdsBeenBought == true)
+        {
+            moneyEarned = PlayerPrefs.GetInt("MoneyEarned");
+            normalCurrency = PlayerPrefs.GetInt("NormalCurrency");
+            GameObject.Find("MoneyEarnedText").GetComponent<Text>().text = "〄" + PlayerPrefs.GetInt("MoneyEarned") * 2 + "";
+            PlayerPrefs.SetInt("NormalCurrency", normalCurrency + moneyEarned);
         }
 
     }

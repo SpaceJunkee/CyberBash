@@ -14,10 +14,35 @@ public class RestartScreenManager : MonoBehaviour
     public static bool playerRewarded = false;
     public static bool hasPlayerClickedAd = false;
 
+
     private void Start()
     {
         StartCoroutine(CountUpToTarget());
         GameObject.Find("HighScore").GetComponent<Text>().text = $"High Score\n{PlayerPrefs.GetInt("HighScore")}";
+
+    }
+
+    public void Awake()
+    {
+        if (PlayerPrefs.GetInt("RemoveAds") == 1)
+        {
+
+            AdsManager.hasRemoveAdsBeenBought = true;
+            GameObject adButton = GameObject.Find("AdButton");
+
+            GameObject.Find("MoneyEarnedText").GetComponent<Text>().fontSize = 36;
+            GameObject.Find("MoneyEarnedText").GetComponent<Text>().color = new Color32(0, 255, 133, 255);
+
+            adButton.GetComponent<Image>().enabled = false;
+            adButton.GetComponent<Button>().interactable = false;
+            adButton.GetComponentInChildren<Text>().enabled = false;
+            GameObject.Find("WatchAdText").GetComponent<Text>().enabled = false;
+
+            GameObject removeAdsButton = GameObject.Find("RemoveAds");
+            removeAdsButton.GetComponent<Image>().enabled = false;
+            removeAdsButton.GetComponent<Button>().interactable = false;
+            removeAdsButton.GetComponentInChildren<Text>().enabled = false;
+        }
     }
 
     IEnumerator CountUpToTarget()
@@ -35,7 +60,15 @@ public class RestartScreenManager : MonoBehaviour
 
             moneyEarnedBaseScore += moneyBaseMultiplier; 
             moneyEarnedBaseScore = Mathf.Clamp(moneyEarnedBaseScore, 0f, PlayerPrefs.GetInt("MoneyEarned"));
-            GameObject.Find("MoneyEarnedText").GetComponent<Text>().text = "〄" + moneyEarnedBaseScore + "";
+            if (PlayerPrefs.GetInt("RemoveAds") == 1)
+            {
+                GameObject.Find("MoneyEarnedText").GetComponent<Text>().text = "〄" + moneyEarnedBaseScore * 2 + "";
+            }
+            else
+            {
+                GameObject.Find("MoneyEarnedText").GetComponent<Text>().text = "〄" + moneyEarnedBaseScore + "";
+            }
+                
             yield return new WaitForSeconds(delay);
         }
     }
