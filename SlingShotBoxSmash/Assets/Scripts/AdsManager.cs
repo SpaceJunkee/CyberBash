@@ -30,7 +30,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
             GameObject.Find("AdButton").SetActive(true);
         }
         
-        if(numberOfRestarts == 6 && hasRemoveAdsBeenBought == false)
+        if(numberOfRestarts == 3 && hasRemoveAdsBeenBought == false)
         {
             Advertisement.Show();
             numberOfRestarts = 0;

@@ -14,16 +14,27 @@ public class MainMenu : MonoBehaviour
     public AudioSource audio;
     public static int menuMusicPlaying = 0;
     public Animator transition;
+    public static bool isMuted = false;
 
     private void Start()
     {
+        PlayerPrefs.SetInt("NormalCurrency", 100000);//DEELTE
         menuMusicPlaying++;
 
         if (menuMusicPlaying > 2 && audio!= null)
         {
             audio.Stop();
         }
-
+        
+        if (isMuted == true)
+        {
+            GameObject.Find("VolumeButton").SetActive(false);
+        }
+        else
+        {
+            GameObject.Find("MuteButton").SetActive(false);
+        }
+        
     }
     public void PlayGame()
     {
@@ -76,6 +87,16 @@ public class MainMenu : MonoBehaviour
 
 
         AudioListener.volume = 0;
+    }
+
+    public void SetMuteOn()
+    {
+        isMuted = true;
+    }
+
+    public void SetMuteOff()
+    {
+        isMuted = false;
     }
 
     public void UnMuteAllAudio()

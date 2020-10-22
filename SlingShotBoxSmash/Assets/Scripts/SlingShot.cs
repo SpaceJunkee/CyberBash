@@ -175,6 +175,11 @@ public class SlingShot : MonoBehaviour
 
     public void EnableBerzerk()
     {
+        if (GreenOrbShield.hasGreenShieldBeenBought)
+        {
+            GreenOrbShield.isGreenShieldActive = false;
+        }
+
         isInBerzerkMode = true;
         isBerzerkMeterBlocked = true;
         maxDragDistance = 15f;
@@ -196,6 +201,11 @@ public class SlingShot : MonoBehaviour
 
     IEnumerator DisableBerzerk()
     {
+        if (GreenOrbShield.hasGreenShieldBeenBought)
+        {
+            GreenOrbShield.isGreenShieldActive = false;
+        }
+
         berzerkMeter.SetFill(0);
         yield return new WaitForSeconds(10);
         isInBerzerkMode = false;
